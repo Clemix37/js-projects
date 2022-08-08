@@ -5,8 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Projects - All</title>
+    <link rel="stylesheet" href="../styles/bulma.min.css">
 </head>
 <body>
-    
+    <style>
+        /* ALL */
+        .container,nav,main {display:flex;}
+        .container.est-centre {justify-content:center;}
+        .row {flex-direction: column;}
+        .card {border-radius:1.5rem;}
+        .grille {display:grid;grid-template-columns: auto auto auto;width:100%;}
+        /* NAV */
+        nav {height:3rem;}
+        nav .centre {width:60%;}
+        nav .debut, nav .fin {width:20%;}
+        /* MAIN */
+        main {height:calc(100vh - 3rem);}
+    </style>
+    <nav>
+        <div class="debut">
+            <button class="button is-rounded is-outline">Salut</button>
+        </div>
+        <div class="centre">
+
+        </div>
+        <div class="fin">
+
+        </div>
+    </nav>
+    <main>
+        <div class="container est-centre row">
+            <h1 class="title has-text-centered">JS Projects</h1>
+            <div class="container grille" id="grille"></div>
+        </div>
+    </main>
+    <script src="../Project.js"></script>
+    <script src="../app.js"></script>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="../../styles/bulma.min.css">
+</head>
+<body>
+    <style>
+        main{
+            height:100vh;
+            width: 100vw;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction: column;
+        }
+        *{text-transform:uppercase;}
+    </style>
+    <main>
+        <div class="container">
+            <h1 class="title has-text-centered">counter</h1>
+        </div>
+        <div class="container">
+            <h1 class="title has-text-centered" id="points"></h1>
+        </div>
+        <div class="container">
+            <button class="button is-dark is-medium is-rounded" id="increaseBtn">increase</button>
+            <button class="button is-dark is-medium is-rounded" id="decreaseBtn">decrease</button>
+        </div>
+    </main>
+    <script src="./Counter.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
