@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 function launchProjects(){
     projects.push(new Project({
         name: "Counter",
-        link: "./01-counter/index.html"
+        link: "01-counter/index.html"
     }));
 }
 

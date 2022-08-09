@@ -1,6 +1,7 @@
 // PROPERTIES
 let increaseBtn = document.getElementById('increaseBtn');
 let decreaseBtn = document.getElementById('decreaseBtn');
+let resetBtn = document.getElementById('resetBtn');
 let points = document.getElementById('points');
 let counter = null;
 
@@ -21,5 +22,9 @@ increaseBtn.addEventListener('click',()=>{
 });
 decreaseBtn.addEventListener('click',()=>{
     counter?.decrease();
+    display();
+});
+resetBtn.addEventListener('click', ()=>{
+    counter?.reset();
     display();
 });

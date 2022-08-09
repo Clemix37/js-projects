@@ -6,4 +6,5 @@ class Counter {
     get points(){return this.#points;}
     increase(){this.#points++;}
     decrease(){this.#points--;}
+    reset(){this.#points=0;return this;}
 }
