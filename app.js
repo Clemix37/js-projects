@@ -9,6 +9,14 @@ function launchProjects(){
         name: "Counter",
         link: "01-counter/index.html"
     }));
+    project.addProject(new Project({
+        name: "Drum kit",
+        link: "02-drum-kit"
+    }));
+    projects.addProject(new Project({
+        name: "Random Color",
+        link: "03-random-color"
+    }));
 }
 
 function displayProjects(){
