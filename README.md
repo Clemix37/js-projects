@@ -16,3 +16,8 @@ Three simple things: increase, decrease and reset.
 
 Simple project: a drum kit.  
 You can play sounds based on the instrument.  
+
+### 03 - Random color generator
+
+Simple project: a random color generator.  
+You can generate a new random color that is set in the background.  
