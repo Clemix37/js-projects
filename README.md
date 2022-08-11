@@ -4,9 +4,9 @@ Projects run by JS.
 
 ## Summary 
 
-[Counter](https://github.com/Clemix37/js-projects#01-counter)  
-[Drum Kit](https://github.com/Clemix37/js-projects#02-drum-kit)  
-[Random color](https://github.com/Clemix37/js-projects#03-random-color)  
+[Counter](https://github.com/Clemix37/js-projects#01---counter)  
+[Drum Kit](https://github.com/Clemix37/js-projects#02---drum-kit)  
+[Random color](https://github.com/Clemix37/js-projects#03---random-color-generator)  
 
 ### 01 - Counter
 
