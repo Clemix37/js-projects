@@ -4,9 +4,9 @@ Projets en JavaScript.
 
 ## Sommaire
 
-[Compteur](https://github.com/Clemix37/js-projects/languages#01-counter)  
-[Batterie](https://github.com/Clemix37/js-projects/languages#02-drum-kit)  
-[Couleur aléatoire](https://github.com/Clemix37/js-projects/languages#03-random-color)  
+[Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#01---compteur)  
+[Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#02---batterie)  
+[Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#03---g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
 
 ### 01 - Compteur
 
