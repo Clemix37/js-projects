@@ -6,6 +6,7 @@ Projects run by JS.
 
 [Counter](https://github.com/Clemix37/js-projects#01-counter)  
 [Drum Kit](https://github.com/Clemix37/js-projects#02-drum-kit)  
+[Random color](https://github.com/Clemix37/js-projects#03-random-color)  
 
 ### 01 - Counter
 
