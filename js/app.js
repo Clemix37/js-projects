@@ -17,6 +17,10 @@ function launchProjects(){
         name: "Random Color",
         link: "03-random-color"
     }));
+    projects.push(new Project({
+        name: "Number guesser",
+        link: "04-number-guesser"
+    }));
 }
 
 function displayProjects(){
