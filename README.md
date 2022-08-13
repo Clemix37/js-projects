@@ -7,6 +7,7 @@ Projects run by JS.
 [Counter](https://github.com/Clemix37/js-projects#01---counter)  
 [Drum Kit](https://github.com/Clemix37/js-projects#02---drum-kit)  
 [Random color](https://github.com/Clemix37/js-projects#03---random-color-generator)  
+[Number guesser](https://github.com/Clemix37/js-projects#04---number-guesser)  
 
 ### 01 - Counter
 
@@ -22,3 +23,8 @@ You can play sounds based on the instrument.
 
 Simple project: a random color generator.  
 You can generate a new random color that is set in the background.  
+
+### 04 - Number guesser
+
+Simple project: a number guesser game.  
+You can set options and play along with your options or default ones.
