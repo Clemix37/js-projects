@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Number guesser</title>
+    <link rel="stylesheet" href="../../styles/bulma.min.css">
+    <link rel="stylesheet" href="../../styles/fontawesome/css/all.min.css">
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+</head>
+<body>
+    <style>
+        *,body{margin:0;padding:0;}
+        .container{text-align:center;}
+        .title {font-size:4rem;}
+        main{
+            height:100vh;width: 100vw;
+            display:flex;align-items:center;
+            justify-content:center;flex-direction: column;
+        }
+    </style>
+    <main>
+        <div class="container">&nbsp;</div>
+        <div class="container">
+            <h1 class="title has-text-centered">Number guesser</h1>
+            <input class="input is-rounded" type="number" id="nb" placeholder="Number">
+            <button id="btnSearch" class="button is-rounded is-primary">Search</button>
+            <h3 class="subtitle has-text-centered" id="results"></h3>
+        </div>
+        <!-- OPTIONS -->
+        <div class="container">&nbsp;</div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>
