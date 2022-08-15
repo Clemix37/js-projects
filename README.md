@@ -16,6 +16,7 @@ Projects run by JS.
 - [ ] BMI Calculator
 - [ ] Workout tracker
 - [ ] Dino Game
+- [ ] Memory Game
 
 ### 01 - Counter
 
