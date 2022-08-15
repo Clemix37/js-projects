@@ -15,6 +15,7 @@ Projects run by JS.
 - [ ] Random user
 - [ ] BMI Calculator
 - [ ] Workout tracker
+- [ ] Dino Game
 
 ### 01 - Counter
 
