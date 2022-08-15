@@ -4,10 +4,17 @@ Projects run by JS.
 
 ## Summary 
 
-[Counter](https://github.com/Clemix37/js-projects#01---counter)  
-[Drum Kit](https://github.com/Clemix37/js-projects#02---drum-kit)  
-[Random color](https://github.com/Clemix37/js-projects#03---random-color-generator)  
-[Number guesser](https://github.com/Clemix37/js-projects#04---number-guesser)  
+- [X] [Counter](https://github.com/Clemix37/js-projects#01---counter)  
+- [X] [Drum Kit](https://github.com/Clemix37/js-projects#02---drum-kit)  
+- [X] [Random color](https://github.com/Clemix37/js-projects#03---random-color-generator)  
+- [X] [Number guesser](https://github.com/Clemix37/js-projects#04---number-guesser)  
+- [ ] Dice Game
+- [ ] Random password generator
+- [ ] Countdown timer
+- [ ] To do list
+- [ ] Random user
+- [ ] BMI Calculator
+- [ ] Workout tracker
 
 ### 01 - Counter
 
