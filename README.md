@@ -17,6 +17,10 @@ Projects run by JS.
 - [ ] Workout tracker
 - [ ] Dino Game
 - [ ] Memory Game
+- [ ] Weather App
+- [ ] Music Player
+- [ ] Tic Tac Toe
+- [ ] Quiz App
 
 ### 01 - Counter
 
