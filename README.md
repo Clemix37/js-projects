@@ -13,7 +13,7 @@ Projects run by JS.
 - [ ] Countdown timer
 - [ ] To do list
 - [ ] Random user
-- [X] BMI Calculator(https://github.com/Clemix37/js-projects#bmi-calculator)  
+- [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [ ] Workout tracker
 - [ ] Dino Game
 - [ ] Memory Game
