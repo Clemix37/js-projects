@@ -13,7 +13,7 @@ Projects run by JS.
 - [ ] Countdown timer
 - [ ] To do list
 - [ ] Random user
-- [ ] BMI Calculator
+- [X] BMI Calculator(https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [ ] Workout tracker
 - [ ] Dino Game
 - [ ] Memory Game
@@ -41,3 +41,7 @@ You can generate a new random color that is set in the background.
 
 Simple project: a number guesser game.  
 You can set options and play along with your options or default ones.
+
+### BMI Calculator
+
+You can calculate your BMI by entering your weight and your height.

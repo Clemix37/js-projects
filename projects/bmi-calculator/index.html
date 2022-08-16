@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="../../styles/includes.css">
+</head>
+<body>
+    <style>
+        #results h3 {font-size:2rem;}
+    </style>
+    <main>
+        <div class="container">
+            <h1 class="title has-text-centered">BMI Calculator</h1>
+        </div>
+        <div class="container">
+            <div class="container">
+                <label class="label">Height (cm): </label>
+                <input type="number" class="input is-rounded" id="taille" placeholder="Height :" min="0" max="270">
+            </div>
+            <div class="container">
+                <label class="label">Weight (kg): </label>
+                <input type="number" class="input is-rounded" id="poids" placeholder="Weight :" min="0" max="500">
+            </div>
+            <div class="container">
+                <button class="button is-medium is-dark is-rounded" id="btnCalculate">Calculate</button>
+            </div>
+        </div>
+        <div class="container" id="results">
+
+        </div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>

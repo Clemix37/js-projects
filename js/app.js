@@ -7,19 +7,23 @@ document.addEventListener('DOMContentLoaded',()=>{
 function launchProjects(){
     projects.push(new Project({
         name: "Counter",
-        link: "01-counter/index.html"
+        link: "counter"
     }));
     projects.push(new Project({
         name: "Drum kit",
-        link: "02-drum-kit"
+        link: "drum-kit"
     }));
     projects.push(new Project({
         name: "Random Color",
-        link: "03-random-color"
+        link: "random-color"
     }));
     projects.push(new Project({
         name: "Number guesser",
-        link: "04-number-guesser"
+        link: "number-guesser"
+    }));
+    projects.push(new Project({
+        name: "BMI Calculator",
+        link: "bmi-calculator"
     }));
 }
 

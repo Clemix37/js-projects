@@ -4,15 +4,15 @@ Projets en JavaScript.
 
 ## Sommaire
 
-[Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#compteur)  
-[Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
-[Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
+- [X] [Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#compteur)  
+- [X] [Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
+- [X] [Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
 - [ ] Jeu de dé
 - [ ] Générateur de mots de passe
 - [ ] Compte à rebours
 - [ ] Liste à faire
 - [ ] Utilisateur aléatoire
-- [ ] Calculateur d'IMC
+- [X] [Calculateur d'IMC](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#calcul-imc)  
 - [ ] Suivi d'entraînement
 - [ ] Jeu du dino
 - [ ] Jeu mémory
@@ -35,3 +35,7 @@ Vous pouvez jouer des sonds basés sur les instruments.
 
 Projet simple: un générateur de couleurs aléatoires.  
 Vous pouvez générer une couleur aléatoire, qui est mise en fond.  
+
+### Calcul IMC
+
+Vous pouvez calculer votre IMC en saisissant votre poids et votre taille.  
