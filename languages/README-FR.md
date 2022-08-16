@@ -4,21 +4,34 @@ Projets en JavaScript.
 
 ## Sommaire
 
-[Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#01---compteur)  
-[Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#02---batterie)  
-[Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#03---g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
+[Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#compteur)  
+[Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
+[Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
+- [ ] Jeu de dé
+- [ ] Générateur de mots de passe
+- [ ] Compte à rebours
+- [ ] Liste à faire
+- [ ] Utilisateur aléatoire
+- [ ] Calculateur d'IMC
+- [ ] Suivi d'entraînement
+- [ ] Jeu du dino
+- [ ] Jeu mémory
+- [ ] App météo
+- [ ] Lanceur de Musique
+- [ ] Morpion
+- [ ] App quiz
 
-### 01 - Compteur
+### Compteur
 
 Projet simple: un compteur.  
 Trois choses possibles: augmenter, diminuer and remettre à zéro.  
 
-### 02 - Batterie
+### Batterie
 
 Projet simple: une batterie.  
 Vous pouvez jouer des sonds basés sur les instruments.  
 
-### 03 - Générateur de couleurs aléatoires
+### Générateur de couleurs aléatoires
 
 Projet simple: un générateur de couleurs aléatoires.  
 Vous pouvez générer une couleur aléatoire, qui est mise en fond.  
