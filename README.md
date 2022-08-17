@@ -8,19 +8,29 @@ Projects run by JS.
 - [X] [Drum Kit](https://github.com/Clemix37/js-projects#drum-kit)  
 - [X] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)  
 - [X] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)  
-- [ ] Dice Game
+- [ ] Dice game
 - [ ] Random password generator
 - [ ] Countdown timer
 - [ ] To do list
 - [ ] Random user
 - [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [ ] Workout tracker
-- [ ] Dino Game
-- [ ] Memory Game
+- [ ] Dino game
+- [ ] Memory game
 - [ ] Weather App
 - [ ] Music Player
 - [ ] Tic Tac Toe
 - [ ] Quiz App
+- [ ] Avatar Maker
+- [ ] Budget App
+- [ ] Car avoidance game
+- [ ] Chore Door game
+- [ ] Click reaction game
+- [ ] Fall game
+- [ ] Grocery List
+- [ ] Library app
+- [ ] Shooting Game
+- [ ] Simon Game
 
 ### Counter
 
