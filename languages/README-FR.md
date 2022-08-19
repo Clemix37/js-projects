@@ -8,7 +8,7 @@ Projets en JavaScript.
 - [X] [Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
 - [X] [Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
 - [ ] Jeu de dé
-- [X] Générateur de mots de passe
+- [X] [Générateur de mots de passe](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#generateur-de-mots-de-passe)
 - [ ] Compte à rebours
 - [ ] Liste à faire
 - [ ] Utilisateur aléatoire
