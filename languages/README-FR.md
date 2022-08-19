@@ -49,3 +49,7 @@ Vous pouvez générer une couleur aléatoire, qui est mise en fond.
 ### Calcul IMC
 
 Vous pouvez calculer votre IMC en saisissant votre poids et votre taille.  
+
+### Password generator
+
+You can generate a password with uppercase, lowercase, and symbols.
