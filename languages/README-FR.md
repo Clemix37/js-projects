@@ -20,6 +20,16 @@ Projets en JavaScript.
 - [ ] Lanceur de Musique
 - [ ] Morpion
 - [ ] App quiz
+- [ ] Créateur d'avatar
+- [ ] App de budget
+- [ ] Jeu d'évitement de voiture
+- [ ] Jeu de la porte
+- [ ] Jeu de réaction clic
+- [ ] Jeu tombé
+- [ ] Liste de courses
+- [ ] App de librairie
+- [ ] Jeu de tir
+- [ ] Jeu du simon
 
 ### Compteur
 

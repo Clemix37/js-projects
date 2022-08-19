@@ -15,12 +15,22 @@ Projects run by JS.
 - [ ] Random user
 - [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [ ] Workout tracker
-- [ ] Dino Game
-- [ ] Memory Game
+- [ ] Dino game
+- [ ] Memory game
 - [ ] Weather App
 - [ ] Music Player
 - [ ] Tic Tac Toe
 - [ ] Quiz App
+- [ ] Avatar Maker
+- [ ] Budget App
+- [ ] Car avoidance game
+- [ ] Chore Door game
+- [ ] Click reaction game
+- [ ] Fall game
+- [ ] Grocery List
+- [ ] Library app
+- [ ] Shooting Game
+- [ ] Simon Game
 
 ### Counter
 
