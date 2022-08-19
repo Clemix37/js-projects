@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password generator</title>
+    <link rel="stylesheet" href="../../styles/includes.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1 class="title has-text-centered">Password generator</h1>
+        </div>
+        <div class="container">
+            <div class="ligne">
+                <input type="text" class="input is-rounded" id="results">
+                <button class="button is-rounded" id="copyBtn">Copy</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="ligne">
+                <label class="label">Length</label>
+                <input type="number" class="input is-rounded" min="10" value="10" max="100" id="lengthPass">
+            </div>
+            <div class="ligne">
+                <label class="label">Uppercase</label>
+                <input type="checkbox" id="uppercase">
+            </div>
+            <div class="ligne">
+                <label class="label">Symbols</label>
+                <input type="checkbox" id="symbols">
+            </div>
+            <div class="ligne">
+                <button class="button is-rounded" id="btnGenerate">Generate</button>
+            </div>
+        </div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>

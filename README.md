@@ -9,7 +9,7 @@ Projects run by JS.
 - [X] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)  
 - [X] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)  
 - [ ] Dice Game
-- [ ] Random password generator
+- [X] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)
 - [ ] Countdown timer
 - [ ] To do list
 - [ ] Random user

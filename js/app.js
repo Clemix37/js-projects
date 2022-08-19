@@ -25,6 +25,10 @@ function launchProjects(){
         name: "BMI Calculator",
         link: "bmi-calculator"
     }));
+    projects.push(new Project({
+        name: "Password generator",
+        link: "password-generator"
+    }))
 }
 
 function displayProjects(){
