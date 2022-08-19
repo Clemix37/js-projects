@@ -5,6 +5,7 @@ let symbols = document.getElementById('symbols');
 let lengthPass = document.getElementById('lengthPass');
 let copyBtn = document.getElementById('copyBtn');
 let results = document.getElementById('results');
+let numbers = document.getElementById('numbers');
 let generated = "";
 const LET_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const LET_LOWER = "abcdefghijklmnopqrstuvwxyz";
@@ -18,7 +19,7 @@ let randAlea = (tab)=> tab[Math.floor(Math.random()*tab.length)];
 function generate(){
     generated = "";
     let longueur = parseInt(lengthPass.value);
-    let str = LET_LOWER + (uppercase.checked ? LET_UPPER : "") + (symbols.checked ? SYMS : "");
+    let str = LET_LOWER + (uppercase.checked ? LET_UPPER : "") + (symbols.checked ? SYMS : "") + (numbers.checked ? DIGITS : "");
     for (let i = 0; i < longueur; i++) {
         generated += randAlea(str);
     }

@@ -50,6 +50,6 @@ Vous pouvez générer une couleur aléatoire, qui est mise en fond.
 
 Vous pouvez calculer votre IMC en saisissant votre poids et votre taille.  
 
-### Password generator
+### Generateur de mots de passe
 
-You can generate a password with uppercase, lowercase, and symbols.
+Vous pouvez générer un mot de passe avec des lettres majuscules, minuscules, des chiffres, et des symboles.

@@ -55,3 +55,7 @@ You can set options and play along with your options or default ones.
 ### BMI Calculator
 
 You can calculate your BMI by entering your weight and your height.
+
+### Password generator
+
+You can generate a password with uppercase, lowercase, digits, and symbols.  
