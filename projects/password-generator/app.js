@@ -17,6 +17,7 @@ copyBtn.addEventListener('click', copyToClipboard);
 // FUNCTIONS
 let randAlea = (tab)=> tab[Math.floor(Math.random()*tab.length)];
 function generate(){
+    copyBtn.innerHTML = "Copy";
     generated = "";
     let longueur = parseInt(lengthPass.value);
     let str = LET_LOWER + (uppercase.checked ? LET_UPPER : "") + (symbols.checked ? SYMS : "") + (numbers.checked ? DIGITS : "");
@@ -27,5 +28,9 @@ function generate(){
 }
 function copyToClipboard(){
     if(!generated) return;
+    copyBtn.innerHTML = "Copied !";
     navigator.clipboard.writeText(generated);
+    setTimeout(()=>{
+        copyBtn.innerHTML = "Copy";
+    }, 2000);
 }

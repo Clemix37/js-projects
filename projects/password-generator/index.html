@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../../styles/includes.css">
 </head>
 <body>
+    <style>
+        .label{margin-right:8px;cursor:pointer;}
+        .label:not(:last-child){margin-bottom:0;}
+    </style>
     <main>
         <div class="container">
             <h1 class="title has-text-centered">Password generator</h1>
@@ -15,7 +19,7 @@
         <div class="container">
             <div class="ligne">
                 <input type="text" class="input is-rounded" id="results">
-                <button class="button is-rounded" id="copyBtn">Copy</button>
+                <button class="button is-rounded is-dark" id="copyBtn" title="Copy to clipboard">Copy</button>
             </div>
         </div>
         <div class="container">
@@ -24,19 +28,27 @@
                 <input type="number" class="input is-rounded" min="10" value="10" max="100" id="lengthPass">
             </div>
             <div class="ligne">
-                <label class="label">Uppercase</label>
-                <input type="checkbox" id="uppercase">
+                <div class="colonne">
+                    <div class="ligne">
+                        <label class="label" for="uppercase">Uppercase</label>
+                        <input type="checkbox" id="uppercase">
+                    </div>
+                </div>
+                <div class="colonne">
+                    <div class="ligne">
+                        <label class="label" for="symbols">Symbols</label>
+                        <input type="checkbox" id="symbols">
+                    </div>
+                </div>
+                <div class="colonne">
+                    <div class="ligne">
+                        <label class="label" for="numbers">Digits</label>
+                        <input type="checkbox" id="numbers">
+                    </div>
+                </div>
             </div>
             <div class="ligne">
-                <label class="label">Symbols</label>
-                <input type="checkbox" id="symbols">
-            </div>
-            <div class="ligne">
-                <label class="label">Digits</label>
-                <input type="checkbox" id="numbers">
-            </div>
-            <div class="ligne">
-                <button class="button is-rounded" id="btnGenerate">Generate</button>
+                <button class="button is-rounded is-info" id="btnGenerate">Generate</button>
             </div>
         </div>
     </main>
