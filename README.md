@@ -27,7 +27,7 @@ Projects run by JS.
 - [ ] Chore Door game
 - [ ] Click reaction game
 - [ ] Fall game
-- [ ] Grocery List
+- [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)
 - [ ] Library app
 - [ ] Shooting Game
 - [ ] Simon Game
@@ -59,3 +59,7 @@ You can calculate your BMI by entering your weight and your height.
 ### Password generator
 
 You can generate a password with uppercase, lowercase, digits, and symbols.  
+
+### Grocery List
+
+You can list your grocery items.   

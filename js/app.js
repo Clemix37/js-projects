@@ -28,7 +28,11 @@ function launchProjects(){
     projects.push(new Project({
         name: "Password generator",
         link: "password-generator"
-    }))
+    }));
+    projects.push(new Project({
+        name: "Grocery list",
+        link: "grocery-list"
+    }));
 }
 
 function displayProjects(){

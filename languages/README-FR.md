@@ -26,7 +26,7 @@ Projets en JavaScript.
 - [ ] Jeu de la porte
 - [ ] Jeu de réaction clic
 - [ ] Jeu tombé
-- [ ] Liste de courses
+- [X] [Liste de courses](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#liste-de-courses)
 - [ ] App de librairie
 - [ ] Jeu de tir
 - [ ] Jeu du simon
@@ -53,3 +53,7 @@ Vous pouvez calculer votre IMC en saisissant votre poids et votre taille.
 ### Generateur de mots de passe
 
 Vous pouvez générer un mot de passe avec des lettres majuscules, minuscules, des chiffres, et des symboles.
+
+### Liste de courses
+
+Vous pouvez lister vos courses.
