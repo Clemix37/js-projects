@@ -31,6 +31,14 @@ Projects run by JS.
 - [ ] Library app
 - [ ] Shooting Game
 - [ ] Simon Game
+- [ ] Task Manager
+- [ ] Contact saver
+- [ ] Airline Reservation
+- [ ] Hotel reservation
+- [ ] Calculator
+- [ ] Book store
+- [ ] Recipes app
+- [ ] Poll app
 
 ### Counter
 
