@@ -30,6 +30,14 @@ Projets en JavaScript.
 - [ ] App de librairie
 - [ ] Jeu de tir
 - [ ] Jeu du simon
+- [ ] Gestionnaire de tâches
+- [ ] Contacts
+- [ ] Reservation de vols
+- [ ] Reservation d'hôtel
+- [ ] Calculette
+- [ ] Magasin de Livre
+- [ ] App de recettes
+- [ ] App de vote
 
 ### Compteur
 
