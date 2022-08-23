@@ -16,7 +16,14 @@ class GroceryList {
         return this;
     }
     deleteItem(id){
-
+        for (let i = 0; i < this.#items.length; i++) {
+            const item = this.#items[i];
+            if(item.id===id){
+                this.#items.splice(i,1);
+                return this;
+            }
+        }
+        return this;
     }
     done(id){
         let item = this.getItem(id);
