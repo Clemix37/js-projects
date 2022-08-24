@@ -1,7 +1,7 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @import './fontawesome/css/all.min.css';
 @import './flexIt.css';
-*,body{margin:0;padding:0;}
+*,body{margin:0;padding:0;box-sizing: border-box;}
 main {
     height:100vh;
     width: 100vw;
