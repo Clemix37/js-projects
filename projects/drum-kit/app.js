@@ -1,4 +1,4 @@
-let btns = document.querySelectorAll('.button');
+const btns = document.querySelectorAll('.button');
 for (let i = 0; i < btns.length; i++) {
     const btn = btns[i];
     btn.addEventListener('click', ()=>{
@@ -6,7 +6,8 @@ for (let i = 0; i < btns.length; i++) {
     });
 }
 
-function launch(idPlayer){
+const launch = (idPlayer = null) => {
+    if(!idPlayer)return;
     let audio = document.getElementById(idPlayer);
     audio.play();
-}
+};
