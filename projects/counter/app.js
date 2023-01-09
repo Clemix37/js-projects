@@ -1,15 +1,15 @@
 // PROPERTIES
-let increaseBtn = document.getElementById('increaseBtn');
-let decreaseBtn = document.getElementById('decreaseBtn');
-let resetBtn = document.getElementById('resetBtn');
-let points = document.getElementById('points');
+const increaseBtn = document.getElementById('increaseBtn');
+const decreaseBtn = document.getElementById('decreaseBtn');
+const resetBtn = document.getElementById('resetBtn');
+const points = document.getElementById('points');
 let counter = null;
 
 // FUNCTIONS
-function display(){
+const display = () => {
     points.innerHTML = counter.points;
     points.style.color = (counter.points > 0) ? 'green' : (counter.points < 0 ? 'red' : 'black');
-}
+};
 
 // EVENTS
 document.addEventListener('DOMContentLoaded', ()=>{
