@@ -1,6 +1,7 @@
 # js-projects
 
-Projects run by JS.
+Projects run by JS.  
+Visit it [here](https://clemix37.github.io/js-projects/)
 
 ## Summary 
 
@@ -25,7 +26,7 @@ Projects run by JS.
 - [ ] Budget App
 - [ ] Car avoidance game
 - [ ] Chore Door game
-- [ ] Click reaction game
+- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
 - [ ] Fall game
 - [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)
 - [ ] Library app

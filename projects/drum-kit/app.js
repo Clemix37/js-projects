@@ -1,4 +1,4 @@
-let btns = document.querySelectorAll('.button');
+const btns = document.querySelectorAll('.button');
 const getBtnFromKey = (key) => Array.from(btns).filter(btn => btn.dataset.key === key)?.[0] ?? null;
 const getInstrumentFromEvent = (e) => e.currentTarget.dataset.instrument ?? null;
 

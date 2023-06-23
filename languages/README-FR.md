@@ -1,6 +1,7 @@
 # js-projects
 
-Projets en JavaScript.
+Projets en JavaScript.  
+Allez le voir [ici](https://clemix37.github.io/js-projects/).
 
 ## Sommaire
 
