@@ -8,7 +8,7 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 - [X] [Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#compteur)  
 - [X] [Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
 - [X] [Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
-- [ ] Jeu de dé
+- [X] [Jeu de dé](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#jeu-de-dé)  
 - [X] [Générateur de mots de passe](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#generateur-de-mots-de-passe)
 - [ ] Compte à rebours
 - [ ] Liste à faire
@@ -66,3 +66,7 @@ Vous pouvez générer un mot de passe avec des lettres majuscules, minuscules, d
 ### Liste de courses
 
 Vous pouvez lister vos courses.
+
+### Jeu de dé
+
+Vous lancez pour 2 joueurs, un dé. Celui qui obtient le plus gros chiffre gagne !

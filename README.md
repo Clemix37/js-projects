@@ -9,7 +9,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Drum Kit](https://github.com/Clemix37/js-projects#drum-kit)  
 - [X] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)  
 - [X] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)  
-- [ ] Dice Game
+- [X] [Dice Game](https://github.com/Clemix37/js-projects#dice-game)  
 - [X] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)
 - [ ] Countdown timer
 - [ ] To do list
@@ -72,3 +72,7 @@ You can generate a password with uppercase, lowercase, digits, and symbols.
 ### Grocery List
 
 You can list your grocery items.   
+
+### Dice Game
+
+You roll dices for 2 players. The one who got the highest, wins !

@@ -1,4 +1,4 @@
-let projects = [];
+const projects = [];
 document.addEventListener('DOMContentLoaded',()=>{
     launchProjects();
     displayProjects();
@@ -32,6 +32,10 @@ function launchProjects(){
     projects.push(new Project({
         name: "Grocery list",
         link: "grocery-list"
+    }));
+    projects.push(new Project({
+        name: "Dice Game",
+        link: "dice-game"
     }));
 }
 
