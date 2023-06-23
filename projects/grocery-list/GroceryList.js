@@ -5,8 +5,8 @@ class GroceryList {
     }
     get items(){return this.#items;}
     getItem(id){
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
+        for (let i = 0; i < this.#items.length; i++) {
+            const item = this.#items[i];
             if(item.id===id)return item;
         }
         return null;
@@ -53,5 +53,8 @@ class GroceryList {
             display += this.#getTemplate(item);
         }
         container.innerHTML = display;
+    }
+    getNextId(){
+        return (this.#items[this.#items.length-1]?.id ?? 0) + 1;
     }
 }

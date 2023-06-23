@@ -14,20 +14,24 @@
         #items{overflow-y: scroll;}
         .btn-icon {cursor: pointer;}
     </style>
-    <main>
-        <div class="container">
-            <div class="ligne">
-                <h1 class="title has-text-centered">Grocery list</h1>
-            </div>
-            <div class="ligne">
-                <input type="text" class="input is-rounded" id="item" placeholder="Item">
-                <button class="button is-rounded is-info" id="btnAddItem"><i class="fas fa-plus" style="margin-right:8px;"></i>Add</button>
+    <div class="colonne">
+        <div class="ligne">
+            <div class="colonne">
+                <div class="ligne">
+                    <h1 class="title has-text-centered">Grocery list</h1>
+                </div>
+                <div class="ligne">
+                    <input type="text" class="input is-rounded" id="item" placeholder="Item">
+                    <button class="button is-rounded is-info" id="btnAddItem"><i class="fas fa-plus" style="margin-right:8px;"></i>Add</button>
+                </div>
             </div>
         </div>
-        <div class="container colonne" id="items">
-            
+        <div class="ligne">
+            <div class="colonne" id="items">
+
+            </div>
         </div>
-    </main>
+    </div>
     <script src="./GroceryList.js"></script>
     <script src="./GroceryItem.js"></script>
     <script src="./app.js"></script>

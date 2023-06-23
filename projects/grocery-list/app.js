@@ -1,9 +1,8 @@
 // PROPERTIES
-let btnAddItem = document.getElementById('btnAddItem');
-let item = document.getElementById('item');
-let items = document.getElementById('items');
-let groceryItems = [];
-let groceryList = new GroceryList();
+const btnAddItem = document.getElementById('btnAddItem');
+const item = document.getElementById('item');
+const items = document.getElementById('items');
+const groceryList = new GroceryList();
 // EVENTS
 btnAddItem.addEventListener('click', addItem);
 item.addEventListener('keyup', (e)=>{
@@ -15,19 +14,12 @@ function addItem(){
     let title = item.value;
     item.value = "";
     groceryList.addItem(new GroceryItem({
-        id: groceryItems.length,
-        title
+        id: groceryList.getNextId(),
+        title,
     })).display(items);
 }
 function editItem(id){
-    let theItem = null;
-    for (let i = 0; i < groceryItems.length; i++) {
-        const gItem = groceryItems[i];
-        if(gItem.id===id){
-            theItem = gItem;
-            break;
-        }
-    }
+    let theItem = groceryList.getItem(id);
     if(!theItem)return;
     item.value = theItem.title;
     // EDIT BTNS
