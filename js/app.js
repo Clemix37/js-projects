@@ -37,6 +37,10 @@ function launchProjects(){
         name: "Dice Game",
         link: "dice-game"
     }));
+    projects.push(new Project({
+        name: "Memory Game",
+        link: "memory-game"
+    }));
 }
 
 function displayProjects(){
