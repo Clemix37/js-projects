@@ -37,9 +37,25 @@ function launchProjects(){
         name: "Dice Game",
         link: "dice-game"
     }));
+    // projects.push(new Project({
+    //     name: "Memory Game",
+    //     link: "memory-game"
+    // }));
     projects.push(new Project({
-        name: "Memory Game",
-        link: "memory-game"
+        name: "Chore door game",
+        link: "chore-door-game"
+    }));
+    projects.push(new Project({
+        name: "Countdown timer",
+        link: "countdown-timer"
+    }));
+    projects.push(new Project({
+        name: "Library",
+        link: "library"
+    }));
+    projects.push(new Project({
+        name: "Tic tac toe",
+        link: "tic-tac-toe"
     }));
 }
 

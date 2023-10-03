@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+	<link rel="stylesheet" href="../../styles/includes.css">
+</head>
+<body>
+    <div class="ligne">
+        <h1 class="title has-text-centered">Countdown timer</h1>
+    </div>
+    <div class="ligne" id="countdown"></div>
+
+
+    <div class="ligne">
+        <label for="minutes">Minutes :</label>
+        <div class="select">
+            <select class="select" name="minutes" id="minutes"></select>
+        </div>
+    </div>
+    <div class="ligne">
+        <label for="minutes">Seconds :</label>
+        <div class="select">
+            <select class="select" name="seconds" id="seconds"></select>
+        </div>
+    </div>
+
+    <div class="ligne">
+        <button class="button is-primary" id="btnLaunch">Launch</button>
+    </div>
+    
+    <script src="./js/app.js" type="module"></script>
+</body>
+</html>

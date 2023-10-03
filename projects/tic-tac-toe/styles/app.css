@@ -1,0 +1,22 @@
+@import url("../../../styles/includes.css");
+:root {
+    --cell-size: 100px;
+}
+
+#table tr {
+    min-height:250px;
+}
+
+#table td {
+    height:var(--cell-size);
+    width:var(--cell-size);
+    /* border:solid black 1px; */
+    text-align: center;
+    border: 1px solid #dbdbdb;
+}
+
+#table {
+    width: 80vw;
+    font-size: 3em;
+    border-radius: 8px;
+}

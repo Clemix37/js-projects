@@ -30,6 +30,8 @@ html {
 .colonne.is-6-colonne {width:600%;}
 .colonne.is-7-colonne {width:700%;}
 
+.flex {display:flex;}
+
 .content-centered {
     display:flex;
     align-items: center;
@@ -54,7 +56,7 @@ html {
 }
 
 .is-flex-center {
-    justify-content: flex-center;
+    justify-content: center;
 }
 
 .width-80 {
