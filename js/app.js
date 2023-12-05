@@ -57,6 +57,10 @@ function launchProjects(){
         name: "Tic tac toe",
         link: "tic-tac-toe"
     }));
+    projects.push(new Project({
+        name: "Key Codes",
+        link: "key-codes"
+    }));
 }
 
 function displayProjects(){

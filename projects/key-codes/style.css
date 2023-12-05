@@ -1,0 +1,46 @@
+:root {
+    --main-color: #001f3f;
+    --bg-color: #282c35;
+    --txt-color: #dddddd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--txt-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.key {
+    background-color: var(--main-color);
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    min-width: 150px;
+    color: var(--txt-color);
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--txt-color);
+}
+
+.key small {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    color: var(--txt-color);
+    font-size: 14px;
+    width: 100%;
+    top: -24px;
+}

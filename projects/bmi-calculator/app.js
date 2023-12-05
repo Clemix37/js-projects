@@ -12,7 +12,7 @@ poids.addEventListener('keyup', (e)=>{
     if(e.key == cleEntre) calculer();
 });
 
-const calculer = () => {
+function calculer(){
     const valeurTaille = parseInt(taille.value);
     const valeurPoids = parseFloat(poids.value);
     if(!valeurTaille || !valeurPoids) return;
@@ -26,4 +26,4 @@ const calculer = () => {
     else if(calcul >= 35 && calcul < 40) resultat = `Severe obesity`;
     else if(calcul >= 40) resultat = `Morbid obesity`;
     results.innerHTML = `<h3 class="subtitle has-text-centered">${resultat}</h3>`;
-};
+}

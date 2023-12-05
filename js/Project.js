@@ -19,7 +19,7 @@ class Project {
                     <footer class="card-footer">
                         <p class="card-footer-item">
                             <span>
-                                <a href="./projects/${this.#link}">Voir</a>
+                                <a href="./projects/${this.#link}">Demo</a>
                             </span>
                         </p>
                     </footer>
