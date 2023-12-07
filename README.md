@@ -10,11 +10,15 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)  
 - [X] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)  
 - [X] [Dice Game](https://github.com/Clemix37/js-projects#dice-game)  
-- [X] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)
+- [X] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)  
+- [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)  
+- [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
+- [X] [Chore Door game](https://clemix37.github.io/js-projects/projects/chore-door-game/)  
+- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
+- [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
 - [ ] Countdown timer
 - [ ] To do list
 - [ ] Random user
-- [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [ ] Workout tracker
 - [ ] Dino game
 - [ ] Memory game
@@ -25,10 +29,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [ ] Avatar Maker
 - [ ] Budget App
 - [ ] Car avoidance game
-- [ ] Chore Door game
-- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
 - [ ] Fall game
-- [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)
 - [ ] Library app
 - [ ] Shooting Game
 - [ ] Simon Game
