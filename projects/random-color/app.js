@@ -1,11 +1,20 @@
+import Color from "./Color.js";
+
 let main = document.querySelector('main');
 let btnGenerate = document.getElementById('btnGenerate');
 let colorContainer = document.getElementById('colorContainer');
 btnGenerate.addEventListener('click', generate);
 document.addEventListener('DOMContentLoaded', generate);
+document.addEventListener("keyup", onKeyUp);
 
 function generate(){
     let color = new Color();
     colorContainer.innerHTML = `Color: ${color.color}`;
     main.style.backgroundColor = color.color;
+}
+
+function onKeyUp(e){
+    const isSpacePressed = e.key === " ";
+    if(!isSpacePressed) return;
+    generate();
 }
