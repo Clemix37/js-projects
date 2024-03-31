@@ -9,10 +9,10 @@
 </head>
 <body>
     <style>
-        .item{display:flex;justify-content:space-around;align-items: center;border-radius: 20px;min-height: 75px;}
-        .subtitle:not(:last-child){margin-bottom:0;}
-        #items{overflow-y: scroll;}
-        .btn-icon {cursor: pointer;}
+        .item { display: flex; justify-content: space-around; align-items: center; border-radius: 20px; min-height: 75px; }
+        .subtitle:not(:last-child) { margin-bottom: 0; }
+        #items { overflow-y: scroll; }
+        .btn-icon { cursor: pointer; }
     </style>
     <div class="colonne">
         <div class="ligne">
@@ -21,7 +21,7 @@
                     <h1 class="title has-text-centered">Grocery list</h1>
                 </div>
                 <div class="ligne">
-                    <input type="text" class="input is-rounded" id="item" placeholder="Item">
+                    <input type="text" class="input is-rounded" id="item" placeholder="Item" autofocus>
                     <button class="button is-rounded is-info" id="btnAddItem"><i class="fas fa-plus" style="margin-right:8px;"></i>Add</button>
                 </div>
             </div>
@@ -32,8 +32,6 @@
             </div>
         </div>
     </div>
-    <script src="./GroceryList.js"></script>
-    <script src="./GroceryItem.js"></script>
-    <script src="./app.js"></script>
+    <script src="./app.js" type="module"></script>
 </body>
 </html>
