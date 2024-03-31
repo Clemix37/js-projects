@@ -1,4 +1,4 @@
-class Counter {
+export default class Counter {
     #points;
     constructor(){
         this.#points = 0;

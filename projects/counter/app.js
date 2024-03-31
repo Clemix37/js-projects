@@ -1,9 +1,11 @@
+import Counter from "./Counter.js";
+
 // PROPERTIES
 const increaseBtn = document.getElementById('increaseBtn');
 const decreaseBtn = document.getElementById('decreaseBtn');
 const resetBtn = document.getElementById('resetBtn');
 const points = document.getElementById('points');
-let counter = null;
+let counter = new Counter();
 
 // FUNCTIONS
 const display = () => {
@@ -12,19 +14,43 @@ const display = () => {
 };
 
 // EVENTS
-document.addEventListener('DOMContentLoaded', ()=>{
-    counter = new Counter();
-    display();
-});
-increaseBtn.addEventListener('click',()=>{
-    counter?.increase();
-    display();
-});
-decreaseBtn.addEventListener('click',()=>{
-    counter?.decrease();
-    display();
-});
-resetBtn.addEventListener('click', ()=>{
+increaseBtn.addEventListener('click', increase);
+decreaseBtn.addEventListener('click', decrease);
+resetBtn.addEventListener('click', reset);
+document.addEventListener("keyup", onKeyUp);
+
+// FUNCTIONS
+
+/* Reset the counter, and we display its value */
+function reset(){
     counter?.reset();
     display();
-});
+}
+
+/* Decrease the counter, display its value */
+function decrease(){
+    counter?.decrease();
+    display();
+}
+
+/* Increase the counter, display its value */
+function increase(){
+    counter?.increase();
+    display();
+}
+
+/**
+ * Based on the key pressed, increase or decrease the counter
+ * @param {KeyboardEvent} e 
+ */
+function onKeyUp(e){
+    const keyPressed = e.key;
+    const isPlus = keyPressed === "+";
+    const isMinus = keyPressed === "-";
+    if(!isPlus && !isMinus) return;
+    if(isPlus) increase();
+    else decrease();
+}
+
+// After loading everything, we display the current value
+display();
