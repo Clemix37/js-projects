@@ -1,3 +1,4 @@
+// PROPERTIES
 const messageBox = document.getElementById('messageBox');
 const btnLaunchGame = document.getElementById('btnLaunchGame');
 const table = document.getElementById("table");
@@ -7,29 +8,17 @@ let playerWon = 0;
 let played = [[null,null,null],[null,null,null],[null,null,null]];
 const symbols = ["X", "O"];
 
-/* Generate the HTML content of the table with each cell and its necessary data */
-const generateTable = () => {
-    let res = ``;
-    for (let i = 0; i < 3; i++) {
-        res += `<tr>`
-        for (let j = 0; j < 3; j++) {
-            res += `<td id="cell-${i}-${j}" class="cell" data-row="${i}" data-cell="${j}"></td>`;
-        }
-        res += `</tr>`
-    }
-    table.innerHTML = res;
-};
+// EVENTS
+btnLaunchGame.addEventListener("click", play);
+document.addEventListener("keyup", onKeyUp);
 
-/* Attach click event on every cell */
-const generateEvents = () => {
-    const cells = document.querySelectorAll('.cell');
-    for (let i = 0; i < cells.length; i++) {
-        const cell = cells[i];
-        cell.addEventListener("click", onCellClicked);
-    }
-};
+function onKeyUp(e){
+    const isSpaceOrEnter = e.key === " " || e.key === "Enter";
+    if(!isSpaceOrEnter || isPlaying) return;
+    play();
+}
 
-const onCellClicked = (e) => {
+function onCellClicked(e) {
     if(!isPlaying) return;
     const rowIndex = parseInt(e.currentTarget.dataset.row);
     const cellIndex = parseInt(e.currentTarget.dataset.cell);
@@ -46,9 +35,32 @@ const onCellClicked = (e) => {
     checkEndGame();
     // We switch the player playing
     changePlayerPlaying();
-};
+}
 
-const checkEndGame = () => {
+/* Generate the HTML content of the table with each cell and its necessary data */
+function generateTable() {
+    let res = ``;
+    for (let i = 0; i < 3; i++) {
+        res += `<tr>`
+        for (let j = 0; j < 3; j++) {
+            res += `<td id="cell-${i}-${j}" class="cell" data-row="${i}" data-cell="${j}"></td>`;
+        }
+        res += `</tr>`
+    }
+    table.innerHTML = res;
+}
+
+/* Attach click event on every cell */
+function generateEvents() {
+    const cells = document.querySelectorAll('.cell');
+    for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+        cell.removeEventListener("click", onCellClicked);
+        cell.addEventListener("click", onCellClicked);
+    }
+}
+
+function checkEndGame() {
     // TODO: use playerWon
     let isEveryCellFilled = true;
     // For every row
@@ -78,10 +90,10 @@ const checkEndGame = () => {
     }
     // Each cell is filled, it's a draw
     if(isEveryCellFilled && isPlaying) generateDraw();
-};
+}
 
 /* Hide the play button, initializes the first player */
-const play = () => {
+function play() {
     if(isPlaying) return;
     played = [[null,null,null],[null,null,null],[null,null,null]];
     btnLaunchGame.style.display = "none";
@@ -89,41 +101,39 @@ const play = () => {
     changePlayerPlaying();
     generateTable();
     generateEvents();
-};
+}
 
 /* Switches the player which is playing, display the message for the player */
-const changePlayerPlaying = () => {
+function changePlayerPlaying() {
     if(!isPlaying) return;
     playerPlaying = playerPlaying === 1 ? 2 : 1;
     displayMessage(`Player ${playerPlaying} playing ! (${symbols[playerPlaying-1]})`);
-};
+}
 
 /* Changes the display, reset the variables */
-const generateWin = () => {
+function generateWin() {
     displayMessage(`Player ${playerWon} wins ! (${symbols[playerWon-1]})`);
     generateEndGame();
-};
+}
 
 /* Changes the display, reset the variables */
-const generateDraw = () => {
+function generateDraw() {
     displayMessage(`Draw ! Great job !!`);
     generateEndGame();
-};
+}
 
 /* Display the button for playing, reset player playing, and player won */
-const generateEndGame = () => {
+function generateEndGame() {
     btnLaunchGame.style.display = "block";
     isPlaying = false;
     playerPlaying = 0;
     playerWon = 0;
-};
+}
 
 /**
  * Changes the content of the message box for the user
  * @param {string} msg 
  */
-const displayMessage = (msg) => {
+function displayMessage(msg) {
     messageBox.innerText = msg;
-};
-
-btnLaunchGame.addEventListener("click", play);
+}
