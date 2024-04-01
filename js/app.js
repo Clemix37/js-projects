@@ -1,4 +1,5 @@
 import Project from "./Project.js";
+import SessionStore from "./SessionStore.js";
 
 const projects = [];
 

@@ -1,3 +1,5 @@
+import WorkoutCalendarDay from "./WorkoutCalendarDay.js";
+
 export default class WorkoutCalendar {
     
     //#region Properties
@@ -43,10 +45,11 @@ export default class WorkoutCalendar {
         const nbDays = this.#getNumberOfDaysInMonth();
         const actualYear = this.#actualDate.getFullYear();
         const actualMonth = this.#actualDate.getMonth();
-        for (let i = 0; i < nbDays; i++) {
+        for (let i = 1; i <= nbDays; i++) {
             const d = new Date(actualYear, actualMonth, i);
             const day = WorkoutCalendar.days[d.getDay()];
-            calendarDisplay += this.#getTemplateOfDay(day, d.getDate());
+            const workoutDay = new WorkoutCalendarDay(d, day);
+            calendarDisplay += workoutDay.getDayTemplate();
         }
         this.#container.innerHTML = calendarDisplay;
         this.#displayTitle();
@@ -92,21 +95,6 @@ export default class WorkoutCalendar {
     #getNumberOfDaysInMonth(){
         const lastDayOfMonth = new Date(this.#actualDate.getFullYear(), this.#actualDate.getMonth()+1, 0);
         return lastDayOfMonth.getDate();
-    }
-    
-    /**
-     * Returns the template of the workout calendar date with the given arguments
-     * @param {string} day 
-     * @param {number} date 
-     * @returns {string}
-     */
-    #getTemplateOfDay(day, date){
-        return `
-            <div class="date-calendar">
-                <h3 class="subtitle">${day} ${date}</h3>
-                <hr />
-            </div>
-        `;
     }
 
     //#endregion

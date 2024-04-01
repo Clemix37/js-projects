@@ -8,18 +8,31 @@
     <link rel="stylesheet" href="./app.css">
 </head>
 <body>
-    <main id="main">
+    <div id="main" class="colonne">
+        <!-- Display the current date of the day -->
         <div class="ligne">
             <h1 class="title" id="today"></h1>
         </div>
         <div class="ligne">
+            <hr />
+        </div>
+        <!-- We display the goals of the user -->
+        <div class="ligne">
             <div class="colonne">
-                <h3 class="subtitle">Goals :</h3>
-                <div class="colonne" id="list-goals">
+                <div class="ligne">
+                    <h3 class="subtitle">Goals :</h3>
+                </div>
+                <div class="ligne">
+                    <div class="colonne" id="list-goals">
     
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="ligne">
+            <hr />
+        </div>
+        <!-- Navigating between months in the calendar -->
         <div class="ligne">
             <div class="colonne" style="align-items: center;">
                 <button id="btn-previous-month" class="button is-rounded is-dark"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Previous Month</button>
@@ -28,13 +41,19 @@
                 <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
             </div>
         </div>
+        <!-- Displays the month of the calendar displayed -->
         <div class="ligne">
             <h3 id="month-calendar" class="subtitle"></h3>
         </div>
-        <div id="calendar">
+        <div class="ligne">
+            <hr />
+        </div>
+        <!-- Displays the calendar and its days -->
+        <div id="calendar" class="ligne">
 
         </div>
     </main>
+    <!-- SCRIPTS -->
     <script src="./app.js" type="module"></script>
 </body>
 </html>

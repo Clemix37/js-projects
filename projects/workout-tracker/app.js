@@ -7,19 +7,18 @@ const todayDom = document.getElementById("today");
 const btnPreviousMonth = document.getElementById("btn-previous-month");
 const btnNextMonth = document.getElementById("btn-next-month");
 const calendar = new WorkoutCalendar({ idContainer: "calendar", idTitle: "month-calendar" });
-// @todo: get goals from localstorage
 // @todo: create a new workout goal
 // @todo: add workouts
 // @todo: add exercises
 // @todo: display on calendar-dates the exercises made on this day
 // @todo: display checkboxes for workout goals on calendar dates
 // @todo: sets workout days, days off
-// @todo: create special class at root of project to retrieve data from localStorage
-const listGoals = new WorkoutGoalsList({ idContainer: "list-goals", goals: [new WorkoutGoal({title: "Test cthe"})] });
+const listGoals = new WorkoutGoalsList({ idContainer: "list-goals" });
 
 // EVENTS
-btnPreviousMonth.addEventListener("click", () => calendar.previousMonth());
-btnNextMonth.addEventListener("click", () => calendar.nextMonth());
+btnPreviousMonth.addEventListener("click", navigateToPreviousMonth);
+btnNextMonth.addEventListener("click", navigateToNextMonth);
+document.addEventListener("keyup", onKeyUp);
 
 // FUNCTIONS
 function displayContent(){
@@ -30,6 +29,23 @@ function displayContent(){
 
 function displayCurrentDate(){
     todayDom.textContent = calendar.getActualDateAsString();
+}
+
+function onKeyUp(e){
+    const isArrowLeft = e.key === "ArrowLeft";
+    const isArrowRight = e.key === "ArrowRight";
+    const isArrowLeftOrRight = isArrowLeft || isArrowRight;
+    if(!isArrowLeftOrRight) return;
+    if(isArrowLeft) navigateToPreviousMonth();
+    else navigateToNextMonth();
+}
+
+function navigateToPreviousMonth(){
+    calendar.previousMonth();
+}
+
+function navigateToNextMonth(){
+    calendar.nextMonth();
 }
 
 displayContent();
