@@ -1,14 +1,32 @@
-class Project {
+export default class Project {
+
+    //#region Properties
+
     #name;
     #link;
+
+    //#endregion
+
+    //#region Constructor
+
     constructor(obj){
         this.#name = obj.name;
         this.#link = obj.link;
     }
-    get name(){return this.#name;}
-    get link(){return this.#link;}
-    set name(value){this.#name = value;return this;}
-    set link(value){this.#link = value;return this;}
+
+    //#endregion
+
+    //#region Accessors
+
+    get name() { return this.#name; }
+    get link() { return this.#link; }
+    set name(value) { this.#name = value; return this; }
+    set link(value) { this.#link = value; return this; }
+
+    //#endregion
+
+    //#region Public methods
+
     getTemplate(){
         return `
             <div class="grille-item">
@@ -27,4 +45,7 @@ class Project {
             </div>
         `;
     }
+
+    //#endregion
+    
 }

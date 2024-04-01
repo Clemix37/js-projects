@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+    <main id="main">
+        <div class="ligne">
+            <h1 class="title" id="today"></h1>
+        </div>
+        <div class="ligne">
+            <div class="colonne">
+                <h3 class="subtitle">Goals :</h3>
+                <div class="colonne" id="list-goals">
+    
+                </div>
+            </div>
+        </div>
+        <div class="ligne">
+            <div class="colonne" style="align-items: center;">
+                <button id="btn-previous-month" class="button is-rounded is-dark"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Previous Month</button>
+            </div>
+            <div class="colonne" style="align-items: center;">
+                <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+            </div>
+        </div>
+        <div class="ligne">
+            <h3 id="month-calendar" class="subtitle"></h3>
+        </div>
+        <div id="calendar">
+
+        </div>
+    </main>
+    <script src="./app.js" type="module"></script>
+</body>
+</html>

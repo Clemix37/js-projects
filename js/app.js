@@ -1,16 +1,14 @@
+import Project from "./Project.js";
+
 const projects = [];
-document.addEventListener('DOMContentLoaded',()=>{
-    launchProjects();
-    displayProjects();
-});
 
 function launchProjects(){
     projects.push(new Project({
-        name: "Counter",
+        name: "Counter 🔢",
         link: "counter"
     }));
     projects.push(new Project({
-        name: "Drum kit",
+        name: "Drum kit 🎺",
         link: "drum-kit"
     }));
     projects.push(new Project({
@@ -18,23 +16,23 @@ function launchProjects(){
         link: "random-color"
     }));
     projects.push(new Project({
-        name: "Number guesser",
+        name: "Number guesser 📛",
         link: "number-guesser"
     }));
     projects.push(new Project({
-        name: "BMI Calculator",
+        name: "BMI Calculator ➕",
         link: "bmi-calculator"
     }));
     projects.push(new Project({
-        name: "Password generator",
+        name: "Password generator *️⃣",
         link: "password-generator"
     }));
     projects.push(new Project({
-        name: "Grocery list",
+        name: "Grocery list 💰",
         link: "grocery-list"
     }));
     projects.push(new Project({
-        name: "Dice Game",
+        name: "Dice Game 🎲",
         link: "dice-game"
     }));
     // projects.push(new Project({
@@ -42,24 +40,28 @@ function launchProjects(){
     //     link: "memory-game"
     // }));
     projects.push(new Project({
-        name: "Chore door game",
+        name: "Chore door game 🚪",
         link: "chore-door-game"
     }));
     projects.push(new Project({
-        name: "Countdown timer",
+        name: "Countdown timer 🕰️",
         link: "countdown-timer"
     }));
     projects.push(new Project({
-        name: "Library",
+        name: "Library 📚",
         link: "library"
     }));
     projects.push(new Project({
-        name: "Tic tac toe",
+        name: "Tic tac toe 🕹️",
         link: "tic-tac-toe"
     }));
     projects.push(new Project({
-        name: "Key Codes",
+        name: "Key Codes #️⃣",
         link: "key-codes"
+    }));
+    projects.push(new Project({
+        name: "Workout Tracker 💪",
+        link: "workout-tracker"
     }));
 }
 
@@ -72,3 +74,6 @@ function displayProjects(){
     }
     container.innerHTML = affichage;
 }
+
+launchProjects();
+displayProjects();
