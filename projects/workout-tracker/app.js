@@ -9,8 +9,6 @@ const calendar = new WorkoutCalendar({
     goalsList: new WorkoutGoalsList({ idContainer: "list-goals" }) 
 });
 // @todo: add exercises
-// @todo: display checkboxes for workout goals on calendar dates
-// @todo: sets workout days, days off
 const todayDom = document.getElementById("today");
 const btnPreviousMonth = document.getElementById("btn-previous-month");
 const btnNextMonth = document.getElementById("btn-next-month");
