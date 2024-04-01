@@ -5,10 +5,7 @@ import WorkoutGoalsList from "./classes/WorkoutGoalsList.js";
 
 // PROPERTIES
 const calendar = new WorkoutCalendar({ idContainer: "calendar", idTitle: "month-calendar" });
-// @todo: create a new workout goal
-// @todo: add workouts
 // @todo: add exercises
-// @todo: display on calendar-dates the exercises made on this day
 // @todo: display checkboxes for workout goals on calendar dates
 // @todo: sets workout days, days off
 const listGoals = new WorkoutGoalsList({ idContainer: "list-goals" });
