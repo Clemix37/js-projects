@@ -1,0 +1,60 @@
+{
+    "projects": [
+        {
+            "name": "Counter 🔢",
+            "link": "counter"
+        },
+        {
+            "name": "Drum kit 🎺",
+            "link": "drum-kit"
+        },
+        {
+            "name": "Random Color",
+            "link": "random-color"
+        },
+        {
+            "name": "Number guesser 📛",
+            "link": "number-guesser"
+        },
+        {
+            "name": "BMI Calculator ➕",
+            "link": "bmi-calculator"
+        },
+        {
+            "name": "Password generator *️⃣",
+            "link": "password-generator"
+        },
+        {
+            "name": "Grocery list 💰",
+            "link": "grocery-list"
+        },
+        {
+            "name": "Dice Game 🎲",
+            "link": "dice-game"
+        },
+        {
+            "name": "Chore door game 🚪",
+            "link": "chore-door-game"
+        },
+        {
+            "name": "Countdown timer 🕰️",
+            "link": "countdown-timer"
+        },
+        {
+            "name": "Library 📚",
+            "link": "library"
+        },
+        {
+            "name": "Tic tac toe 🕹️",
+            "link": "tic-tac-toe"
+        },
+        {
+            "name": "Key Codes #️⃣",
+            "link": "key-codes"
+        },
+        {
+            "name": "Workout Tracker 💪",
+            "link": "workout-tracker"
+        }
+    ]
+}

@@ -1,71 +1,23 @@
 import Project from "./Project.js";
-import SessionStore from "./SessionStore.js";
+import projectsData from "./projects.json" with { type: "json" };
 
+// We get every project from the json file
+/**
+ * @type {Project[]}
+ */
 const projects = [];
-
-function launchProjects(){
+const everyProjects = projectsData.projects;
+for (let i = 0; i < everyProjects.length; i++) {
+    const p = everyProjects[i];
     projects.push(new Project({
-        name: "Counter 🔢",
-        link: "counter"
-    }));
-    projects.push(new Project({
-        name: "Drum kit 🎺",
-        link: "drum-kit"
-    }));
-    projects.push(new Project({
-        name: "Random Color",
-        link: "random-color"
-    }));
-    projects.push(new Project({
-        name: "Number guesser 📛",
-        link: "number-guesser"
-    }));
-    projects.push(new Project({
-        name: "BMI Calculator ➕",
-        link: "bmi-calculator"
-    }));
-    projects.push(new Project({
-        name: "Password generator *️⃣",
-        link: "password-generator"
-    }));
-    projects.push(new Project({
-        name: "Grocery list 💰",
-        link: "grocery-list"
-    }));
-    projects.push(new Project({
-        name: "Dice Game 🎲",
-        link: "dice-game"
-    }));
-    // projects.push(new Project({
-    //     name: "Memory Game",
-    //     link: "memory-game"
-    // }));
-    projects.push(new Project({
-        name: "Chore door game 🚪",
-        link: "chore-door-game"
-    }));
-    projects.push(new Project({
-        name: "Countdown timer 🕰️",
-        link: "countdown-timer"
-    }));
-    projects.push(new Project({
-        name: "Library 📚",
-        link: "library"
-    }));
-    projects.push(new Project({
-        name: "Tic tac toe 🕹️",
-        link: "tic-tac-toe"
-    }));
-    projects.push(new Project({
-        name: "Key Codes #️⃣",
-        link: "key-codes"
-    }));
-    projects.push(new Project({
-        name: "Workout Tracker 💪",
-        link: "workout-tracker"
+        name: p.name,
+        link: p.link,
     }));
 }
 
+/**
+ * Display every project by its template
+ */
 function displayProjects(){
     let container = document.getElementById('grille');
     let affichage = ``;
@@ -76,5 +28,4 @@ function displayProjects(){
     container.innerHTML = affichage;
 }
 
-launchProjects();
 displayProjects();

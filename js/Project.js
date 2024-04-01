@@ -29,7 +29,7 @@ export default class Project {
 
     getTemplate(){
         return `
-            <div class="grille-item">
+            <div class="project-item">
                 <div class="card">
                     <div class="card-content">
                         <h1 class="title has-text-centered">${this.#name}</h1>

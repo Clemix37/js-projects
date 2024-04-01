@@ -7,38 +7,15 @@
     <title>JS Projects - All</title>
     <link rel="stylesheet" href="./styles/includes.css">
     <script defer src="./styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-    <style>
-        /* ALL */
-        .container, nav, main { display: flex; }
-        .container.est-centre { justify-content: center; }
-        .row { flex-direction: column; }
-        .card { border-radius: 1.5rem; }
-        .grille { display: grid; grid-template-columns: auto auto auto; width: 100%; }
-        .grille-item { padding: 5px; }
-        /* NAV */
-        nav { height: 3rem; }
-        nav .centre { width: 60%; }
-        nav .debut, nav .fin { width: 20%; }
-        /* MAIN */
-        main { height: calc(100vh - 3rem); }
-    </style>
-    <nav>
-        <div class="debut">
-            
-        </div>
-        <div class="centre">
-
-        </div>
-        <div class="fin">
-
-        </div>
-    </nav>
-    <main>
-        <div class="container est-centre row">
-            <h1 class="title has-text-centered">JS Projects</h1>
-            <div class="container grille" id="grille"></div>
+    <div class="colonne">
+        <div class="container est-centre colonne">
+            <div class="ligne">
+                <h1 class="title has-text-centered">JS Projects</h1>
+            </div>
+            <div class="container grille ligne" id="grille"></div>
         </div>
     </main>
     <script src="./js/app.js" type="module"></script>
