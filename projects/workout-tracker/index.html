@@ -27,10 +27,17 @@
     
                     </div>
                 </div>
+                <div class="ligne">
+                    <button id="btn-add-goal" class="button is-secondary is-rounded"><i class="fal fa-plus" style="margin-right:8px;"></i>Add a goal</button>
+                </div>
             </div>
         </div>
         <div class="ligne">
             <hr />
+        </div>
+        <!-- Displays the month of the calendar displayed -->
+        <div class="ligne">
+            <h3 id="month-calendar" class="subtitle"></h3>
         </div>
         <!-- Navigating between months in the calendar -->
         <div class="ligne">
@@ -41,19 +48,43 @@
                 <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
             </div>
         </div>
-        <!-- Displays the month of the calendar displayed -->
-        <div class="ligne">
-            <h3 id="month-calendar" class="subtitle"></h3>
-        </div>
-        <div class="ligne">
-            <hr />
-        </div>
         <!-- Displays the calendar and its days -->
         <div id="calendar" class="ligne">
 
         </div>
+        <div class="ligne">
+            <hr />
+        </div>
+        <div class="ligne container">
+            <button id="btn-add-workout" class="button is-primary is-rounded"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add Workout</button>
+        </div>
     </main>
     <!-- SCRIPTS -->
     <script src="./app.js" type="module"></script>
+
+    <!-- WINDOWS -->
+
+    <dialog id="window-add-goal">
+        <div class="ligne">
+            <input id="goal-title" type="text" class="input is-info is-rounded is-medium" placeholder="Goal" autofocus autocomplete="off">
+        </div>
+        <div class="ligne">
+            <button id="btn-save-goal-window" class="button is-dark is-rounded is-medium"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add</button>
+            <button id="btn-close-goal-window" class="button is-danger is-rounded is-medium" title="Close window"><i class="fas fa-times" style="margin-right: 8px;"></i>Close</button>
+        </div>
+    </dialog>
+
+    <dialog id="window-add-workout">
+        <div class="ligne" style="padding: 5px;">
+            <input id="workout-date" type="text" class="input is-info is-rounded is-medium" placeholder="dd/MM/YYYY" autofocus autocomplete="off" maxlength="10">
+        </div>
+        <div class="ligne" style="padding: 5px;">
+            <input id="workout-title" type="text" class="input is-info is-rounded is-medium" placeholder="Title of workout" autocomplete="off">
+        </div>
+        <div class="ligne">
+            <button id="btn-save-workout-window" class="button is-dark is-rounded is-medium"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add</button>
+            <button id="btn-close-workout-window" class="button is-danger is-rounded is-medium" title="Close window"><i class="fas fa-times" style="margin-right: 8px;"></i>Close</button>
+        </div>
+    </dialog>
 </body>
 </html>

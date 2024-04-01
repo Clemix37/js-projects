@@ -1,3 +1,5 @@
+import store from "../../../js/SessionStore.js";
+import Workout from "./Workout.js";
 import WorkoutCalendarDay from "./WorkoutCalendarDay.js";
 
 export default class WorkoutCalendar {
@@ -7,8 +9,10 @@ export default class WorkoutCalendar {
     #actualDate;
     #container;
     #title;
+    #workouts;
     static days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
     static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    static workoutsSessionKey = "workouts";
 
     //#endregion
 
@@ -27,6 +31,7 @@ export default class WorkoutCalendar {
         this.#container = document.getElementById(obj.idContainer);
         this.#title = document.getElementById(obj.idTitle)
         this.#actualDate = obj.startDate ?? new Date();
+        this.#workouts = store.get(WorkoutCalendar.workoutsSessionKey, []).map(w => new Workout(w));
     }
 
     //#endregion
@@ -48,20 +53,25 @@ export default class WorkoutCalendar {
         for (let i = 1; i <= nbDays; i++) {
             const d = new Date(actualYear, actualMonth, i);
             const day = WorkoutCalendar.days[d.getDay()];
-            const workoutDay = new WorkoutCalendarDay(d, day);
+            const workoutsOfDays = this.#workouts.filter(w => w.date.toString() === d.toString());
+            const workoutDay = new WorkoutCalendarDay(d, day, workoutsOfDays);
             calendarDisplay += workoutDay.getDayTemplate();
         }
         this.#container.innerHTML = calendarDisplay;
         this.#displayTitle();
     }
 
-    /* Change the actualDate, display its days, and change the title */
+    /**
+     * Change the actualDate, display its days, and change the title
+     */
     previousMonth(){
         this.#actualDate = new Date(this.#actualDate.getFullYear(), this.#actualDate.getMonth()-1, 1);
         this.displayCurrentMonth();
     }
 
-    /* Change the actualDate, display its daysn and change the title */
+    /**
+     * Change the actualDate, display its daysn and change the title
+     */
     nextMonth(){
         this.#actualDate = new Date(this.#actualDate.getFullYear(), this.#actualDate.getMonth()+1, 1);
         this.displayCurrentMonth();
@@ -77,11 +87,26 @@ export default class WorkoutCalendar {
         return `${day} ${this.#actualDate.getDate()}, ${month} ${this.#actualDate.getFullYear()}`;
     }
 
+    /**
+     * Add the workout in th list of workouts
+     * Save workouts in localStorage
+     * Display the calendar
+     * @param {Workout} newWorkout 
+     */
+    addWorkout(newWorkout){
+        if(!newWorkout instanceof Workout) throw new Error("Workout is not of type Workout");
+        this.#workouts.push(newWorkout);
+        this.#saveWorkouts();
+        this.displayCurrentMonth();
+    }
+
     //#endregion
 
     //#region Private methods
 
-    /* Display the month and the year of the actualDate */
+    /**
+     * Display the month and the year of the actualDate
+     */
     #displayTitle(){
         const actualMonth = this.#actualDate.getMonth();
         const monthAsString = WorkoutCalendar.months[actualMonth];
@@ -95,6 +120,13 @@ export default class WorkoutCalendar {
     #getNumberOfDaysInMonth(){
         const lastDayOfMonth = new Date(this.#actualDate.getFullYear(), this.#actualDate.getMonth()+1, 0);
         return lastDayOfMonth.getDate();
+    }
+
+    /**
+     * Save workouts of the calendar in the localStorage
+     */
+    #saveWorkouts(){
+        store.set(WorkoutCalendar.workoutsSessionKey, this.#workouts);
     }
 
     //#endregion

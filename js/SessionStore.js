@@ -73,7 +73,9 @@ class SessionStore {
         const dataKeys = Object.keys(this.#data);
         for (let i = 0; i < dataKeys.length; i++) {
             const key = dataKeys[i];
-            localStorage.setItem(key, JSON.stringify(this.#data[key]));
+            const originalValue = this.#data[key];
+            const stringifiedValue = JSON.stringify(originalValue);
+            localStorage.setItem(key, stringifiedValue);
         }
     }
 

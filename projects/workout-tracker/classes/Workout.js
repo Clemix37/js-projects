@@ -1,4 +1,4 @@
-import { store } from "../../../js/app.js";
+import store from "../../../js/SessionStore.js";
 import WorkoutExercise from "./WorkoutExercise.js";
 
 export default class Workout {
@@ -23,7 +23,7 @@ export default class Workout {
         if(!obj.title) throw new Error("No title given when creating a workout");
         if(!obj.date) throw new Error("No date given when creating the workout");
         this.#title = obj.title;
-        this.#date = obj.date;
+        this.#date = typeof obj.date === "string" ? new Date(obj.date) : obj.date;
         this.#exercices = store.get("workout-exercises", []).map(ex => new WorkoutExercise(ex));
     }
 
@@ -32,10 +32,18 @@ export default class Workout {
     //#region Accessors
 
     get title() { return this.#title; }
+    get date() { return this.#date; }
 
     //#endregion
 
     //#region Public methods
+
+    toJSON(){
+        return {
+            title: this.#title,
+            date: this.#date,
+        }
+    }
 
     //#endregion
 
