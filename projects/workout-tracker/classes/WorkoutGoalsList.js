@@ -22,12 +22,15 @@ export default class WorkoutGoalsList {
     constructor(obj = {}){
         if(!obj.idContainer) throw new Error("No container id given when creating list of goals");
         this.#container = document.getElementById(obj.idContainer);
-        this.#goals = store.get(WorkoutGoalsList.goalsSessionKey, []).map(goal => new WorkoutGoal(goal));
+        this.#goals = store.get(WorkoutGoalsList.goalsSessionKey, [])
+            .map(goal => new WorkoutGoal(goal));
     }
 
     //#endregion
 
     //#region Accessors
+
+    get goals() { return this.#goals; }
 
     //#endregion
 
@@ -41,7 +44,6 @@ export default class WorkoutGoalsList {
         }
         if(this.#goals.length === 0) goalsDisplay = `No goals created yet.. Don't be shy,`;
         this.#container.innerHTML = goalsDisplay;
-        this.#attachDeleteEvents();
     }
 
     /**
@@ -68,6 +70,17 @@ export default class WorkoutGoalsList {
         return maxId + 1;
     }
 
+    /**
+     * Filter the goals without the one beoing deleted
+     * We save them, and display them
+     * @param {number} id 
+     */
+    deleteGoal(id){
+        this.#goals = this.#goals.filter(g => g.id !== id);
+        this.#saveGoals();
+        this.displayGoals();
+    }
+
     //#endregion
 
     //#region Private methods
@@ -75,34 +88,6 @@ export default class WorkoutGoalsList {
     /* Save goals of the instance in the localStorage */
     #saveGoals(){
         store.set(WorkoutGoalsList.goalsSessionKey, this.#goals);
-    }
-
-    /**
-     * Attach the delet event on delete buttons displayed
-     */
-    #attachDeleteEvents(){
-        const btnsDeleteGoals = document.getElementsByClassName(WorkoutGoalsList.CLASS_BTN_DELETE_GOAL);
-        const that = this;
-        for (let i = 0; i < btnsDeleteGoals.length; i++) {
-            const btn = btnsDeleteGoals[i];
-            // We remove to eliminate potential duplication of event attached
-            btn.removeEventListener("click", this.#deleteGoal);
-            // We reset it
-            btn.addEventListener("click", (e) => that.#deleteGoal(e));
-        }
-    }
-
-    /**
-     * Filter the goals without the one beoing deleted
-     * We save them, and display them
-     * @param {HTMLElement} e 
-     */
-    #deleteGoal(e){
-        const id = +e.currentTarget.dataset.id;
-        if(!id) return;
-        this.#goals = this.#goals.filter(g => g.id !== id);
-        this.#saveGoals();
-        this.displayGoals();
     }
 
     //#endregion

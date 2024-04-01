@@ -4,11 +4,13 @@ import WorkoutGoal from "./classes/WorkoutGoal.js";
 import WorkoutGoalsList from "./classes/WorkoutGoalsList.js";
 
 // PROPERTIES
-const calendar = new WorkoutCalendar({ idContainer: "calendar", idTitle: "month-calendar" });
+const calendar = new WorkoutCalendar({ 
+    idContainer: "calendar", idTitle: "month-calendar", 
+    goalsList: new WorkoutGoalsList({ idContainer: "list-goals" }) 
+});
 // @todo: add exercises
 // @todo: display checkboxes for workout goals on calendar dates
 // @todo: sets workout days, days off
-const listGoals = new WorkoutGoalsList({ idContainer: "list-goals" });
 const todayDom = document.getElementById("today");
 const btnPreviousMonth = document.getElementById("btn-previous-month");
 const btnNextMonth = document.getElementById("btn-next-month");
@@ -40,7 +42,7 @@ btnSaveWorkoutWindow.addEventListener("click", saveWorkout);
 function displayContent(){
     displayCurrentDate();
     calendar.displayCurrentMonth();
-    listGoals.displayGoals();
+    calendar.displayGoals();
 }
 
 function displayCurrentDate(){
@@ -59,13 +61,20 @@ function navigateToNextMonth(){
 // ADD GOAL
 function addGoal(){
     windowAddGoal.showModal();
+    // Attach enter key on input
+    const inputGoalTitle = document.getElementById("goal-title");
+    inputGoalTitle.addEventListener("keyup", (e) => {
+        const isEnter = e.key === "Enter";
+        if(!isEnter) return;
+        saveGoal();
+    });
 }
 
 function saveGoal(){
     const inputGoalTitle = document.getElementById("goal-title");
     const title = inputGoalTitle.value;
-    const newGoal = new WorkoutGoal({ id: listGoals.getNextWorkoutId(), title });
-    listGoals.addGoal(newGoal);
+    const newGoal = new WorkoutGoal({ id: calendar.listGoals.getNextWorkoutId(), title });
+    calendar.addGoal(newGoal);
     cancelAddGoal();
 }
 
@@ -89,6 +98,13 @@ function addWorkout(){
     const monthDisplayed = month < 10 ? `0${month}` : month;
     // Displaying
     inputWorkoutDate.value = `${dayDisplayed}/${monthDisplayed}/${actualDate.getFullYear()}`;
+    // Attach enter key on input
+    const inputWorkoutTitle = document.getElementById("workout-title");
+    inputWorkoutTitle.addEventListener("keyup", (e) => {
+        const isEnter = e.key === "Enter";
+        if(!isEnter) return;
+        saveWorkout();
+    });
 }
 
 function saveWorkout(){
