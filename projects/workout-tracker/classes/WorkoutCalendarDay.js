@@ -1,11 +1,29 @@
+import WorkoutGoal from "./WorkoutGoal.js";
+import WorkoutGoalsList from "./WorkoutGoalsList.js";
+
 export default class WorkoutCalendarDay {
     
     //#region Properties
 
+    /**
+     * @type {Date}
+     */
     #date;
+    /**
+     * @type {string}
+     */
     #day;
+    /**
+     * @type {boolean}
+     */
     #isActual;
+    /**
+     * @type {WorkoutGoal[]}
+     */
     #goals;
+    /**
+     * @type {Workout[]}
+     */
     #workoutsOfDate;
 
     //#endregion
@@ -39,6 +57,10 @@ export default class WorkoutCalendarDay {
 
     //#region Public methods
 
+    /**
+     * Gets the template of the day in calendar
+     * @returns {string}
+     */
     getDayTemplate(){
         const date = this.#date.getDate();
         const month = this.#date.getMonth();
@@ -61,6 +83,10 @@ export default class WorkoutCalendarDay {
 
     //#region Private methods
 
+    /**
+     * Gets the diplay of workouts
+     * @returns {string}
+     */
     #getWorkoutsDisplay(){
         let workoutDisplay = "";
         for (let i = 0; i < this.#workoutsOfDate.length; i++) {
@@ -70,11 +96,33 @@ export default class WorkoutCalendarDay {
         return workoutDisplay;
     }
 
+    /**
+     * Gets the display of goals
+     * @returns {string}
+     */
     #getGoalsDisplay(){
         let goalsDisplay = `<hr />`;
         for (let i = 0; i < this.#goals.length; i++) {
             const goal = this.#goals[i];
-            goalsDisplay += `<label class="checkbox" style="padding: 5px;"><input class="checkbox" type="checkbox" /> ${goal.title}</label>`;
+            const isChecked = goal.isDone(this.#date);
+            // Gets the day
+            const day = this.#date.getDate();
+            const dayString = day < 10 ? `0${day}` : day;
+            // Gets the month
+            const month = this.#date.getMonth()+1;
+            const monthDisplay = month < 10 ? `0${month}` : month;
+            const dateString = `${dayString}/${monthDisplay}/${this.#date.getFullYear()}`;
+            goalsDisplay += `
+                <label class="checkbox" style="padding: 5px;">
+                    <input 
+                        data-id="${goal.id}" 
+                        data-date="${dateString}"
+                        class="checkbox ${WorkoutGoalsList.CLASS_BTN_CHECK_GOAL}" 
+                        type="checkbox" 
+                        ${isChecked ? "checked" : ""} 
+                    />
+                    ${goal.title}
+                </label>`;
         }
         return goalsDisplay;
 

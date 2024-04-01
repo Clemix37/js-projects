@@ -42,7 +42,6 @@ btnSaveWorkoutWindow.addEventListener("click", saveWorkout);
 function displayContent(){
     displayCurrentDate();
     calendar.displayCurrentMonth();
-    calendar.displayGoals();
 }
 
 function displayCurrentDate(){

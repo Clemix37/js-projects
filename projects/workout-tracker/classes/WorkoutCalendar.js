@@ -7,10 +7,25 @@ export default class WorkoutCalendar {
     
     //#region Properties
 
+    /**
+     * @type {Date}
+     */
     #actualDate;
+    /**
+     * @type {HTMLElement}
+     */
     #container;
+    /**
+     * @type {HTMLElement}
+     */
     #title;
+    /**
+     * @type {Workout[]}
+     */
     #workouts;
+    /**
+     * @type {WorkoutGoalsList}
+     */
     #listGoals;
     static days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
     static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -75,6 +90,7 @@ export default class WorkoutCalendar {
         }
         this.#container.innerHTML = calendarDisplay;
         this.#displayTitle();
+        this.displayGoals();
     }
 
     /**
@@ -122,7 +138,7 @@ export default class WorkoutCalendar {
      */
     displayGoals(){
         this.#listGoals.displayGoals();
-        this.#attachDeleteGoalEvents();
+        this.#attachEventsOnGoals();
     }
 
     /**
@@ -164,6 +180,23 @@ export default class WorkoutCalendar {
         store.set(WorkoutCalendar.workoutsSessionKey, this.#workouts);
     }
 
+    #attachEventsOnGoals(){
+        this.#attachDeleteGoalEvents();
+        this.#attachCheckGoalEvent();
+    }
+
+    #attachCheckGoalEvent(){
+        const btnsCheckGoals = document.getElementsByClassName(WorkoutGoalsList.CLASS_BTN_CHECK_GOAL);
+        const that = this;
+        for (let i = 0; i < btnsCheckGoals.length; i++) {
+            const btn = btnsCheckGoals[i];
+            // We remove to eliminate potential duplication of event attached
+            btn.removeEventListener("change", this.#changeStateGoal);
+            // We reset it
+            btn.addEventListener("change", (e) => that.#changeStateGoal(e));
+        }
+    }
+
     /**
      * Attach the delet event on delete buttons displayed
      */
@@ -188,6 +221,26 @@ export default class WorkoutCalendar {
         const id = +e.currentTarget.dataset.id;
         if(!id) return;
         this.#listGoals.deleteGoal(id);
+        this.displayCurrentMonth();
+    }
+
+    /**
+     * Checks the goal
+     * Display the calendar
+     * @param {HTMLElement} e 
+     */
+    #changeStateGoal(e){
+        const id = +e.currentTarget.dataset.id;
+        const dateString = e.currentTarget.dataset.date;
+        if(!id || !dateString) return;
+        // We create the object as Date
+        const day = dateString.substring(0, 2);
+        const month = +dateString.substring(3, 5);
+        const year = dateString.substring(6);
+        const d = new Date(year, month-1, day);
+        // Change the state
+        this.#listGoals.changeStateGoal(id, d, e.currentTarget.checked);
+        // Display everything
         this.displayCurrentMonth();
     }
 

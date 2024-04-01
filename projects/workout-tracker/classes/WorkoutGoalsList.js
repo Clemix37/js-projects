@@ -5,10 +5,17 @@ export default class WorkoutGoalsList {
     
     //#region Properties
 
+    /**
+     * @type {HTMLElement}
+     */
     #container;
+    /**
+     * @type {WorkoutGoal[]}
+     */
     #goals = [];
     static goalsSessionKey = "workout-goals";
     static CLASS_BTN_DELETE_GOAL = "btn-delete-goal";
+    static CLASS_BTN_CHECK_GOAL = "btn-check-goal";
 
     //#endregion
 
@@ -77,6 +84,24 @@ export default class WorkoutGoalsList {
      */
     deleteGoal(id){
         this.#goals = this.#goals.filter(g => g.id !== id);
+        this.#saveGoals();
+        this.displayGoals();
+    }
+
+    /**
+     * Change the state of the goal with the given id on the given date
+     * Based on the isChecked flag given
+     * @param {number} id 
+     * @param {Date} date 
+     * @param {boolean} isChecked 
+     */
+    changeStateGoal(id, date, isChecked = true){
+        this.#goals = this.#goals.map(g => {
+            if(g.id !== id) return g;
+            if(isChecked) g.addDateDone(date); 
+            else g.removeDateDone(date);
+            return g;
+        });
         this.#saveGoals();
         this.displayGoals();
     }
