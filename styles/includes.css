@@ -1,6 +1,6 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.0/css/bulma.min.css";
 @import './fontawesome/css/all.min.css';
-@import './other.css';
+@import './FlexIt.css';
 *, body { margin: 0; padding: 0; box-sizing: border-box; }
 main {
     height: 100vh;

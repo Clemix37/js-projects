@@ -9,17 +9,23 @@
 <body>
     <div class="ligne">
         <div class="colonne">
-            <div class="ligne">
-                <label for="nameBook">Name :</label>
-                <input type="text" class="input is-large is-rounded" id="nameBook">
+            <div class="field ligne">
+                <label class="label" for="nameBook">Name :</label>
+                <div class="control">
+                    <input type="text" class="input is-large is-rounded" id="nameBook">
+                </div>
             </div>
-            <div class="ligne">
-                <label for="yearBook">Year :</label>
-                <input type="number" class="input is-large is-rounded" id="yearBook" min="1000" max="2090">
+            <div class="field ligne">
+                <label class="label" for="yearBook">Year :</label>
+                <div class="control">
+                    <input type="number" class="input is-large is-rounded" id="yearBook" min="1000" max="2090">
+                </div>
             </div>
-            <div class="ligne">
-                <label for="authorBook">Author :</label>
-                <input type="text" class="input is-large is-rounded" id="authorBook">
+            <div class="field ligne">
+                <label class="label" for="authorBook">Author :</label>
+                <div class="control">
+                    <input type="text" class="input is-large is-rounded" id="authorBook">
+                </div>
             </div>
         </div>
     </div>
@@ -27,7 +33,6 @@
     <div class="ligne">
         <button class="button is-primary is-large is-rounded" id="btnAddBook"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add</button>
     </div>
-    
 
     <div id="listBook"></div>
     
