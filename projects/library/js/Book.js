@@ -11,6 +11,14 @@ export default class Book {
 
     //#region Constructor
 
+    /**
+     * Create a new Book with given parameter
+     * @param {object} obj 
+     * @param {string} obj.id
+     * @param {string} obj.name
+     * @param {string} obj.year
+     * @param {string} obj.author
+     */
     constructor({ id = null, name, year, author }){
         this.#id = id ?? this.#generateId();
         this.#name = name;

@@ -58,7 +58,10 @@ export default class Library {
     /**
      * Edit the content of the book with the id given as parameter
      * @param {number} bookId 
-     * @param {object} param1 
+     * @param {object} obj
+     * @param {string} obj.name
+     * @param {string} obj.year
+     * @param {string} obj.author
      */
     editBookFromId(bookId, { name, year, author }){
         this.#books = this.#books.map(b => {
@@ -75,6 +78,9 @@ export default class Library {
 
     //#region Private methods
 
+    /**
+     * Save local books to localStorage
+     */
     #saveBooks(){
         store.set(Library.booksSessionKey, this.#books);
     }
