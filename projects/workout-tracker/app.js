@@ -22,6 +22,7 @@ const btnAddWorkout = document.getElementById("btn-add-workout");
 const windowAddWorkout = document.getElementById("window-add-workout");
 const btnCloseWorkoutWindow = document.getElementById("btn-close-workout-window");
 const btnSaveWorkoutWindow = document.getElementById("btn-save-workout-window");
+let workoutInEdition = null;
 
 // EVENTS
 // NAVIGATION
@@ -70,7 +71,7 @@ function addGoal(){
 function saveGoal(){
     const inputGoalTitle = document.getElementById("goal-title");
     const title = inputGoalTitle.value;
-    const newGoal = new WorkoutGoal({ id: calendar.listGoals.getNextWorkoutId(), title });
+    const newGoal = new WorkoutGoal({ id: calendar.listGoals.getNextGoalId(), title });
     calendar.addGoal(newGoal);
     cancelAddGoal();
 }
@@ -82,11 +83,19 @@ function cancelAddGoal(){
 }
 
 // ADD WORKOUT
-function addWorkout(){
+/**
+ * Sets the workout to edit if it exist
+ * Display its value or default ones
+ * Attach the enter key on title input
+ * @param {Workout} workoutToEdit 
+ */
+function addWorkout(workoutToEdit = null){
+    workoutInEdition = workoutToEdit;
     windowAddWorkout.showModal();
+    const inputWorkoutTitle = document.getElementById("workout-title");
     // We display the date of the day
     const inputWorkoutDate = document.getElementById("workout-date");
-    const actualDate = new Date();
+    const actualDate = workoutInEdition.date ?? new Date();
     // To respect the length of 10
     const day = actualDate.getDate();
     const dayDisplayed = day < 10 ? `0${day}` : day;
@@ -95,8 +104,8 @@ function addWorkout(){
     const monthDisplayed = month < 10 ? `0${month}` : month;
     // Displaying
     inputWorkoutDate.value = `${dayDisplayed}/${monthDisplayed}/${actualDate.getFullYear()}`;
+    if(!!workoutInEdition) inputWorkoutTitle.value = workoutInEdition.title;
     // Attach enter key on input
-    const inputWorkoutTitle = document.getElementById("workout-title");
     inputWorkoutTitle.addEventListener("keyup", (e) => {
         const isEnter = e.key === "Enter";
         if(!isEnter) return;
@@ -104,6 +113,11 @@ function addWorkout(){
     });
 }
 
+/**
+ * Gets every value from input
+ * Add workout if not in edition or edit it
+ * clears every data
+ */
 function saveWorkout(){
     const inputWorkoutTitle = document.getElementById("workout-title");
     const title = inputWorkoutTitle.value;
@@ -121,18 +135,30 @@ function saveWorkout(){
     const year = +dateValue.substring(6);
     if(!year) throw new Error("Year must be a number between 1 and 9999");
     const date = new Date(year, month-1, day);
-    const newWorkout = new Workout({ title, date });
-    calendar.addWorkout(newWorkout);
+    if(!workoutInEdition){
+        const newWorkout = new Workout({ id: calendar.getNextWorkoutId(), title, date });
+        calendar.addWorkout(newWorkout);
+    }
+    else calendar.editWorkout(workoutInEdition.id, { newTitle: title, newDate: date });
     // Clears every input
     cancelAddWorkout();
 }
 
+/**
+ * Clears every inout
+ * Close the window
+ * Clears the workout in edition
+ */
 function cancelAddWorkout(){
     const inputWorkoutTitle = document.getElementById("workout-title");
     const inputWorkoutDate = document.getElementById("workout-date");
     inputWorkoutTitle.value = ""; // We empty the title field
     inputWorkoutDate.value = ""; // We empty the date field
     windowAddWorkout.close();
+    // No more workout in edition
+    workoutInEdition = null;
 }
 
 displayContent();
+
+export { addWorkout };

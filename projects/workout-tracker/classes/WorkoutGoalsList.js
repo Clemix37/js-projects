@@ -71,8 +71,8 @@ export default class WorkoutGoalsList {
      * So that goals can't have a given id
      * @returns {number}
      */
-    getNextWorkoutId(){
-        const ids = this.#goals.map(w => w.id);
+    getNextGoalId(){
+        const ids = this.#goals.map(goal => goal.id);
         const maxId = ids.length > 0 ? Math.max(...ids) : 0;
         return maxId + 1;
     }

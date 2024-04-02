@@ -1,4 +1,5 @@
 import store from "../../../js/SessionStore.js";
+import { addWorkout } from "../app.js";
 import Workout from "./Workout.js";
 import WorkoutCalendarDay from "./WorkoutCalendarDay.js";
 import WorkoutGoalsList from "./WorkoutGoalsList.js";
@@ -90,7 +91,8 @@ export default class WorkoutCalendar {
         }
         this.#container.innerHTML = calendarDisplay;
         this.#displayTitle();
-        this.displayGoals();
+        this.#listGoals.displayGoals();
+        this.#attachEvents();
     }
 
     /**
@@ -119,6 +121,22 @@ export default class WorkoutCalendar {
         return `${day} ${this.#actualDate.getDate()}, ${month} ${this.#actualDate.getFullYear()}`;
     }
 
+    //#region Goals
+
+    /**
+     * Add the goal in the list
+     * Display the calendar again
+     * @param {WorkoutGoal} newGoal 
+     */
+    addGoal(newGoal){
+        this.#listGoals.addGoal(newGoal);
+        this.displayCurrentMonth();
+    }
+
+    //#endregion
+
+    //#region Workout
+
     /**
      * Add the workout in th list of workouts
      * Save workouts in localStorage
@@ -133,23 +151,35 @@ export default class WorkoutCalendar {
     }
 
     /**
-     * Display every goals
-     * Attach delete goal events
+     * Gets the max id already given, return this maximum plus one
+     * So that workouts can't have a given id
+     * @returns {number}
      */
-    displayGoals(){
-        this.#listGoals.displayGoals();
-        this.#attachEventsOnGoals();
+    getNextWorkoutId(){
+        const ids = this.#workouts.map(w => w.id);
+        const maxId = ids.length > 0 ? Math.max(...ids) : 0;
+        return maxId + 1;
     }
 
     /**
-     * Add the goal in the list
-     * Display the calendar again
-     * @param {WorkoutGoal} newGoal 
+     * 
+     * @param {number} id 
+     * @param {object} obj
+     * @param {string} obj.newTitle
+     * @param {Date} obj.newDate 
      */
-    addGoal(newGoal){
-        this.#listGoals.addGoal(newGoal);
+    editWorkout(id, { newTitle, newDate }){
+        this.#workouts = this.#workouts.map(w => {
+            if(w.id !== id) return w;
+            w.title = newTitle;
+            w.date = newDate;
+            return w;
+        });
+        this.#saveWorkouts();
         this.displayCurrentMonth();
     }
+
+    //#endregion
 
     //#endregion
 
@@ -180,6 +210,19 @@ export default class WorkoutCalendar {
         store.set(WorkoutCalendar.workoutsSessionKey, this.#workouts);
     }
 
+    /**
+     * Attach every event of the UI
+     */
+    #attachEvents(){
+        this.#attachEventsOnGoals();
+        this.#attachWorkoutEvents();
+    }
+
+    //#region Goals Events
+
+    /**
+     * Attach events on goals
+     */
     #attachEventsOnGoals(){
         this.#attachDeleteGoalEvents();
         this.#attachCheckGoalEvent();
@@ -198,7 +241,7 @@ export default class WorkoutCalendar {
     }
 
     /**
-     * Attach the delet event on delete buttons displayed
+     * Attach the delete event on delete buttons displayed
      */
     #attachDeleteGoalEvents(){
         const btnsDeleteGoals = document.getElementsByClassName(WorkoutGoalsList.CLASS_BTN_DELETE_GOAL);
@@ -213,7 +256,7 @@ export default class WorkoutCalendar {
     }
 
     /**
-     * Filter the goals without the one beoing deleted
+     * Filter the goals without the one being deleted
      * We save them, and display them
      * @param {HTMLElement} e 
      */
@@ -243,6 +286,76 @@ export default class WorkoutCalendar {
         // Display everything
         this.displayCurrentMonth();
     }
+
+    //#endregion
+
+    //#region Workout events
+
+    /**
+     * Attach workout events
+     */
+    #attachWorkoutEvents(){
+        this.#attachDeleteWorkoutEvent();
+        this.#attachEditWorkoutEvent();
+    }
+
+    /**
+     * Attach the delete buttons of workouts with the function that deletes them
+     */
+    #attachDeleteWorkoutEvent(){
+        const btnsDelete = document.getElementsByClassName(Workout.CLASS_BTN_DELETE_WORKOUT);
+        const that = this;
+        for (let i = 0; i < btnsDelete.length; i++) {
+            const btn = btnsDelete[i];
+            // We remove to eliminate potential duplication of event attached
+            btn.removeEventListener("click", this.#deleteWorkout);
+            // We reset it
+            btn.addEventListener("click", (e) => that.#deleteWorkout(e));
+        }
+    }
+
+    /**
+     * Attach the edit buttons of workout with the function that edits them
+     */
+    #attachEditWorkoutEvent(){
+        const btnsEdit = document.getElementsByClassName(Workout.CLASS_BTN_EDIT_WORKOUT);
+        const that = this;
+        for (let i = 0; i < btnsEdit.length; i++) {
+            const btn = btnsEdit[i];
+            // We remove to eliminate potential duplication of event attached
+            btn.removeEventListener("click", this.#editWorkout);
+            // We reset it
+            btn.addEventListener("click", (e) => that.#editWorkout(e));
+        }
+    }
+
+    /**
+     * Filter actual workouts with the one of the id
+     * We save them, and display them
+     * @param {HTMLElement} e 
+     */
+    #deleteWorkout(e){
+        const id = +e.currentTarget.dataset.id;
+        if(!id) return;
+        this.#workouts = this.#workouts.filter(w => w.id !== id);
+        this.#saveWorkouts();
+        this.displayCurrentMonth();
+    }
+
+    /**
+     * Gets the workout to edit
+     * Open the window with the workout to edit data
+     * @param {HTMLElement} e 
+     */
+    #editWorkout(e){
+        const id = +e.currentTarget.dataset.id;
+        if(!id) return;
+        const theWorkout = this.#workouts.find(w => w.id === id);
+        if(!theWorkout) return;
+        addWorkout(theWorkout);
+    }
+
+    //#endregion
 
     //#endregion
 

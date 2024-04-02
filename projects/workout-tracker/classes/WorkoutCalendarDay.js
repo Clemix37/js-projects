@@ -91,7 +91,7 @@ export default class WorkoutCalendarDay {
         let workoutDisplay = "";
         for (let i = 0; i < this.#workoutsOfDate.length; i++) {
             const w = this.#workoutsOfDate[i];
-            workoutDisplay += `💪 ${w.title}`;
+            workoutDisplay += w.getTemplate();
         }
         return workoutDisplay;
     }
