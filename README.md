@@ -16,21 +16,21 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Chore Door game](https://clemix37.github.io/js-projects/projects/chore-door-game/)  
 - [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
 - [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
-- [ ] Countdown timer
+- [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
 - [ ] To do list
 - [ ] Random user
-- [ ] Workout tracker
+- [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
 - [ ] Dino game
 - [ ] Memory game
 - [ ] Weather App
 - [ ] Music Player
-- [ ] Tic Tac Toe
+- [X] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)
 - [ ] Quiz App
 - [ ] Avatar Maker
 - [ ] Budget App
 - [ ] Car avoidance game
 - [ ] Fall game
-- [ ] Library app
+- [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)
 - [ ] Shooting Game
 - [ ] Simon Game
 - [ ] Task Manager
