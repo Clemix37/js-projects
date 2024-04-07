@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User</title>
+	<link rel="stylesheet" href="../../styles/includes.css">
+</head>
+<body>
+    <style>
+        .subtitle:is(:first-child) { text-decoration: underline; }
+        .subtitle { padding: 5px; }
+        .subtitle { margin-bottom: 0 !important; }
+    </style>
+    <div class="colonne">
+        <div class="ligne">
+            <h1 class="title has-text-centered">Random user with API:</h1>
+        </div>
+        <div class="ligne">
+            <button id="btn-get-user" class="button is-rounded is-primary"><i class="fas fa-user" style="margin-right: 8px;"></i>Get Random User</button>
+        </div>
+        <div id="user-content" class="ligne" style="display: none;">
+            <div class="colonne">
+                <div class="ligne">
+                    <h3 class="subtitle">Gender: </h3>
+                    <h3 id="gender" class="subtitle"></h3>
+                </div>
+                <div class="ligne">
+                    <h3 class="subtitle">Name: </h3>
+                    <h3 id="name" class="subtitle"></h3>
+                </div>
+                <div class="ligne">
+                    <h3 class="subtitle">Email: </h3>
+                    <h3 id="email" class="subtitle"></h3>
+                </div>
+                <div class="ligne">
+                    <h3 class="subtitle">Phone: </h3>
+                    <h3 id="phone" class="subtitle"></h3>
+                </div>
+                <div class="ligne">
+                    <h3 class="subtitle">Nationality: </h3>
+                    <h3 id="nat" class="subtitle"></h3>
+                </div>
+                <div class="ligne">
+                    <img id="profile" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./randomUser.js" type="module"></script>
+</body>
+</html>

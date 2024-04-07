@@ -55,6 +55,10 @@
         {
             "name": "Workout Tracker 💪",
             "link": "workout-tracker"
+        },
+        {
+            "name": "Random User 🥷",
+            "link": "random-user"
         }
     ]
 }

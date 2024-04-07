@@ -18,7 +18,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
 - [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
 - [ ] To do list
-- [ ] Random user
+- [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)
 - [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
 - [ ] Dino game
 - [ ] Memory game
@@ -77,3 +77,7 @@ You can list your grocery items.
 ### Dice Game
 
 You roll dices for 2 players. The one who got the highest, wins !
+
+### Random User
+
+You click a button, we call an API, and you get to see the results !
