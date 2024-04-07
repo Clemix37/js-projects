@@ -1,3 +1,6 @@
+import Utils from "../../../js/Utils.js";
+import WorkoutGoalsList from "./WorkoutGoalsList.js";
+
 export default class WorkoutGoal {
     
     //#region Properties
@@ -66,9 +69,15 @@ export default class WorkoutGoal {
     /**
      * Check if the date is done
      * @param {Date} dateToCheck 
+     * @returns {boolean}
      */
     isDone(dateToCheck){
-        return !!this.#datesDone.find(d => d.toString() === dateToCheck.toString());
+        if(!dateToCheck || !dateToCheck instanceof Date) return false;
+        return !!this.#datesDone.find(d => {
+            const dAsDate = new Date(d);
+            return Utils.getDateAsString(dAsDate, Utils.dateFormats.DayMonthYearHyphens) 
+                === Utils.getDateAsString(dateToCheck, Utils.dateFormats.DayMonthYearHyphens);
+        });
     }
 
     /**
@@ -82,6 +91,25 @@ export default class WorkoutGoal {
             datesDone: this.#datesDone,
         };
         return obj;
+    }
+
+    getTemplate(theDate = null, dateDisplayed = ""){
+        if(!theDate instanceof Date) throw new Error("theDate is not instance of Date when getting template for goal");
+        const isChecked = this.isDone(theDate);
+        return `
+            <div class="ligne">
+                <label class="checkbox" style="padding: 5px;">
+                    <input 
+                        data-id="${this.#id}" 
+                        data-date="${dateDisplayed}"
+                        class="checkbox ${WorkoutGoalsList.CLASS_BTN_CHECK_GOAL}" 
+                        type="checkbox" 
+                        ${isChecked ? "checked" : ""} 
+                    />
+                    ${this.#title}
+                </label>
+            </div>    
+        `;
     }
 
     //#endregion

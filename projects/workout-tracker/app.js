@@ -1,3 +1,4 @@
+import Calendar from "../../js/Calendar.js";
 import Workout from "./classes/Workout.js";
 import WorkoutCalendar from "./classes/WorkoutCalendar.js";
 import WorkoutGoal from "./classes/WorkoutGoal.js";
@@ -8,7 +9,6 @@ const calendar = new WorkoutCalendar({
     idContainer: "calendar", idTitle: "month-calendar", 
     goalsList: new WorkoutGoalsList({ idContainer: "list-goals" }) 
 });
-// @todo: add exercises
 const todayDom = document.getElementById("today");
 const btnPreviousMonth = document.getElementById("btn-previous-month");
 const btnNextMonth = document.getElementById("btn-next-month");
@@ -40,11 +40,11 @@ btnSaveWorkoutWindow.addEventListener("click", saveWorkout);
 // FUNCTIONS
 function displayContent(){
     displayCurrentDate();
-    calendar.displayCurrentMonth();
+    calendar.display();
 }
 
 function displayCurrentDate(){
-    todayDom.textContent = calendar.getActualDateAsString();
+    todayDom.textContent = calendar.getDateAsString();
 }
 
 // NAVIGATION
