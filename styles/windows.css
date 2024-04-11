@@ -1,0 +1,17 @@
+::backdrop {
+    background-color: black;
+    opacity: 0.5;
+}
+
+/* We center every dialog */
+dialog {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--bulma-body-background-color);
+}

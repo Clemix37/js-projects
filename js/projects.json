@@ -59,6 +59,10 @@
         {
             "name": "Random User 🥷",
             "link": "random-user"
+        },
+        {
+            "name": "Budget Planner 🤑",
+            "link": "budget-planner"
         }
     ]
 }

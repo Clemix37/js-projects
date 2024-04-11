@@ -1,7 +1,11 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.0/css/bulma.min.css";
 @import './fontawesome/css/all.min.css';
 @import './FlexIt.css';
+@import './calendar.css';
+@import './windows.css';
+
 *, body { margin: 0; padding: 0; box-sizing: border-box; }
+
 main {
     height: 100vh;
     width: 100vw;
@@ -10,4 +14,5 @@ main {
     justify-content: center;
     flex-direction: column;
 }
+
 .container { min-width: 80%; text-align: center; }

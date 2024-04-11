@@ -39,6 +39,24 @@ export default class Utils {
         }
     }
 
+    static genUniqueId(){
+        return Date.now().toString(36) + Math.random().toString(36).substring(2);
+    }
+
+    static stringAsDate(dateString, format){
+        if(!format) throw new Error("No format given as arguments");
+        switch (format) {
+            case Utils.dateFormats.DayMonthYearHyphens:
+            case Utils.dateFormats.DayMonthYearSlash:
+                const date = +dateString.substring(0, 2);
+                const month = +dateString.substring(3,5);
+                const year = +dateString.substring(6);
+                return new Date(year, month-1, date);
+            default:
+                return dateString;
+        }
+    }
+
     //#endregion
 
     //#region Private methods
