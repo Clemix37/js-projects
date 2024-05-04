@@ -17,6 +17,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
 - [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
 - [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
+- [X] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)
 - [ ] To do list
 - [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)
 - [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
@@ -81,3 +82,7 @@ You roll dices for 2 players. The one who got the highest, wins !
 ### Random User
 
 You click a button, we call an API, and you get to see the results !
+
+### Poke API
+
+You get to see 250 pokemon listed, you can also see every detail of the pokemon you click.

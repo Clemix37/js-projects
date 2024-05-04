@@ -1,0 +1,17 @@
+#pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: center;
+}
+
+.pokemon-card {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 8px;
+    min-height: 200px;
+}

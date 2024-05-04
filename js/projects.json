@@ -63,6 +63,10 @@
         {
             "name": "Budget Planner 🤑",
             "link": "budget-planner"
+        },
+        {
+            "name": "Poke API 🪷",
+            "link": "poke-api"
         }
     ]
 }

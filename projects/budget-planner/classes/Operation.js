@@ -89,6 +89,10 @@ export default class Operation {
         };
     }
 
+    /**
+     * Get the template of the operation
+     * @returns {string}
+     */
     getTemplate(){
         return `
             <div class="ligne" id="operation-${this.#id}">
