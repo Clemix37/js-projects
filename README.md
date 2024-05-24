@@ -18,7 +18,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
 - [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
 - [X] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)
-- [ ] To do list
+- [X] [To do list](https://github.com/Clemix37/done-or-not)
 - [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)
 - [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
 - [ ] Dino game
