@@ -5,47 +5,50 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 
 ## Sommaire
 
-- [X] [Compteur](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#compteur)  
-- [X] [Batterie](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#batterie)  
-- [X] [Couleur aléatoire](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#g%C3%A9n%C3%A9rateur-de-couleurs-al%C3%A9atoires)  
-- [X] [Jeu de dé](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#jeu-de-dé)  
-- [X] [Générateur de mots de passe](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#generateur-de-mots-de-passe)
-- [ ] Compte à rebours
-- [ ] Liste à faire
-- [ ] Utilisateur aléatoire
-- [X] [Calculateur d'IMC](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#calcul-imc)  
-- [ ] Suivi d'entraînement
-- [ ] Jeu du dino
-- [ ] Jeu mémory
-- [ ] App météo
-- [ ] Lanceur de Musique
-- [ ] Morpion
-- [ ] App quiz
-- [ ] Créateur d'avatar
-- [ ] App de budget
-- [ ] Jeu d'évitement de voiture
-- [ ] Jeu de la porte
-- [ ] Jeu de réaction clic
-- [ ] Jeu tombé
-- [X] [Liste de courses](https://github.com/Clemix37/js-projects/blob/main/languages/README-FR.md#liste-de-courses)
-- [ ] App de librairie
-- [ ] Jeu de tir
-- [ ] Jeu du simon
-- [ ] Gestionnaire de tâches
-- [ ] Contacts
-- [ ] Reservation de vols
-- [ ] Reservation d'hôtel
-- [ ] Calculette
-- [ ] Magasin de Livre
-- [ ] App de recettes
-- [ ] App de vote
+- [X] [Compteur](https://github.com/Clemix37/js-projects#counter)  
+- [X] [Kit de Batterie](https://github.com/Clemix37/js-projects#drum-kit)  
+- [X] [Couleur aléatoire](https://github.com/Clemix37/js-projects#random-color-generator)  
+- [X] [Devine le nombre](https://github.com/Clemix37/js-projects#number-guesser) 
+- [X] [Jeu de dé](https://github.com/Clemix37/js-projects#dice-game)  
+- [X] [Générateur de mots de passe](https://github.com/Clemix37/js-projects#password-generator)  
+- [X] [Liste de courses](https://github.com/Clemix37/js-projects#grocery-list)  
+- [X] [Calculateur d'IMC](https://github.com/Clemix37/js-projects#bmi-calculator)  
+- [X] [Jeu de porte](https://clemix37.github.io/js-projects/projects/chore-door-game/)  
+- [X] [Temps de réaction](https://github.com/Clemix37/reaction-time)  
+- [X] [Capture des évènements du clavier](https://clemix37.github.io/js-projects/projects/key-codes/)  
+- [X] [Compte à rebours](https://clemix37.github.io/js-projects/projects/countdown-timer/)  
+- [X] [API Pokémon](https://clemix37.github.io/js-projects/projects/poke-api/)  
+- [X] [Utilisateur aléatoire](https://clemix37.github.io/js-projects/projects/random-user/)  
+- [X] [Traqueur d'entraînement](https://clemix37.github.io/js-projects/projects/workout-tracker/)  
+- [X] [Morpion](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
+- [X] [Librairie](https://clemix37.github.io/js-projects/projects/library/)  
+- [ ] Liste à faire  
+- [ ] Jeu du dino  
+- [ ] Jeu mémory  
+- [ ] App météo  
+- [ ] Lanceur de Musique  
+- [ ] App quiz  
+- [ ] Créateur d'avatar  
+- [ ] App de budget  
+- [ ] Jeu d'évitement de voiture  
+- [ ] Jeu tombé  
+- [ ] Jeu de tir  
+- [ ] Jeu du simon  
+- [ ] Gestionnaire de tâches  
+- [ ] Sauvegarde de contacts  
+- [ ] Reservation de vols  
+- [ ] Reservation d'hôtel  
+- [ ] Calculette  
+- [ ] Magasin de Livre  
+- [ ] App de recettes  
+- [ ] App de vote  
 
 ### Compteur
 
 Projet simple: un compteur.  
 Trois choses possibles: augmenter, diminuer and remettre à zéro.  
 
-### Batterie
+### Kit de Batterie
 
 Projet simple: une batterie.  
 Vous pouvez jouer des sonds basés sur les instruments.  
@@ -55,18 +58,31 @@ Vous pouvez jouer des sonds basés sur les instruments.
 Projet simple: un générateur de couleurs aléatoires.  
 Vous pouvez générer une couleur aléatoire, qui est mise en fond.  
 
+### Devine le nombre
+
+Objectif simple: une devinette de nombre.  
+Vous pouvez définir des options et jouer avec vos options ou celles par défaut.  
+
 ### Calcul IMC
 
 Vous pouvez calculer votre IMC en saisissant votre poids et votre taille.  
 
 ### Generateur de mots de passe
 
-Vous pouvez générer un mot de passe avec des lettres majuscules, minuscules, des chiffres, et des symboles.
+Vous pouvez générer un mot de passe avec des lettres majuscules, minuscules, des chiffres, et des symboles.  
 
 ### Liste de courses
 
-Vous pouvez lister vos courses.
+Vous pouvez lister vos courses.  
 
 ### Jeu de dé
 
-Vous lancez pour 2 joueurs, un dé. Celui qui obtient le plus gros chiffre gagne !
+Vous lancez pour 2 joueurs, un dé. Celui qui obtient le plus gros chiffre gagne !  
+
+### Utilisateur aléatoire
+
+Vous cliquez, nous appelons une API, et vous voyez les résultats !  
+
+### API Pokémon
+
+Vous pouvez lister 250 Pokémon, voir chacun de leur détail quand vous cliquez sur l'un d'eux.  

@@ -14,34 +14,34 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)  
 - [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
 - [X] [Chore Door game](https://clemix37.github.io/js-projects/projects/chore-door-game/)  
-- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)
-- [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
-- [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
-- [X] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)
-- [ ] To do list
-- [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)
-- [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
-- [ ] Dino game
-- [ ] Memory game
-- [ ] Weather App
-- [ ] Music Player
-- [X] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)
-- [ ] Quiz App
-- [ ] Avatar Maker
-- [ ] Budget App
-- [ ] Car avoidance game
-- [ ] Fall game
-- [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)
-- [ ] Shooting Game
-- [ ] Simon Game
-- [ ] Task Manager
-- [ ] Contact saver
-- [ ] Airline Reservation
-- [ ] Hotel reservation
-- [ ] Calculator
-- [ ] Book store
-- [ ] Recipes app
-- [ ] Poll app
+- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)  
+- [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)  
+- [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)  
+- [X] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)  
+- [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)  
+- [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)  
+- [X] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
+- [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)  
+- [ ] To do list  
+- [ ] Dino game  
+- [ ] Memory game  
+- [ ] Weather App  
+- [ ] Music Player  
+- [ ] Quiz App  
+- [ ] Avatar Maker  
+- [ ] Budget App  
+- [ ] Car avoidance game  
+- [ ] Fall game  
+- [ ] Shooting Game  
+- [ ] Simon Game  
+- [ ] Task Manager  
+- [ ] Contact saver  
+- [ ] Airline Reservation  
+- [ ] Hotel reservation  
+- [ ] Calculator  
+- [ ] Book store  
+- [ ] Recipes app  
+- [ ] Poll app  
 
 ### Counter
 
