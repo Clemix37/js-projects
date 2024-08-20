@@ -22,8 +22,8 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 - [X] [Traqueur d'entraînement](https://clemix37.github.io/js-projects/projects/workout-tracker/)  
 - [X] [Morpion](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
 - [X] [Librairie](https://clemix37.github.io/js-projects/projects/library/)  
+- [X] [Jeu du dino](https://clemix37.github.io/gamedev-bean-jump/)  
 - [ ] Liste à faire  
-- [ ] Jeu du dino  
 - [ ] Jeu mémory  
 - [ ] App météo  
 - [ ] Lanceur de Musique  
