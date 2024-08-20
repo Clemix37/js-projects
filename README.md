@@ -22,8 +22,8 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)  
 - [X] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
 - [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)  
+- [x] [Dino game](https://clemix37.github.io/gamedev-bean-jump/)  
 - [ ] To do list  
-- [ ] Dino game  
 - [ ] Memory game  
 - [ ] Weather App  
 - [ ] Music Player  
