@@ -23,7 +23,7 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 - [X] [Morpion](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
 - [X] [Librairie](https://clemix37.github.io/js-projects/projects/library/)  
 - [X] [Jeu du dino](https://clemix37.github.io/gamedev-bean-jump/)  
-- [ ] Liste à faire  
+- [X] [Liste à faire](https://clemix37.github.io/js-projects/projects/todo-list/)  
 - [ ] Jeu mémory  
 - [ ] App météo  
 - [ ] Lanceur de Musique  

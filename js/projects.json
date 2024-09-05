@@ -67,6 +67,10 @@
         {
             "name": "Poke API 🪷",
             "link": "poke-api"
+        },
+        {
+            "name": "Todo list",
+            "link": "todo-list"
         }
     ]
 }
