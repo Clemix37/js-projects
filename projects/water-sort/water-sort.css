@@ -1,0 +1,42 @@
+#game {
+    flex-wrap: wrap;
+}
+
+.tube {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 200px;
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    clip-path: border-box;
+    margin: 50px;
+    background-color: white;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+.tube.selected {
+    margin-top: 0px;
+    border-bottom: 10px solid white;
+}
+
+.tube-color {
+    height: 100px;
+}
+
+.tube-color.yellow {
+    background-color: yellow;
+}
+
+.tube-color.blue {
+    background-color: blue;
+}
+
+.tube-color.green {
+    background-color: green;
+}
+
+.tube-color.red {
+    background-color: red;
+}

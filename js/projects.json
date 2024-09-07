@@ -69,8 +69,12 @@
             "link": "poke-api"
         },
         {
-            "name": "Todo list",
+            "name": "Todo list 📓",
             "link": "todo-list"
+        },
+        {
+            "name": "Water sort 🧪",
+            "link": "water-sort"
         }
     ]
 }

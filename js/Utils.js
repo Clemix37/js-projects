@@ -21,6 +21,15 @@ export default class Utils {
 
     //#region Public methods
 
+    /**
+     * Get a random index from the array given as argument
+     * @param {any[]} arr 
+     * @returns {number}
+     */
+    static getRandomIndexFromArray(arr){
+        return Math.floor(Math.random() * arr.length);
+    }
+
     static getDateAsString(theDate, format = null){
         if(!theDate || !theDate instanceof Date) throw new Error("Date given is not instance of Date");
         const date = theDate.getDate();
