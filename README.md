@@ -24,6 +24,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 - [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)  
 - [x] [Dino game](https://clemix37.github.io/gamedev-bean-jump/)  
 - [X] [To do list](https://clemix37.github.io/js-projects/projects/todo-list/)  
+- [X] [Water Sort Game](https://clemix37.github.io/js-projects/projects/water-sort/)  
 - [ ] Memory game  
 - [ ] Weather App  
 - [ ] Music Player  

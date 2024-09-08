@@ -1,3 +1,10 @@
+:root {
+    --pink: #F9B9F2;
+    --violet: #820B8A;
+    --yellow: #FAFF7F;
+    --light-blue: #BCF4F5;
+}
+
 #game {
     flex-wrap: wrap;
 }
@@ -18,25 +25,8 @@
 
 .tube.selected {
     margin-top: 0px;
-    border-bottom: 10px solid white;
 }
 
 .tube-color {
     height: 100px;
-}
-
-.tube-color.yellow {
-    background-color: yellow;
-}
-
-.tube-color.blue {
-    background-color: blue;
-}
-
-.tube-color.green {
-    background-color: green;
-}
-
-.tube-color.red {
-    background-color: red;
 }

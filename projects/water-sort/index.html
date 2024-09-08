@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Wort - Game</title>
+    <title>Water Sort - Game</title>
     <script defer src="../../styles/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="../../styles/includes.css">
     <link rel="stylesheet" href="./water-sort.css">
 </head>
 <body>
     <h1 class="title has-text-centered">Water Sort:</h1>
+
+    <h3 id="lbl-msg-game" class="subtitle has-text-centered"></h3>
+    <div class="ligne">
+        <button id="btn-reset-game" class="button is-rounded" title="Reset">
+            <i class="fas fa-rotate-right" style="margin-right: 8px;"></i>
+            Reset
+        </button>
+        <button id="btn-restart-game" class="button is-rounded" title="Restart">
+            <i class="fas fa-power-off" style="margin-right: 8px;"></i>
+            Restart
+        </button>
+    </div>
 
     <div id="game" class="ligne">
 
