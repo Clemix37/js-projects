@@ -30,6 +30,12 @@ export default class Utils {
         return Math.floor(Math.random() * arr.length);
     }
 
+    /**
+     * Given a Date, returns it in string based on format as argument
+     * @param {Date} theDate 
+     * @param {string} format 
+     * @returns {string}
+     */
     static getDateAsString(theDate, format = null){
         if(!theDate || !theDate instanceof Date) throw new Error("Date given is not instance of Date");
         const date = theDate.getDate();
@@ -48,19 +54,30 @@ export default class Utils {
         }
     }
 
+    /**
+     * Generates a unique id based on random and the date
+     * @returns {string}
+     */
     static genUniqueId(){
         return Date.now().toString(36) + Math.random().toString(36).substring(2);
     }
 
+    /**
+     * Given a date as string, returns it as Date if the format is correct
+     * If not, returns itself
+     * @param {string} dateString 
+     * @param {string} format 
+     * @returns {Date | string}
+     */
     static stringAsDate(dateString, format){
-        if(!format) throw new Error("No format given as arguments");
+        if (!format) throw new Error("No format given as arguments");
         switch (format) {
             case Utils.dateFormats.DayMonthYearHyphens:
             case Utils.dateFormats.DayMonthYearSlash:
                 const date = +dateString.substring(0, 2);
                 const month = +dateString.substring(3,5);
                 const year = +dateString.substring(6);
-                return new Date(year, month-1, date);
+                return new Date(year, month - 1, date);
             default:
                 return dateString;
         }

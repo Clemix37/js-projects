@@ -10,7 +10,19 @@
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
 </head>
 <body>
-    <div id="pokemon-list"></div>
+    <nav class="ligne">
+        <div class="colonne">
+            <a class="nav-button button is-rounded" href="/"><i class="fas fa-home"></i></a>
+        </div>
+        <div class="colonne">
+            <div class="ligne">
+                <h1 class="title has-text-centered">Poke API</h1>
+            </div>
+        </div>
+        <div class="colonne"></div>
+    </nav>
+
+    <div id="pokemon-list" style="margin-top: 40px;"></div>
 
     <!-- WINDOW DETAIL -->
     <dialog id="window-pokemon-detail">

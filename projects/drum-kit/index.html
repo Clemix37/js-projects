@@ -10,9 +10,20 @@
 </head>
 <body>
     <style>
-        .button{width:150px;height:150px;font-size:35px;}
+        .button:not(.nav-button) {width:150px;height:150px;font-size:35px;}
         .grille {display:grid;grid-template-columns: auto auto auto auto;width:100%;}
     </style>
+    <nav class="ligne">
+        <div class="colonne">
+            <a class="nav-button button is-rounded" href="/"><i class="fas fa-home"></i></a>
+        </div>
+        <div class="colonne">
+            <div class="ligne">
+                <h1 class="title has-text-centered">Drum kit</h1>
+            </div>
+        </div>
+        <div class="colonne"></div>
+    </nav>
     <main>
         <div class="container">
             <h1 class="title has-text-centered">Drum kit</h1>

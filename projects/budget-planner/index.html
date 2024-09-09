@@ -7,10 +7,19 @@
     <link rel="stylesheet" href="../../styles/includes.css">
 </head>
 <body>
-    <div class="colonne">
-        <div class="ligne">
-            <h1 class="title has-text-centered">Budget Planner</h1>
+    <nav class="ligne">
+        <div class="colonne">
+            <a class="nav-button button is-rounded" href="/"><i class="fas fa-home"></i></a>
         </div>
+        <div class="colonne">
+            <div class="ligne">
+                <h1 class="title has-text-centered">Budget Planner</h1>
+            </div>
+        </div>
+        <div class="colonne"></div>
+    </nav>
+
+    <div class="colonne" style="margin-top: 40px;">
         <div class="ligne">
             <h1 class="title" id="balance"></h1>
         </div>
@@ -41,7 +50,6 @@
 
         </div>
     </div>
-    <script src="./budgetPlanner.js" type="module"></script>
 
     <dialog id="window-add-operation">
         <div class="ligne" style="padding: 5px;">
@@ -58,5 +66,7 @@
             <button id="btn-close-operation-window" class="button is-danger is-rounded is-medium" title="Close window"><i class="fas fa-times" style="margin-right: 8px;"></i>Close</button>
         </div>
     </dialog>
+
+    <script src="./budgetPlanner.js" type="module"></script>
 </body>
 </html>

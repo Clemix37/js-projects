@@ -2,16 +2,28 @@ export default class Project {
 
     //#region Properties
 
+    /**
+     * @type {string}
+     */
     #name;
+    /**
+     * @type {string}
+     */
     #link;
 
     //#endregion
 
     //#region Constructor
 
-    constructor(obj){
-        this.#name = obj.name;
-        this.#link = obj.link;
+    /**
+     * Constructor of the Project class
+     * @param {object} obj 
+     * @param {string} obj.name 
+     * @param {string} obj.link 
+     */
+    constructor({ name, link, }){
+        this.#name = name;
+        this.#link = link;
     }
 
     //#endregion

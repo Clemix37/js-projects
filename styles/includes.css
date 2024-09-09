@@ -3,6 +3,7 @@
 @import './FlexIt.css';
 @import './calendar.css';
 @import './windows.css';
+@import './navbar.css';
 
 *, body { margin: 0; padding: 0; box-sizing: border-box; }
 

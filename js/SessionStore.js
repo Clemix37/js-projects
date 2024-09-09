@@ -2,12 +2,18 @@ class SessionStore {
     
     //#region Properties
 
+    /**
+     * @type {object}
+     */
     #data;
 
     //#endregion
 
     //#region Constructor
 
+    /**
+     * Constructor of the SessionStore class
+     */
     constructor(){
         this.#data = {};
         this.#getEveryValueFromLocalStorage();

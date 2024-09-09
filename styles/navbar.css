@@ -1,0 +1,6 @@
+nav {
+    position: fixed;
+    z-index: 2;
+    background-color: var(--bulma-body-background-color);
+    top: 0;
+}
