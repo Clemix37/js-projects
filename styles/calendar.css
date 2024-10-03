@@ -7,8 +7,8 @@
 .date-calendar { 
     display: flex;
     flex-direction: column;
-    width: 150px;
-    min-height: 150px;
+    width: 250px;
+    min-height: 250px;
     padding: 8px;
     justify-content: flex-start;
     align-items: center;
