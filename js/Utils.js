@@ -83,6 +83,28 @@ export default class Utils {
         }
     }
 
+    /**
+     * Sets the new value of the variable in parameters
+     * @param {string} nameVariable 
+     * @param {any} newValueVariable 
+     */
+    static setCssVariable(nameVariable, newValueVariable){
+        const root = document.querySelector(":root");
+        root.style.setProperty(`--${nameVariable}`, newValueVariable);
+    }
+
+    /**
+     * Gets the CSS variable with its name as argument
+     * @param {string} nameVariable 
+     * @returns {any} value
+     */
+    static getCssVariable(nameVariable){
+        const root = document.querySelector(":root");
+        const rootStyle = getComputedStyle(root);
+        const value = rootStyle.getPropertyValue(`--${nameVariable}`);
+        return value;
+    }
+
     //#endregion
 
     //#region Private methods

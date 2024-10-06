@@ -1,10 +1,14 @@
-import Utils from "../../js/Utils.js";
+import Utils from "../../../js/Utils.js";
 import Tube from "./Tube.js";
 
 export default class WaterSort {
 
     //#region Properties
 
+    /**
+     * @type {boolean}
+     */
+    #configSaved;
     /**
      * @type {number}
      */
@@ -49,6 +53,10 @@ export default class WaterSort {
      * @type {string}
      */
     #idTubeSelected = null;
+    /**
+     * @type {number}
+     */
+    static MinHeightTube = 4;
 
     //#endregion
 
@@ -56,31 +64,11 @@ export default class WaterSort {
 
     /**
      * Constructor of the WaterSort class
-     * @param {object} obj 
-     * @param {number} obj.nbOfTubes 
-     * @param {number} obj.heightOfTube 
-     * @param {HTMLDivElement} obj.div 
-     * @param {HTMLElement} obj.labelElement 
-     * @param {HTMLButtonElement} obj.restartBtn 
-     * @param {HTMLButtonElement} obj.resetGameBtn 
-     * @param {string[]} obj.colors 
+     * @param {object} config
      */
-    constructor({ nbOfTubes, heightOfTube, div, labelElement, restartBtn, resetGameBtn, colors = [], }){
-        if (!nbOfTubes) throw new Error("No number of tubes specified");
-        if (nbOfTubes !== colors.length) throw new Error("Number of tubes and colors are not logical");
-        this.#nbOfTubes = nbOfTubes;
-        if (!heightOfTube) throw new Error("No height of tubes specified");
-        this.#heightOfTube = heightOfTube;
-        if (!div) throw new Error("No div specified");
-        this.#divElement = div;
-        if (!labelElement) throw new Error("No label specified");
-        this.#labelElement = labelElement;
-        if (!restartBtn) throw new Error("No restart button specified");
-        this.#restartGameBtn = restartBtn;
-        if (!resetGameBtn) throw new Error("No reset button specified");
-        this.#resetGameBtn = resetGameBtn;
-        this.#tubes = [];
-        this.#colors = colors;
+    constructor(config = null){
+        this.#configSaved = !!config;
+        if(config) this.#saveConfig(config);
     }
 
     //#endregion
@@ -103,7 +91,9 @@ export default class WaterSort {
      * Generate a new display randomly
      * Save the actual generation
      */
-    generate(){
+    generate(config = null){
+        if (config) this.#saveConfig(config);
+        if(!this.#configSaved) throw new Error("No config saved");
         const generation = [];
         let everyColors = this.#getCompleteColorsArray();
         for (let i = 0; i < this.#nbOfTubes; i++) {
@@ -147,9 +137,57 @@ export default class WaterSort {
         this.displayGeneration();
     }
 
+    /**
+     * Displays the restart button
+     * And attach an event that generates a new game
+     */
+    displayRestartButton(){
+        this.#restartGameBtn.style.display = "block";
+    }
+
     //#endregion
 
     //#region Private
+
+    /**
+     * Saves the config and throws error when needed
+     * @param {object} obj 
+     * @param {number} obj.nbOfTubes 
+     * @param {number} obj.heightOfTube 
+     * @param {HTMLDivElement} obj.div 
+     * @param {HTMLElement} obj.labelElement 
+     * @param {HTMLButtonElement} obj.restartBtn 
+     * @param {HTMLButtonElement} obj.resetGameBtn 
+     * @param {string[]} obj.colors 
+     */
+    #saveConfig({ nbOfTubes, heightOfTube, div, labelElement, restartBtn, resetGameBtn, colors = [], }){
+        this.#configSaved = true;
+        if (!nbOfTubes) throw new Error("No number of tubes specified");
+        if (nbOfTubes !== colors.length) throw new Error("Number of tubes and colors are not logical");
+        this.#nbOfTubes = nbOfTubes;
+        if (!heightOfTube) throw new Error("No height of tubes specified");
+        this.#heightOfTube = heightOfTube;
+        if (!div) throw new Error("No div specified");
+        this.#divElement = div;
+        if (!labelElement) throw new Error("No label specified");
+        this.#labelElement = labelElement;
+        if (!restartBtn) throw new Error("No restart button specified");
+        this.#restartGameBtn = restartBtn;
+        if (!resetGameBtn) throw new Error("No reset button specified");
+        this.#resetGameBtn = resetGameBtn;
+        this.#tubes = [];
+        this.#colors = colors;
+        this.#changeHeightColorInTubeCssVariable();
+    }
+
+    /**
+     * Gets the height in pixels of the tube
+     * Divide this height by the number of height in tube and sets as CSS variable
+     */
+    #changeHeightColorInTubeCssVariable(){
+        const heightTubePx = +Utils.getCssVariable("height-tube").split("px").join("");
+        Utils.setCssVariable("height-color-tube", `${Math.ceil(heightTubePx / this.#heightOfTube)}px`);
+    }
 
     /**
      * Check if every tube is completed so thatthe user has won
@@ -157,15 +195,6 @@ export default class WaterSort {
      */
     #checkIfVictory(){
         return this.#generation.every(tube => tube.completed);
-    }
-
-    /**
-     * Displays the restart button
-     * And attach an event that generates a new game
-     */
-    #displayRestartButton(){
-        this.#restartGameBtn.style.display = "block";
-        this.#restartGameBtn.addEventListener("click", () => this.generate());
     }
 
     //#region Getters
@@ -248,16 +277,20 @@ export default class WaterSort {
         else this.#removeSelection();
         if (!this.#checkIfVictory()) return this.#labelElement.innerText = "";
         this.#labelElement.innerText = "You won !";
-        this.#displayRestartButton();
+        this.displayRestartButton();
         this.#resetGameBtn.style.display = "none";
     }
 
     /**
+     * Check if it is an empty tube
      * Stores the id of the actual selection
      * Adds the 'selected' class to emphasize the right tube
      * @param {string} newId 
      */
     #selectPrimaryTube(newId){
+        // Can't select empty tube
+        const tube = this.#getTubeGeneratedFromId(newId);
+        if (tube.slots.length === 0) return;
         this.#idTubeSelected = newId;
         document.getElementById(`tube-${this.#idTubeSelected}`)?.classList.add("selected");
     }

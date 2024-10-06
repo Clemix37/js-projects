@@ -3,6 +3,8 @@
     --violet: #820B8A;
     --yellow: #FAFF7F;
     --light-blue: #BCF4F5;
+    --height-tube: 400px;
+    --height-color-tube: 100px;
 }
 
 #game {
@@ -12,7 +14,7 @@
 .tube {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: var(--height-tube);
     width: 200px;
     border-bottom-left-radius: 25%;
     border-bottom-right-radius: 25%;
@@ -28,5 +30,5 @@
 }
 
 .tube-color {
-    height: 100px;
+    height: var(--height-color-tube);
 }

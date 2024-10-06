@@ -24,14 +24,28 @@
     <div class="ligne" style="margin-top: 40px;">
         <h3 id="lbl-msg-game" class="subtitle has-text-centered"></h3>
     </div>
+    <div class="ligne" id="game-options">
+        <div class="colonne">
+            <div class="ligne">
+                <label for="txt-height-tube">Height of tube: </label>
+                <input id="txt-height-tube" class="input is-rounded" placeholder="Ex: 4" value="4" />
+            </div>
+            <div class="ligne">
+                <button id="btn-restart-game" class="button is-rounded" title="Restart">
+                    <i class="fas fa-power-off" style="margin-right: 8px;"></i>
+                    Restart
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="ligne">
+        <button id="btn-display-options" class="button is-rounded" title="Display options">
+            <i class="fas fa-cog" style="margin-right: 8px;"></i>
+            Game Options
+        </button>
         <button id="btn-reset-game" class="button is-rounded" title="Reset">
             <i class="fas fa-rotate-right" style="margin-right: 8px;"></i>
             Reset
-        </button>
-        <button id="btn-restart-game" class="button is-rounded" title="Restart">
-            <i class="fas fa-power-off" style="margin-right: 8px;"></i>
-            Restart
         </button>
     </div>
 

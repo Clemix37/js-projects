@@ -1,4 +1,4 @@
-import Utils from "../../js/Utils.js";
+import Utils from "../../../js/Utils.js";
 
 export default class Tube {
 
