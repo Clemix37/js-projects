@@ -149,6 +149,24 @@ export default class Utils {
 		return arr.sort((a, b) => 0.5 - Math.random());
 	}
 
+	/**
+	 * Removes the duplicate from the array in argument
+	 * @param {any[]} arr
+	 * @returns {any[]}
+	 */
+	static removeDuplicateFromArray(arr = []) {
+		return [...new Set([...arr])];
+	}
+
+	/**
+	 * Returns the string given as argument but capitalized
+	 * @param {string} str
+	 * @returns {string}
+	 */
+	static capitalize(str = "") {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
 	//#endregion
 
 	//#region Private methods

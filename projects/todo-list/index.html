@@ -24,7 +24,13 @@
     </nav>
 
     <div id="div-add-task" class="ligne" style="margin-top: 40px;">
+        <!-- Searh bar -->
         <input id="txt-search-task" type="text" class="input is-rounded" placeholder="Search">
+        <!-- Tags filter -->
+        <div class="select">
+            <select id="list-tags-task"></select>
+        </div>
+        <!-- Add task button -->
         <button id="btn-add-task" class="button is-rounded">
             <i class="fas fa-plus" style="margin-right: 8px;"></i>
             Add task
@@ -38,7 +44,8 @@
             <div class="colonne">
                 <label class="label">Title:</label>
                 <div class="control">
-                    <input id="txt-title-task" type="text" class="input is-rounded" placeholder="Title">
+                    <input id="txt-title-task" type="text" class="input is-rounded" placeholder="Title"
+                        autocomplete="off">
                 </div>
             </div>
         </div>
@@ -51,8 +58,17 @@
             </div>
         </div>
         <div class="ligne field">
+            <div class="colonne">
+                <label class="label">Tags (separated by a space) :</label>
+                <div class="control">
+                    <input id="txt-tags-task" type="text" class="input is-rounded" placeholder="Tags..."
+                        autocomplete="off">
+                </div>
+            </div>
+        </div>
+        <div class="ligne field">
             <div class="control">
-                <label class="checkbox">
+                <label class="checkbox" style="color: white;">
                     <input type="checkbox" id="cbx-done-task">
                     Done
                 </label>
