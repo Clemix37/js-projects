@@ -1,4 +1,5 @@
 import store from "../../js/SessionStore.js";
+import Utils from "../../js/Utils.js";
 import Task from "./Task.js";
 
 export default class TodoApp {
@@ -8,6 +9,22 @@ export default class TodoApp {
 	 * @type {Task[]}
 	 */
 	#tasks;
+	/**
+	 * @type {string[]}
+	 */
+	#tags;
+	/**
+	 * @type {HTMLDivElement}
+	 */
+	#divInDom;
+	/**
+	 * @type {boolean}
+	 */
+	#isEditMode;
+	/**
+	 * @type {Task?}
+	 */
+	#taskInEdit;
 	static SESSION_TODO_APP_KEY = "todo-list-cwd";
 	static ID_WINDOW_TASK = "window-task";
 
@@ -19,9 +36,19 @@ export default class TodoApp {
 	 * Create an instance of a TodoApp
 	 * @param {object} obj
 	 * @param {Task[]} obj.tasks
+	 * @param {string[]} obj.tags
+	 * @param {HTMLDivElement} obj.divInDom
 	 */
-	constructor({ tasks = [] }) {
+	constructor({ tasks = [], tags = [], divInDom }) {
+		if (!divInDom) throw new Error("No div to display in DOM");
+		this.#divInDom = divInDom;
 		this.#tasks = tasks;
+		this.#tags = tags;
+		this.#isEditMode = false;
+		this.#taskInEdit = null;
+		this.#displayTags();
+		this.displayTasks();
+		this.#attachEvents();
 	}
 
 	//#endregion
@@ -31,26 +58,44 @@ export default class TodoApp {
 	get tasks() {
 		return this.#tasks;
 	}
+	get tags() {
+		return this.#tags;
+	}
 
 	//#endregion
 
 	//#region Methods
 
+	//#region Public methods
+
 	/**
-	 * Displays every tasks in the div given as argument
+	 * Displays every tasks in the div of the id in the class
 	 * Filters the display based on the filter content as second argument
-	 * @param {HTMLDivElement} divInDom
 	 * @param {string} filterContent
+	 * @param {string} filterTag
 	 */
-	displayOnDiv(divInDom, filterContent = "") {
-		if (!divInDom) return;
+	displayTasks(filterContent = "", filterTag = "") {
+		if (!this.#divInDom) return;
 		const display = this.#tasks
-			.filter((t) => !filterContent || t.title.includes(filterContent) || t.description.includes(filterContent))
+			.filter(
+				(t) =>
+					// Pas de filtre
+					(!filterContent && !filterTag) ||
+					// Contient le filtre dans le titre
+					(filterContent &&
+						(t.title.includes(filterContent) ||
+							// Ou la description
+							t.description.includes(filterContent))) ||
+					// Ou le tag le contient
+					(filterTag && t.tags.includes(filterTag)),
+			)
 			.reduce((prev, task) => prev + task.getTemplate(), "");
-		divInDom.innerHTML = display; // We erase the previous content by the new one
-		this.#addEvents(divInDom);
-		this.save();
+		this.#divInDom.innerHTML = display; // We erase the previous content by the new one
+		this.#addEvents();
+		this.#save();
 	}
+
+	//#region Modal
 
 	/**
 	 * Opens the task modal
@@ -68,41 +113,26 @@ export default class TodoApp {
 		windowTask.close();
 	}
 
+	//#endregion
+
 	/**
 	 * Sets value in the window, saves the task or cancel it
-	 * @param {HTMLDivElement} divInDom
 	 * @param {string?} id
 	 */
-	editTask(divInDom, id = null) {
+	editTask(id = null) {
 		const txtTitleTask = document.getElementById("txt-title-task");
 		const txtDescTask = document.getElementById("txt-desc-task");
 		const cbxDoneTask = document.getElementById("cbx-done-task");
-		const btnSaveTask = document.getElementById("btn-save-task");
-		const btnCancelTask = document.getElementById("btn-cancel-task");
-		const isEditMode = !!id;
+		const txtTagsTask = document.getElementById("txt-tags-task");
+		this.#isEditMode = !!id;
 		const task = id ? this.getTaskById(id) : new Task({});
+		this.#taskInEdit = task;
 		// Sets value of inputs
 		txtTitleTask.value = task.title;
 		txtDescTask.value = task.description;
 		cbxDoneTask.checked = task.done;
+		txtTagsTask.value = task.tags.reduce((prev, tag) => `${prev}${tag} `, "");
 		this.openModalTask();
-		// Cancel events
-		btnCancelTask.removeEventListener("click", () => this.closeModalTask());
-		btnCancelTask.addEventListener("click", () => this.closeModalTask());
-		// Save events
-		const saveTask = () => {
-			// We change task's values
-			task.done = cbxDoneTask.checked;
-			task.title = txtTitleTask.value;
-			task.description = txtDescTask.value;
-			// If new we add it to the rest
-			if (!isEditMode) this.addTasks(task);
-			else this.#tasks = this.#tasks.map((t) => (t.id != task.id ? t : task));
-			this.closeModalTask();
-			this.displayOnDiv(divInDom);
-		};
-		btnSaveTask.removeEventListener("click", saveTask);
-		btnSaveTask.addEventListener("click", saveTask);
 	}
 
 	/**
@@ -125,73 +155,172 @@ export default class TodoApp {
 		return this.#tasks.find((t) => t.id == id);
 	}
 
-	save() {
-		store.set(TodoApp.SESSION_TODO_APP_KEY, this.toJSON());
+	/**
+	 * Returns an object of the instance
+	 * @returns {{ tasks: Task[], tags: string[], }}
+	 */
+	toJSON() {
+		return {
+			tasks: this.#tasks.map((t) => t.toJSON()),
+			tags: this.#tags,
+		};
+	}
+
+	//#endregion
+
+	//#region Private methods
+
+	/**
+	 * Attach global events on the page
+	 */
+	#attachEvents() {
+		const btnCancelTask = document.getElementById("btn-cancel-task");
+		btnCancelTask.addEventListener("click", () => this.#cancelEdit());
+		const btnSaveTask = document.getElementById("btn-save-task");
+		btnSaveTask.addEventListener("click", () => this.#saveTask());
 	}
 
 	/**
 	 * Adds the events for the tasks on the DOM
-	 * @param {HTMLDivElement} divInDom
 	 */
-	#addEvents(divInDom) {
-		this.#addEventsOnTasks(divInDom);
+	#addEvents() {
+		this.#addEventsOnTasks();
 	}
 
 	/**
 	 * Adds events on tasks displayed
-	 * @param {HTMLDivElement} divInDom
 	 */
-	#addEventsOnTasks(divInDom) {
+	#addEventsOnTasks() {
 		// DELETE TASK
 		const btnsDelTasks = document.querySelectorAll(`.${Task.CLASS_DELETE_TASK}`);
 		for (let i = 0; i < btnsDelTasks.length; i++) {
 			const btnDelTask = btnsDelTasks[i];
-			btnDelTask.removeEventListener("click", (e) => this.#deleteTaskFromElement(e, divInDom));
-			btnDelTask.addEventListener("click", (e) => this.#deleteTaskFromElement(e, divInDom));
+			btnDelTask.removeEventListener("click", (e) => this.#deleteTaskFromElement(e));
+			btnDelTask.addEventListener("click", (e) => this.#deleteTaskFromElement(e));
 		}
 		// EDIT TASK
 		const btnsEditTasks = document.querySelectorAll(`.${Task.CLASS_EDIT_TASK}`);
 		for (let i = 0; i < btnsEditTasks.length; i++) {
 			const btnEditTask = btnsEditTasks[i];
-			btnEditTask.removeEventListener("click", (e) => this.#editTaskFromElement(e, divInDom));
-			btnEditTask.addEventListener("click", (e) => this.#editTaskFromElement(e, divInDom));
+			btnEditTask.removeEventListener("click", (e) => this.#editTaskFromElement(e));
+			btnEditTask.addEventListener("click", (e) => this.#editTaskFromElement(e));
 		}
-		// TODO
+		// CHANGE STATUS TASK
+		const btnsChangeStatusTask = document.querySelectorAll(`.${Task.CLASS_CHANGE_STATUS_TASK}`);
+		for (let i = 0; i < btnsChangeStatusTask.length; i++) {
+			const btnChangeStatusTask = btnsChangeStatusTask[i];
+			btnChangeStatusTask.removeEventListener("click", (e) => this.#changeStatusTaskFromElement(e));
+			btnChangeStatusTask.addEventListener("click", (e) => this.#changeStatusTaskFromElement(e));
+		}
 	}
 
 	/**
 	 * Map every list and filter the task from the tasks property
 	 * @param {EventObject} e
-	 * @param {HTMLDivElement} divInDom
 	 */
-	#deleteTaskFromElement(e, divInDom) {
+	#deleteTaskFromElement(e) {
 		const { id } = e.currentTarget.dataset;
 		if (!id) return;
+		// Delete the task from the tasks list
 		this.#tasks = this.#tasks.filter((task) => task.id != id);
-		this.displayOnDiv(divInDom);
+		// Removes the duplicate from all the tags used by tasks
+		this.#tags = Utils.removeDuplicateFromArray(this.#tasks.flatMap((t) => t.tags));
+		this.displayTasks();
+		this.#displayTags();
 	}
 
 	/**
 	 * Gets the id from element and edit the task by id
 	 * @param {EventObject} e
-	 * @param {HTMLDivElement} divInDom
 	 * @returns {void}
 	 */
-	#editTaskFromElement(e, divInDom) {
+	#editTaskFromElement(e) {
 		const { id } = e.currentTarget.dataset;
 		if (!id) return;
-		this.editTask(divInDom, id);
+		this.editTask(id);
 	}
 
 	/**
-	 * Returns an object of the instance
-	 * @returns {{ tasks: Task[] }}
+	 * Change the status of the task by its id and display again
+	 * @param {EventObject} e
+	 * @returns {void}
 	 */
-	toJSON() {
-		return {
-			tasks: this.#tasks.map((t) => t.toJSON()),
-		};
+	#changeStatusTaskFromElement(e) {
+		const { id } = e.currentTarget.dataset;
+		if (!id) return;
+		this.#tasks = this.#tasks.map((t) => {
+			if (t.id != id) return t;
+			// Change the status of the task and returns it
+			t.done = e.currentTarget.checked;
+			return t;
+		});
+		this.displayTasks();
 	}
+
+	/**
+	 * Removes the instatiated properties
+	 * Closes the modal
+	 */
+	#cancelEdit() {
+		this.#taskInEdit = null;
+		this.#isEditMode = false;
+		this.closeModalTask();
+	}
+
+	/**
+	 * Stores the content of the inputs inside the task in edit
+	 * Saves the task by adding it or editing its values
+	 * Removes duplicates from tags
+	 * Closes the modal
+	 * Displays again the content and the tags
+	 */
+	#saveTask() {
+		if (!this.#taskInEdit) return;
+		const txtTitleTask = document.getElementById("txt-title-task");
+		const txtDescTask = document.getElementById("txt-desc-task");
+		const cbxDoneTask = document.getElementById("cbx-done-task");
+		const txtTagsTask = document.getElementById("txt-tags-task");
+		// We change task's values
+		this.#taskInEdit.done = cbxDoneTask.checked;
+		this.#taskInEdit.title = txtTitleTask.value;
+		this.#taskInEdit.description = txtDescTask.value;
+		// Gets the tag separated by a space
+		const tagsInField = txtTagsTask.value
+			.trim()
+			.split(" ")
+			.filter((tag) => !!tag);
+		// Saves them without duplicate
+		this.#tags = Utils.removeDuplicateFromArray([...this.#tags, ...tagsInField]); // Removes the duplicate
+		this.#taskInEdit.tags = tagsInField;
+		// If new we add it to the rest
+		if (!this.#isEditMode) this.addTasks(this.#taskInEdit);
+		else this.#tasks = this.#tasks.map((t) => (t.id != this.#taskInEdit.id ? t : this.#taskInEdit));
+		this.#cancelEdit(); // Closes modal and removes properties
+		this.displayTasks(); // Display every tasks
+		this.#displayTags(); // Display tags for filtering
+	}
+
+	/**
+	 * Gets the tags and display them as option for the list of tags for filtering the content
+	 */
+	#displayTags() {
+		const listTags = document.getElementById("list-tags-task");
+		const display = this.#tags.reduce(
+			(prev, tag) => `${prev}<option value="${tag}">${Utils.capitalize(tag)}</option>`,
+			"",
+		);
+		// By default, one option is empty to see every tasks
+		listTags.innerHTML = `<option value="" selected></option>${display}`;
+	}
+
+	/**
+	 * Save the instance as object in the store
+	 */
+	#save() {
+		store.set(TodoApp.SESSION_TODO_APP_KEY, this.toJSON());
+	}
+
+	//#endregion
 
 	//#endregion
 }
