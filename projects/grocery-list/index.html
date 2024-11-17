@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,30 @@
     <title>Grocery list</title>
     <link rel="stylesheet" href="../../styles/includes.css">
 </head>
+
 <body>
     <style>
-        .item { display: flex; justify-content: space-around; align-items: center; border-radius: 20px; min-height: 75px; }
-        .subtitle:not(:last-child) { margin-bottom: 0; }
-        #items { overflow-y: scroll; }
-        .btn-icon { cursor: pointer; }
+        .item {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20px;
+            min-height: 75px;
+        }
+
+        .subtitle:not(:last-child) {
+            margin-bottom: 0;
+        }
+
+        #items {
+            overflow-y: scroll;
+        }
+
+        .btn-icon {
+            cursor: pointer;
+        }
     </style>
+    <!-- NAVRBAR -->
     <nav class="ligne">
         <div class="colonne">
             <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
@@ -33,7 +51,8 @@
                 </div>
                 <div class="ligne">
                     <input type="text" class="input is-rounded is-large" id="item" placeholder="Item" autofocus>
-                    <button class="button is-rounded is-info is-large" id="btnAddItem"><i class="fas fa-plus" style="margin-right:8px;"></i>Add</button>
+                    <button class="button is-rounded is-info is-large" id="btnAddItem"><i class="fas fa-plus"
+                            style="margin-right:8px;"></i>Add</button>
                 </div>
             </div>
         </div>
@@ -45,4 +64,5 @@
     </div>
     <script src="./app.js" type="module"></script>
 </body>
+
 </html>

@@ -1,0 +1,29 @@
+.btn-memory-game {
+    width: 20%;
+    height: 20%;
+}
+
+.btn-memory-game.active {
+    border: 5px solid white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#btn-memory-red {
+    background-color: red;
+}
+
+#btn-memory-blue {
+    background-color: blue;
+}
+
+#btn-memory-green {
+    background-color: green;
+}
+
+#btn-memory-yellow {
+    background-color: yellow;
+}

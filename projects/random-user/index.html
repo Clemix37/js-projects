@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random User</title>
-	<link rel="stylesheet" href="../../styles/includes.css">
+    <link rel="stylesheet" href="../../styles/includes.css">
 </head>
+
 <body>
     <style>
-        .subtitle:is(:first-child) { text-decoration: underline; }
-        .subtitle { padding: 5px; }
-        .subtitle { margin-bottom: 0 !important; }
+        .subtitle:is(:first-child) {
+            text-decoration: underline;
+        }
+
+        .subtitle {
+            padding: 5px;
+        }
+
+        .subtitle {
+            margin-bottom: 0 !important;
+        }
     </style>
+    <!-- NAVRBAR -->
     <nav class="ligne">
         <div class="colonne">
             <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
@@ -25,7 +36,8 @@
     </nav>
     <div class="colonne" style="margin-top: 40px;">
         <div class="ligne">
-            <button id="btn-get-user" class="button is-rounded is-primary"><i class="fas fa-user" style="margin-right: 8px;"></i>Get Random User</button>
+            <button id="btn-get-user" class="button is-rounded is-primary"><i class="fas fa-user"
+                    style="margin-right: 8px;"></i>Get Random User</button>
         </div>
         <div id="user-content" class="ligne" style="display: none;">
             <div class="colonne">
@@ -58,4 +70,5 @@
 
     <script src="./randomUser.js" type="module"></script>
 </body>
+
 </html>

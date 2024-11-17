@@ -140,6 +140,15 @@ export default class Utils {
 		else displayNotification();
 	}
 
+	/**
+	 * Randomize an arry given as argument
+	 * @param {any[]} arr
+	 * @returns {any[]}
+	 */
+	static shuffleArray(arr = []) {
+		return arr.sort((a, b) => 0.5 - Math.random());
+	}
+
 	//#endregion
 
 	//#region Private methods

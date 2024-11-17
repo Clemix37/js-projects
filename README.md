@@ -3,62 +3,62 @@
 Projects run by JS.  
 Visit it [here](https://clemix37.github.io/js-projects/)
 
-## Summary 
+## Summary
 
-- [X] [Counter](https://github.com/Clemix37/js-projects#counter)  
-- [X] [Drum Kit](https://github.com/Clemix37/js-projects#drum-kit)  
-- [X] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)  
-- [X] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)  
-- [X] [Dice Game](https://github.com/Clemix37/js-projects#dice-game)  
-- [X] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)  
-- [X] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)  
-- [X] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)  
-- [X] [Chore Door game](https://clemix37.github.io/js-projects/projects/chore-door-game/)  
-- [X] [Click reaction game](https://github.com/Clemix37/reaction-time)  
-- [X] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)  
-- [X] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)  
-- [X] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)  
-- [X] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)  
-- [X] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)  
-- [X] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)  
-- [X] [Library app](https://clemix37.github.io/js-projects/projects/library/)  
-- [x] [Dino game](https://clemix37.github.io/gamedev-bean-jump/)  
-- [X] [To do list](https://clemix37.github.io/js-projects/projects/todo-list/)  
-- [X] [Water Sort Game](https://clemix37.github.io/js-projects/projects/water-sort/)  
-- [ ] Calendar  
-- [ ] Memory game  
-- [ ] Weather App  
-- [ ] Music Player  
-- [ ] Quiz App  
-- [ ] Avatar Maker  
-- [ ] Budget App  
-- [ ] Car avoidance game  
-- [ ] Fall game  
-- [ ] Shooting Game  
-- [ ] Simon Game  
-- [ ] Task Manager  
-- [ ] Contact saver  
-- [ ] Airline Reservation  
-- [ ] Hotel reservation  
-- [ ] Calculator  
-- [ ] Book store  
-- [ ] Recipes app  
-- [ ] Poll app  
+-   [x] [Counter](https://github.com/Clemix37/js-projects#counter)
+-   [x] [Drum Kit](https://github.com/Clemix37/js-projects#drum-kit)
+-   [x] [Random color](https://github.com/Clemix37/js-projects#random-color-generator)
+-   [x] [Number guesser](https://github.com/Clemix37/js-projects#number-guesser)
+-   [x] [Dice Game](https://github.com/Clemix37/js-projects#dice-game)
+-   [x] [Random password generator](https://github.com/Clemix37/js-projects#password-generator)
+-   [x] [Grocery List](https://github.com/Clemix37/js-projects#grocery-list)
+-   [x] [BMI Calculator](https://github.com/Clemix37/js-projects#bmi-calculator)
+-   [x] [Chore Door game](https://clemix37.github.io/js-projects/projects/chore-door-game/)
+-   [x] [Click reaction game](https://github.com/Clemix37/reaction-time)
+-   [x] [Capturing Keyboard Events](https://clemix37.github.io/js-projects/projects/key-codes/)
+-   [x] [Countdown timer](https://clemix37.github.io/js-projects/projects/countdown-timer/)
+-   [x] [PokeAPI](https://clemix37.github.io/js-projects/projects/poke-api/)
+-   [x] [Random user](https://clemix37.github.io/js-projects/projects/random-user/)
+-   [x] [Workout tracker](https://clemix37.github.io/js-projects/projects/workout-tracker/)
+-   [x] [Tic Tac Toe](https://clemix37.github.io/js-projects/projects/tic-tac-toe/)
+-   [x] [Library app](https://clemix37.github.io/js-projects/projects/library/)
+-   [x] [Dino game](https://clemix37.github.io/gamedev-bean-jump/)
+-   [x] [To do list](https://clemix37.github.io/js-projects/projects/todo-list/)
+-   [x] [Water Sort Game](https://clemix37.github.io/js-projects/projects/water-sort/)
+-   [x] [Memory game](https://clemix37.github.io/js-projects/projects/memory-game/)
+-   [ ] Calendar
+-   [ ] Weather App
+-   [ ] Music Player
+-   [ ] Quiz App
+-   [ ] Avatar Maker
+-   [ ] Budget App
+-   [ ] Car avoidance game
+-   [ ] Fall game
+-   [ ] Shooting Game
+-   [ ] Simon Game
+-   [ ] Task Manager
+-   [ ] Contact saver
+-   [ ] Airline Reservation
+-   [ ] Hotel reservation
+-   [ ] Calculator
+-   [ ] Book store
+-   [ ] Recipes app
+-   [ ] Poll app
 
 ### Counter
 
 Simple project: a counter.  
-Three simple things: increase, decrease and reset.  
+Three simple things: increase, decrease and reset.
 
 ### Drum Kit
 
 Simple project: a drum kit.  
-You can play sounds based on the instrument.  
+You can play sounds based on the instrument.
 
 ### Random color generator
 
 Simple project: a random color generator.  
-You can generate a new random color that is set in the background.  
+You can generate a new random color that is set in the background.
 
 ### Number guesser
 
@@ -71,11 +71,11 @@ You can calculate your BMI by entering your weight and your height.
 
 ### Password generator
 
-You can generate a password with uppercase, lowercase, digits, and symbols.  
+You can generate a password with uppercase, lowercase, digits, and symbols.
 
 ### Grocery List
 
-You can list your grocery items.   
+You can list your grocery items.
 
 ### Dice Game
 
@@ -88,3 +88,7 @@ You click a button, we call an API, and you get to see the results !
 ### Poke API
 
 You get to see 250 pokemon listed, you can also see every detail of the pokemon you click.
+
+### Memory Game
+
+The game plays a set of instructions and you have to repeat it in the same order.

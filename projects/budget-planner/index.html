@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Planner</title>
     <link rel="stylesheet" href="../../styles/includes.css">
 </head>
+
 <body>
+    <!-- NAVRBAR -->
     <nav class="ligne">
         <div class="colonne">
             <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
@@ -27,7 +30,8 @@
             <hr />
         </div>
         <div class="ligne">
-            <button id="btn-add-operation" class="button is-rounded"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add Operation</button>
+            <button id="btn-add-operation" class="button is-rounded"><i class="fas fa-plus"
+                    style="margin-right: 8px;"></i>Add Operation</button>
         </div>
         <div class="ligne">
             <hr />
@@ -39,10 +43,12 @@
         <!-- Navigating between months in the calendar -->
         <div class="ligne">
             <div class="colonne" style="align-items: center;">
-                <button id="btn-previous-month" class="button is-rounded is-dark"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Previous Month</button>
+                <button id="btn-previous-month" class="button is-rounded is-dark"><i class="fas fa-arrow-left"
+                        style="margin-right: 8px;"></i>Previous Month</button>
             </div>
             <div class="colonne" style="align-items: center;">
-                <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+                <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right"
+                        style="margin-left: 8px;"></i></button>
             </div>
         </div>
         <!-- Displays the calendar and its days -->
@@ -53,20 +59,26 @@
 
     <dialog id="window-add-operation">
         <div class="ligne" style="padding: 5px;">
-            <input id="operation-name" type="text" class="input is-info is-rounded is-medium" placeholder="Title" autofocus autocomplete="off">
+            <input id="operation-name" type="text" class="input is-info is-rounded is-medium" placeholder="Title"
+                autofocus autocomplete="off">
         </div>
         <div class="ligne" style="padding: 5px;">
-            <input id="operation-date" type="text" class="input is-info is-rounded is-medium" placeholder="dd/MM/YYYY" autocomplete="off" maxlength="10">
+            <input id="operation-date" type="text" class="input is-info is-rounded is-medium" placeholder="dd/MM/YYYY"
+                autocomplete="off" maxlength="10">
         </div>
         <div class="ligne" style="padding: 5px;">
-            <input id="operation-amount" type="number" class="input is-info is-rounded is-medium" placeholder="Amount" autocomplete="off">
+            <input id="operation-amount" type="number" class="input is-info is-rounded is-medium" placeholder="Amount"
+                autocomplete="off">
         </div>
         <div class="ligne">
-            <button id="btn-save-operation-window" class="button is-dark is-rounded is-medium"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add</button>
-            <button id="btn-close-operation-window" class="button is-danger is-rounded is-medium" title="Close window"><i class="fas fa-times" style="margin-right: 8px;"></i>Close</button>
+            <button id="btn-save-operation-window" class="button is-dark is-rounded is-medium"><i class="fas fa-plus"
+                    style="margin-right: 8px;"></i>Add</button>
+            <button id="btn-close-operation-window" class="button is-danger is-rounded is-medium"
+                title="Close window"><i class="fas fa-times" style="margin-right: 8px;"></i>Close</button>
         </div>
     </dialog>
 
     <script src="./budgetPlanner.js" type="module"></script>
 </body>
+
 </html>
