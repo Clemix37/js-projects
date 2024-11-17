@@ -47,7 +47,7 @@ export default class TodoApp {
 		const display = this.#tasks
 			.filter((t) => !filterContent || t.title.includes(filterContent) || t.description.includes(filterContent))
 			.reduce((prev, task) => prev + task.getTemplate(), "");
-		divInDom.innerHTML = display;
+		divInDom.innerHTML = display; // We erase the previous content by the new one
 		this.#addEvents(divInDom);
 		this.save();
 	}
@@ -79,7 +79,8 @@ export default class TodoApp {
 		const cbxDoneTask = document.getElementById("cbx-done-task");
 		const btnSaveTask = document.getElementById("btn-save-task");
 		const btnCancelTask = document.getElementById("btn-cancel-task");
-		const task = id ? this.getTaskById(id) : new Task();
+		const isEditMode = !!id;
+		const task = id ? this.getTaskById(id) : new Task({});
 		// Sets value of inputs
 		txtTitleTask.value = task.title;
 		txtDescTask.value = task.description;
@@ -90,16 +91,13 @@ export default class TodoApp {
 		btnCancelTask.addEventListener("click", () => this.closeModalTask());
 		// Save events
 		const saveTask = () => {
+			// We change task's values
+			task.done = cbxDoneTask.checked;
+			task.title = txtTitleTask.value;
+			task.description = txtDescTask.value;
 			// If new we add it to the rest
-			if (!id) this.addTasks(task);
-			else
-				this.#tasks = this.#tasks.map((t) => {
-					if (t.id != id) return t;
-					t.done = cbxDoneTask.checked;
-					t.title = txtTitleTask.value;
-					t.description = txtDescTask.value;
-					return t;
-				});
+			if (!isEditMode) this.addTasks(task);
+			else this.#tasks = this.#tasks.map((t) => (t.id != task.id ? t : task));
 			this.closeModalTask();
 			this.displayOnDiv(divInDom);
 		};

@@ -4,9 +4,9 @@ import Operation from "./classes/Operation.js";
 
 // PROPERTIES
 const budgetCalendar = new BudgetCalendar({
-    idContainer: "calendar",
-    idTitle: "month-calendar",
-    idBalanceContainer: "balance",
+	idContainer: "calendar",
+	idTitle: "month-calendar",
+	idBalanceContainer: "balance",
 });
 // NAVIGATION
 const btnNextMonth = document.getElementById("btn-next-month");
@@ -35,69 +35,68 @@ btnCloseOperation.addEventListener("click", closeOperationWindow);
 btnSaveOperation.addEventListener("click", saveOperation);
 
 // FUNCTIONS
-function displayContent(){
-    budgetCalendar.display();
+function displayContent() {
+	budgetCalendar.display();
 }
 
 //#region Operations
 
-function addOperation(operationToEdit = null){
-    operationInEdition = operationToEdit;
-    const currentDate = new Date();
-    // No title by default
-    inputOperationName.value = operationInEdition?.name ?? "";
-    // We display as default the value of the current date
-    inputOperationDate.value = operationInEdition?.date 
-        ? Utils.getDateAsString(operationInEdition?.date, Utils.dateFormats.DayMonthYearSlash) 
-        : Utils.getDateAsString(currentDate, Utils.dateFormats.DayMonthYearSlash);
-    // Default value as 0
-    inputOperationAmount.value = operationInEdition?.amount ?? 0;
-    // Opens the modal
-    windowAddOperation.showModal();
+function addOperation(operationToEdit = null) {
+	operationInEdition = operationToEdit;
+	const currentDate = new Date();
+	// No title by default
+	inputOperationName.value = operationInEdition?.name ?? "";
+	// We display as default the value of the current date
+	inputOperationDate.value = operationInEdition?.date
+		? Utils.getDateAsString(operationInEdition?.date, Utils.dateFormats.DayMonthYearSlash)
+		: Utils.getDateAsString(currentDate, Utils.dateFormats.DayMonthYearSlash);
+	// Default value as 0
+	inputOperationAmount.value = operationInEdition?.amount ?? 0;
+	// Opens the modal
+	windowAddOperation.showModal();
 }
 
-function saveOperation(){
-    const isEdition = !!operationInEdition;
-    const name = inputOperationName.value;
-    const date = Utils.stringAsDate(inputOperationDate.value, Utils.dateFormats.DayMonthYearSlash);
-    const amount = +inputOperationAmount.value;
-    console.log(name, date, amount);
-    if(isEdition){
-        operationInEdition.name = name;
-        operationInEdition.date = date;
-        operationInEdition.amount = amount;
-        budgetCalendar.editOperation(operationInEdition);
-    }
-    else {
-        const newOperation = new Operation({
-            name,
-            date,
-            amount,
-        });
-        budgetCalendar.addOperation(newOperation);
-    }
-    closeOperationWindow();
+function saveOperation() {
+	const isEdition = !!operationInEdition;
+	const name = inputOperationName.value;
+	const date = Utils.stringAsDate(inputOperationDate.value, Utils.dateFormats.DayMonthYearSlash);
+	const amount = +inputOperationAmount.value;
+	console.log(name, date, amount);
+	if (isEdition) {
+		operationInEdition.name = name;
+		operationInEdition.date = date;
+		operationInEdition.amount = amount;
+		budgetCalendar.editOperation(operationInEdition);
+	} else {
+		const newOperation = new Operation({
+			name,
+			date,
+			amount,
+		});
+		budgetCalendar.addOperation(newOperation);
+	}
+	closeOperationWindow();
 }
 
-function closeOperationWindow(){
-    windowAddOperation.close();
-    operationInEdition = null;
-    // We empty each input field
-    inputOperationName.value = "";
-    inputOperationDate.value = "";
-    inputOperationAmount.value = 0;
+function closeOperationWindow() {
+	windowAddOperation.close();
+	operationInEdition = null;
+	// We empty each input field
+	inputOperationName.value = "";
+	inputOperationDate.value = "";
+	inputOperationAmount.value = 0;
 }
 
 //#endregion
 
 //#region Navigation
 
-function nextMonth(){
-    budgetCalendar.nextMonth();
+function nextMonth() {
+	budgetCalendar.goToNextMonth();
 }
 
-function previousMonth(){
-    budgetCalendar.previousMonth();
+function previousMonth() {
+	budgetCalendar.goToPreviousMonth();
 }
 
 //#endregion
