@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="ligne">
         <div class="colonne">
             <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
@@ -22,29 +23,52 @@
         <div class="colonne"></div>
     </nav>
 
-    <div id="div-add-list" style="margin-top: 40px;">
-        <h3 class="subtitle has-text-centered">New list :</h3>
-        <input id="input-name-list" type="text" class="input is-rounded">
-        <button id="btn-add-list" class="button is-rounded"><i class="fas fa-plus" style="margin-right: 8px;"></i>Add
-            list</button>
-    </div>
-
-    <div id="div-add-task">
-        <h3 class="subtitle has-text-centered">New task :</h3>
-        <select id="select-lists"></select>
-        <button id="btn-refresh-lists" class="button is-rounded">Refresh</button>
-        <input id="input-description-task" type="text" class="input is-rounded">
-        <label class="checkbox">
-            <input id="input-done-task" type="checkbox">
-            Done
-        </label>
+    <div id="div-add-task" class="ligne" style="margin-top: 40px;">
+        <input id="txt-search-task" type="text" class="input is-rounded" placeholder="Search">
         <button id="btn-add-task" class="button is-rounded">
             <i class="fas fa-plus" style="margin-right: 8px;"></i>
             Add task
         </button>
     </div>
 
-    <div id="div-lists"></div>
+    <div id="div-tasks" class="ligne" style="flex-wrap: wrap;"></div>
+
+    <dialog id="window-task">
+        <div class="ligne field">
+            <div class="colonne">
+                <label class="label">Title:</label>
+                <div class="control">
+                    <input id="txt-title-task" type="text" class="input is-rounded" placeholder="Title">
+                </div>
+            </div>
+        </div>
+        <div class="ligne field">
+            <div class="colonne">
+                <label class="label">Description:</label>
+                <div class="control">
+                    <textarea id="txt-desc-task" class="textarea" placeholder="Description..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="ligne field">
+            <div class="control">
+                <label class="checkbox">
+                    <input type="checkbox" id="cbx-done-task">
+                    Done
+                </label>
+            </div>
+        </div>
+        <div class="ligne">
+            <button id="btn-save-task" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-task" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
 
     <script type="module" src="./app.js"></script>
 </body>

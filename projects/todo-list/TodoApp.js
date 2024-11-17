@@ -1,145 +1,199 @@
-import List from "./List.js";
+import store from "../../js/SessionStore.js";
 import Task from "./Task.js";
 
 export default class TodoApp {
+	//#region Properties
 
-    //#region Properties
+	/**
+	 * @type {Task[]}
+	 */
+	#tasks;
+	static SESSION_TODO_APP_KEY = "todo-list-cwd";
+	static ID_WINDOW_TASK = "window-task";
 
-    /**
-     * @type {List}
-     */
-    #lists;
+	//#endregion
 
-    //#endregion
+	//#region constructor
 
-    //#region constructor
+	/**
+	 * Create an instance of a TodoApp
+	 * @param {object} obj
+	 * @param {Task[]} obj.tasks
+	 */
+	constructor({ tasks = [] }) {
+		this.#tasks = tasks;
+	}
 
-    /**
-     * Create an instance of a TodoApp
-     * @param {object} obj
-     * @param {List[]} obj.lists 
-     */
-    constructor({ lists = [], }){
-        this.#lists = lists;
-    }
+	//#endregion
 
-    //#endregion
+	//#region Accessors
 
-    //#region Accessors
+	get tasks() {
+		return this.#tasks;
+	}
 
-    get lists() { return this.#lists; }
+	//#endregion
 
-    //#endregion
+	//#region Methods
 
-    //#region Methods
+	/**
+	 * Displays every tasks in the div given as argument
+	 * Filters the display based on the filter content as second argument
+	 * @param {HTMLDivElement} divInDom
+	 * @param {string} filterContent
+	 */
+	displayOnDiv(divInDom, filterContent = "") {
+		if (!divInDom) return;
+		const display = this.#tasks
+			.filter((t) => !filterContent || t.title.includes(filterContent) || t.description.includes(filterContent))
+			.reduce((prev, task) => prev + task.getTemplate(), "");
+		divInDom.innerHTML = display;
+		this.#addEvents(divInDom);
+		this.save();
+	}
 
-    /**
-     * Displays every list in the div given as argument
-     * @param {HTMLDivElement} divInDom 
-     */
-    displayOnDiv(divInDom){
-        if(!divInDom) return;
-        const display = this.#lists.reduce((prev, list) => prev + list.getTemplate(), "");
-        divInDom.innerHTML = display;
-        this.#addEvents();
-    }
+	/**
+	 * Opens the task modal
+	 */
+	openModalTask() {
+		const windowTask = document.getElementById(TodoApp.ID_WINDOW_TASK);
+		windowTask.showModal();
+	}
 
-    /**
-     * Adds lists given as arguments inside the lists property
-     * Returns the lists property
-     * @param  {...List[]} newLists 
-     * @returns {List[]}
-     */
-    addLists(...newLists){
-        this.#lists.push(...newLists);
-        return this.#lists;
-    }
+	/**
+	 * Closes the task modal
+	 */
+	closeModalTask() {
+		const windowTask = document.getElementById(TodoApp.ID_WINDOW_TASK);
+		windowTask.close();
+	}
 
-    /**
-     * Add tasks in a list where the id is in arguments
-     * @param {string} idList 
-     * @param  {...Task[]} newTasks 
-     * @returns {List[]}
-     */
-    addTasksOnList(idList, ...newTasks){
-        this.#lists = this.#lists.map(list => {
-            if(list.id !== idList) return list;
-            list.addTasks(...newTasks);
-            return list;
-        });
-        return this.#lists;
-    }
+	/**
+	 * Sets value in the window, saves the task or cancel it
+	 * @param {HTMLDivElement} divInDom
+	 * @param {string?} id
+	 */
+	editTask(divInDom, id = null) {
+		const txtTitleTask = document.getElementById("txt-title-task");
+		const txtDescTask = document.getElementById("txt-desc-task");
+		const cbxDoneTask = document.getElementById("cbx-done-task");
+		const btnSaveTask = document.getElementById("btn-save-task");
+		const btnCancelTask = document.getElementById("btn-cancel-task");
+		const task = id ? this.getTaskById(id) : new Task();
+		// Sets value of inputs
+		txtTitleTask.value = task.title;
+		txtDescTask.value = task.description;
+		cbxDoneTask.checked = task.done;
+		this.openModalTask();
+		// Cancel events
+		btnCancelTask.removeEventListener("click", () => this.closeModalTask());
+		btnCancelTask.addEventListener("click", () => this.closeModalTask());
+		// Save events
+		const saveTask = () => {
+			// If new we add it to the rest
+			if (!id) this.addTasks(task);
+			else
+				this.#tasks = this.#tasks.map((t) => {
+					if (t.id != id) return t;
+					t.done = cbxDoneTask.checked;
+					t.title = txtTitleTask.value;
+					t.description = txtDescTask.value;
+					return t;
+				});
+			this.closeModalTask();
+			this.displayOnDiv(divInDom);
+		};
+		btnSaveTask.removeEventListener("click", saveTask);
+		btnSaveTask.addEventListener("click", saveTask);
+	}
 
-    /**
-     * Adds the events for the lists and for the tasks on the DOM
-     */
-    #addEvents(){
-        this.#addEventsOnLists();
-        this.#addEventsOnTasks();
-    }
+	/**
+	 * Adds tasks given as arguments
+	 * Returns the tasks property
+	 * @param  {...Task[]} newTasks
+	 * @returns {Task[]}
+	 */
+	addTasks(...newTasks) {
+		this.#tasks.push(...newTasks);
+		return this.#tasks;
+	}
 
-    #addEventsOnLists(){
-        // SEE TASKS
-        const btnsSeeTasks = document.querySelectorAll(`.${List.CLASS_SEE_TASKS}`);
-        for (let i = 0; i < btnsSeeTasks.length; i++) {
-            const btnSee = btnsSeeTasks[i];
-            btnSee.removeEventListener("click", (e) => this.#displayTasksFromList(e));
-            btnSee.removeEventListener("click", (e) => this.#displayTasksFromList(e));
-        }
-        // DELETE LIST
-        const btnsdelList = document.querySelectorAll(`.${List.CLASS_DELETE_LIST}`);
-        for (let i = 0; i < btnsdelList.length; i++) {
-            const btnDelList = btnsdelList[i];
-            btnDelList.removeEventListener("click", (e) => this.#deleteListFromElement(e));
-            btnDelList.removeEventListener("click", (e) => this.#deleteListFromElement(e));
-        }
-    }
+	/**
+	 * Returns the task found by its id in arguments
+	 * @param {string} id
+	 * @returns {Task?}
+	 */
+	getTaskById(id) {
+		return this.#tasks.find((t) => t.id == id);
+	}
 
-    #addEventsOnTasks(){
-        // DELETE TASK
-        const btnsdelTasks = document.querySelectorAll(`.${Task.CLASS_DELETE_TASK}`);
-        for (let i = 0; i < btnsdelTasks.length; i++) {
-            const btnDelList = btnsdelTasks[i];
-            btnDelList.removeEventListener("click", (e) => this.#deleteTaskFromElement(e));
-            btnDelList.removeEventListener("click", (e) => this.#deleteTaskFromElement(e));
-        }
-        // EDIT TASK
-        // TODO
-    }
+	save() {
+		store.set(TodoApp.SESSION_TODO_APP_KEY, this.toJSON());
+	}
 
-    #displayTasksFromList(e){
-        
-    }
+	/**
+	 * Adds the events for the tasks on the DOM
+	 * @param {HTMLDivElement} divInDom
+	 */
+	#addEvents(divInDom) {
+		this.#addEventsOnTasks(divInDom);
+	}
 
-    /**
-     * Filter the list from the lists property
-     * @param {*} e 
-     */
-    #deleteListFromElement(e){
-        const { id } = e.currentTarget.dataset;
-        if (!id) return;
-        this.#lists = this.#lists.filter(l => l.id !== id);
-    }
+	/**
+	 * Adds events on tasks displayed
+	 * @param {HTMLDivElement} divInDom
+	 */
+	#addEventsOnTasks(divInDom) {
+		// DELETE TASK
+		const btnsDelTasks = document.querySelectorAll(`.${Task.CLASS_DELETE_TASK}`);
+		for (let i = 0; i < btnsDelTasks.length; i++) {
+			const btnDelTask = btnsDelTasks[i];
+			btnDelTask.removeEventListener("click", (e) => this.#deleteTaskFromElement(e, divInDom));
+			btnDelTask.addEventListener("click", (e) => this.#deleteTaskFromElement(e, divInDom));
+		}
+		// EDIT TASK
+		const btnsEditTasks = document.querySelectorAll(`.${Task.CLASS_EDIT_TASK}`);
+		for (let i = 0; i < btnsEditTasks.length; i++) {
+			const btnEditTask = btnsEditTasks[i];
+			btnEditTask.removeEventListener("click", (e) => this.#editTaskFromElement(e, divInDom));
+			btnEditTask.addEventListener("click", (e) => this.#editTaskFromElement(e, divInDom));
+		}
+		// TODO
+	}
 
-    /**
-     * Map every list and filter the task from the tasks property
-     * @param {*} e 
-     */
-    #deleteTaskFromElement(e){
-        const { id } = e.currentTarget.dataset;
-        if (!id) return;
-        this.#lists = this.#lists.map(list => {
-            list.tasks = list.tasks.filter(t => t.id !== id);
-            return list;
-        });
-    }
+	/**
+	 * Map every list and filter the task from the tasks property
+	 * @param {EventObject} e
+	 * @param {HTMLDivElement} divInDom
+	 */
+	#deleteTaskFromElement(e, divInDom) {
+		const { id } = e.currentTarget.dataset;
+		if (!id) return;
+		this.#tasks = this.#tasks.filter((task) => task.id != id);
+		this.displayOnDiv(divInDom);
+	}
 
-    toJSON(){
-        return {
-            lists: this.#lists.map(l => l.toJSON()),
-        };
-    }
+	/**
+	 * Gets the id from element and edit the task by id
+	 * @param {EventObject} e
+	 * @param {HTMLDivElement} divInDom
+	 * @returns {void}
+	 */
+	#editTaskFromElement(e, divInDom) {
+		const { id } = e.currentTarget.dataset;
+		if (!id) return;
+		this.editTask(divInDom, id);
+	}
 
-    //#endregion
+	/**
+	 * Returns an object of the instance
+	 * @returns {{ tasks: Task[] }}
+	 */
+	toJSON() {
+		return {
+			tasks: this.#tasks.map((t) => t.toJSON()),
+		};
+	}
 
+	//#endregion
 }
