@@ -18,7 +18,6 @@ let orderOfBtns = [];
 let userOrderOfBtns = [];
 let level = 0;
 let botTurn = true;
-let isWaiting = false;
 
 //#region Game
 
@@ -30,9 +29,18 @@ function restart() {
 	level = 0;
 	orderOfBtns = [];
 	userOrderOfBtns = [];
-	isWaiting = false;
 	botTurn = true;
 	playBotTurn();
+}
+
+/**
+ * Triggers the click event
+ * Adds the active class on the button
+ * @param {HTMLButtonElement} btn
+ */
+function playBtn(btn) {
+	btn?.click();
+	btn?.classList.add("active");
 }
 
 /**
@@ -44,6 +52,7 @@ function restart() {
 async function playBotTurn() {
 	botTurn = true;
 	level++; // Upgrade for the next level
+	displayInBtnsCol();
 	const randomBtns = Utils.shuffleArray(btns);
 	const newBtn = randomBtns[Utils.getRandomIndexFromArray(randomBtns)];
 	orderOfBtns.push(newBtn);
@@ -59,33 +68,6 @@ async function playBotTurn() {
 }
 
 /**
- * Waits a second to remove the active class on the button and go to next iteration
- * @param {HTMLButtonElement} btn
- * @param {number} timing
- * @returns {Promise<void>}
- */
-function waitForNextDisplay(btn, timing = 750) {
-	return new Promise((resolve) => {
-		isWaiting = true;
-		setTimeout(() => {
-			isWaiting = false;
-			btn?.classList.remove("active");
-			resolve();
-		}, timing);
-	});
-}
-
-/**
- * Triggers the click event
- * Adds the active class on the button
- * @param {HTMLButtonElement} btn
- */
-function playBtn(btn) {
-	btn?.click();
-	btn?.classList.add("active");
-}
-
-/**
  * Get the button clicked from its id
  * Check the input from the user if it's correct or not
  * @param {EventObject} e
@@ -96,7 +78,42 @@ function addOrderOfUser(e) {
 	const idBtn = e.currentTarget.id;
 	const btn = getBtnById(idBtn);
 	userOrderOfBtns.push(btn);
+	displayUserTurn();
 	checkUserCorrect();
+}
+
+//#endregion
+
+//#region Utils
+
+/**
+ * Waits a second to remove the active class on the button and go to next iteration
+ * @param {HTMLButtonElement} btn
+ * @param {number} timing
+ * @returns {Promise<void>}
+ */
+function waitForNextDisplay(btn, timing = 750) {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			btn?.classList.remove("active");
+			resolve();
+		}, timing);
+	});
+}
+
+/**
+ * Check if every value from the user is same as bot or not played yet
+ * If correct, go to next bot's turn
+ * If not, display the error
+ * @returns {void}
+ */
+function checkUserCorrect() {
+	const idsBtnsBot = orderOfBtns.map((btn) => btn.id);
+	const idsBtnUser = userOrderOfBtns.map((btn) => btn.id);
+	const isCorrect = idsBtnsBot.every((idBot, i) => (idsBtnUser[i] && idBot === idsBtnUser[i]) || !idsBtnUser[i]);
+	// If the user is correct, we wait a demi-second to play the bot turn
+	if (isCorrect && idsBtnsBot.length === idsBtnUser.length) return setTimeout(playBotTurn, 500);
+	else if (!isCorrect) alert("Incorrect from the user");
 }
 
 /**
@@ -119,19 +136,26 @@ function getBtnById(id = null) {
 	}
 }
 
+//#endregion
+
+//#region Display
+
 /**
- * Check if every value from the user is same as bot or not played yet
- * If correct, go to next bot's turn
- * If not, display the error
- * @returns {void}
+ * Display the argument inside the btns column
+ * @param {string} display
  */
-function checkUserCorrect() {
-	const idsBtnsBot = orderOfBtns.map((btn) => btn.id);
-	const idsBtnUser = userOrderOfBtns.map((btn) => btn.id);
-	const isCorrect = idsBtnsBot.every((idBot, i) => (idsBtnUser[i] && idBot === idsBtnUser[i]) || !idsBtnUser[i]);
-	// If the user is correct, we wait a demi-second to play the bot turn
-	if (isCorrect && idsBtnsBot.length === idsBtnUser.length) return setTimeout(playBotTurn, 500);
-	else if (!isCorrect) alert("Incorrect from the user");
+function displayInBtnsCol(display = "") {
+	const div = document.getElementById("div-colonne-btns");
+	div.innerHTML = display;
+}
+
+/**
+ * Gets the color of the button clicked each round
+ * And display them inside the column
+ */
+function displayUserTurn() {
+	const display = userOrderOfBtns.reduce((prev, btn) => `${prev}<div class="ligne">${btn.dataset.color}</div>`, "");
+	displayInBtnsCol(display);
 }
 
 //#endregion
