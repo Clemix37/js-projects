@@ -35,7 +35,6 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [ ] Car avoidance game
 -   [ ] Fall game
 -   [ ] Shooting Game
--   [ ] Simon Game
 -   [ ] Task Manager
 -   [ ] Contact saver
 -   [ ] Airline Reservation

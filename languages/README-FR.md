@@ -34,7 +34,6 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [ ] Jeu d'évitement de voiture
 -   [ ] Jeu tombé
 -   [ ] Jeu de tir
--   [ ] Jeu du simon
 -   [ ] Gestionnaire de tâches
 -   [ ] Sauvegarde de contacts
 -   [ ] Reservation de vols
