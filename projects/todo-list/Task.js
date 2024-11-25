@@ -92,10 +92,10 @@ export default class Task {
 		return `
             <div class="card" style="margin: 10px;">
                 <header class="card-header">
-                    <p class="card-header-title">${this.#title}</p>
+                    <loabel for="coche-${this.id}" class="card-header-title">${this.#title}</label>
                     <!-- DONE -->
 					<label class="checkbox" style="display: flex; align-items: center; margin: 5px;">
-						<input data-id="${this.id}" class="${Task.CLASS_CHANGE_STATUS_TASK}" type="checkbox" ${this.#done ? "checked" : ""}>
+						<input id="coche-${this.id}" data-id="${this.id}" class="${Task.CLASS_CHANGE_STATUS_TASK}" type="checkbox" ${this.#done ? "checked" : ""}>
 					</label>
                     <!-- EDIT -->
                     <button data-id="${this.#id}" class="button is-rounded is-info ${Task.CLASS_EDIT_TASK}">
