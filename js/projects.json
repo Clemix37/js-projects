@@ -79,6 +79,10 @@
 		{
 			"name": "Memory Game 🧠",
 			"link": "memory-game"
+		},
+		{
+			"name": "Task Manager 🚩",
+			"link": "task-manager"
 		}
 	]
 }

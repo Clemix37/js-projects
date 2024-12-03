@@ -167,6 +167,18 @@ export default class Utils {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 
+	/**
+	 * Converts hex color into rgb color
+	 * @param {string} hexColor
+	 * @returns {{ r: number, g: number, b: number, }}
+	 */
+	static hexToRgb(hexColor) {
+		const r = parseInt(hexColor.substring(0, 2), 16);
+		const g = parseInt(hexColor.substring(2, 4), 16);
+		const b = parseInt(hexColor.substring(4), 16);
+		return { r, g, b };
+	}
+
 	//#endregion
 
 	//#region Private methods

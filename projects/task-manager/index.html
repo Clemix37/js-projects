@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <link rel="stylesheet" href="./styles/dialog.css">
+    <link rel="stylesheet" href="./styles/app.css">
+</head>
+
+<body>
+    <header class="ligne">
+        <div class="colonne">
+            <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
+        </div>
+        <div class="colonne">
+            <div class="ligne">
+                <h1 class="title has-text-centered">Task Manager</h1>
+            </div>
+        </div>
+        <div class="colonne"></div>
+    </header>
+
+    <div id="tags-container" class="flex" style="width: 100%; overflow-x: auto;">
+
+    </div>
+
+    <div class="ligne">
+        <button id="btn-add-list" class="button is-rounded">
+            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+            Add list
+        </button>
+        <button id="btn-add-task" class="button is-rounded">
+            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+            Add task
+        </button>
+        <button id="btn-add-tag" class="button is-rounded">
+            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+            Add tag
+        </button>
+    </div>
+
+    <div id="task-manage-container" class="flex">
+
+    </div>
+
+    <dialog id="window-add-list">
+        <div class="flex">
+            <label for="title-list">Title:</label>
+            <input type="text" id="title-list" autocomplete="off" />
+        </div>
+        <div class="flex">
+            <label for="color-list">Color:</label>
+            <input type="color" id="color-list" />
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+            <button id="btn-save-list" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-list" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="window-add-task">
+        <div class="flex">
+            <label for="lists">List:</label>
+            <select id="lists"></select>
+        </div>
+        <div class="flex">
+            <label for="title-task">Title:</label>
+            <input type="text" id="title-task" autocomplete="off" />
+        </div>
+        <div class="flex">
+            <label for="description-task">Description:</label>
+            <textarea id="description-task"></textarea>
+        </div>
+        <div class="flex">
+            <label for="tags-task">Tags :</label>
+            <select id="tags-task" multiple></select>
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+            <button id="btn-save-task" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-task" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="window-add-tag">
+        <div class="flex">
+            <label for="title-tag">Title:</label>
+            <input type="text" id="title-tag" autocomplete="off" />
+        </div>
+        <div class="flex">
+            <label for="color-tag">Color:</label>
+            <input type="color" id="color-tag" />
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+            <button id="btn-save-tag" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-tag" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="window-confirm">
+        <div class="flex">
+            <h3 class="subtitle" id="lbl-confirmation"></h3>
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+            <button id="btn-confirm" class="button is-rounded is-primary">
+                <i class="fas fa-check" style="margin-right: 8px;"></i>
+                Confirm
+            </button>
+            <button id="btn-cancel-confirmation" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>

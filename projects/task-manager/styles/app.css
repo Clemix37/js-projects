@@ -1,0 +1,49 @@
+#lists-container {
+    flex-wrap: wrap;
+}
+
+.tm-task {
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+.tm-task-header {
+    justify-content: center;
+}
+
+.tm-list-container {
+    max-width: 300px;
+}
+
+.tm-list-header {
+    padding: 5px;
+    border: 1px solid white;
+    border-bottom: none;
+    margin: 0 5px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.tm-list-content-container {
+    padding: 10px !important;
+    background-color: #091c28;
+    margin: 0 5px;
+    border: 1px solid grey;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#tags-container {
+    margin: 5px;
+}
+
+.tm-tag {
+    border-radius: 50px;
+    padding: 2px 5px;
+    cursor: pointer;
+    color: white;
+    margin: 0 3px;
+}
