@@ -191,13 +191,21 @@ function openModalList() {
  */
 function closeModalList() {
 	windowAddList.close();
+	idListEdit = null;
 }
 
 /**
  * Adds a list, closes the modal add list, update everything
  */
 function saveList() {
-	lists.push(new List({ title: titleList.value, color: colorList.value }));
+	const listExist = idListEdit ? lists.find(l => l.id === idListEdit) : false
+	if (!listExist) lists.push(new List({ title: titleList.value, color: colorList.value }));
+	else lists = lists.map(l => {
+		if (l.id !== idListEdit) return l;
+		l.title = titleList.value;
+		l.color = color: colorList.value;
+		return l;
+	});
 	closeModalList();
 	update();
 }
@@ -234,6 +242,7 @@ function openWindowTask(idList = null) {
 
 function closeModalTask() {
 	windowAddTask.close();
+	idTaskEdit = null;
 }
 
 function saveTask() {
