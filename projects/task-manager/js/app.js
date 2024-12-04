@@ -203,7 +203,7 @@ function saveList() {
 	else lists = lists.map(l => {
 		if (l.id !== idListEdit) return l;
 		l.title = titleList.value;
-		l.color = color: colorList.value;
+		l.color = colorList.value;
 		return l;
 	});
 	closeModalList();
