@@ -51,14 +51,15 @@ export default class Tag {
 
 	//#region Public methods
 
-	getTemplate() {
+	getTemplate(forFilter = false, isFiltering = false) {
 		const rgbColor = Utils.hexToRgb(this.#color.split("#").join(""));
 		return `
-            <div class="flex tm-tag" 
-                style="background-color: rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.1); 
+            <div data-title-tag="${this.#title}" class="flex tm-tag ${forFilter ? "tm-tag-filter" : ""}" 
+                style="align-items: center; background-color: rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.1); 
                     border: 1px solid ${this.#color};"
                 >
                 ${this.#title}
+                ${isFiltering ? "<i class='fas fa-times' style='margin-left: 8px;'></i>" : ""}
             </div>
         `;
 	}

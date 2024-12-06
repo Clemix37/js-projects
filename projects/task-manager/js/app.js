@@ -7,6 +7,7 @@ import Task from "./classes/Task.js";
 // Divs
 const taskManagerContainer = document.getElementById("task-manage-container");
 const tagsContainer = document.getElementById("tags-container");
+const tagsFilteredContainer = document.getElementById("tags-filtered-container");
 // Buttons
 const btnAddList = document.getElementById("btn-add-list");
 const btnSaveList = document.getElementById("btn-save-list");
@@ -94,9 +95,22 @@ function displayTaskManager() {
  * Displays every tags in the list
  */
 function displayListTags() {
-	tagsContainer.innerHTML = tags.reduce(
-		(acc, t) => acc + t.getTemplate(),
-		`<p style="margin-right: 10px;">Filter tags:</p>`,
+	const idsFiltering = tagsFiltered.map((t) => t.title);
+	tagsContainer.innerHTML = tags
+		.filter((t) => !idsFiltering.includes(t.title))
+		.reduce(
+			(acc, t) => acc + t.getTemplate(true),
+			tags.length > 0 ? `<p style="margin-right: 10px;">Filter tags:</p>` : "",
+		);
+}
+
+/**
+ * Display every tag filtering
+ */
+function displayTagsFiltering() {
+	tagsFilteredContainer.innerHTML = tagsFiltered.reduce(
+		(acc, t) => acc + t.getTemplate(true, true),
+		tagsFiltered.length > 0 ? `<p style="margin-right: 10px;">Filtering tags:</p>` : "",
 	);
 }
 
@@ -129,14 +143,10 @@ function addEventsOnPage() {
 	btnCancelTag.addEventListener("click", closeModalAddTag);
 	btnSaveTag.removeEventListener("click", saveTag);
 	btnSaveTag.addEventListener("click", saveTag);
-	const allBtnsAdd = document.querySelectorAll(`.${List.CLASS_BTN_ADD_TASK}`);
-	for (let i = 0; i < allBtnsAdd.length; i++) {
-		const btnAdd = allBtnsAdd[i];
-		btnAdd.removeEventListener("click", addTaskOnList);
-		btnAdd.addEventListener("click", addTaskOnList);
-	}
 	// Other events like editing, deleting or dragging and dropping
 	addEventsOnTaskManagerContainer();
+	// Add links for filtering tags
+	addEventsOnTag();
 }
 
 /**
@@ -146,6 +156,7 @@ function addEventsOnTaskManagerContainer() {
 	addEventsOnTasks();
 	addEventsOnLists();
 	addEventsDragAndDrop();
+	addEventsBtnAddOnEachList();
 }
 
 /**
@@ -205,6 +216,27 @@ function addEventsDragAndDrop() {
 		listContainer.removeEventListener("dragover", onDragOver);
 		listContainer.addEventListener("drop", onDrop);
 		listContainer.addEventListener("dragover", onDragOver);
+	}
+}
+
+/**
+ * Add events for each button add in each list displayed
+ */
+function addEventsBtnAddOnEachList() {
+	const allBtnsAdd = document.querySelectorAll(`.${List.CLASS_BTN_ADD_TASK}`);
+	for (let i = 0; i < allBtnsAdd.length; i++) {
+		const btnAdd = allBtnsAdd[i];
+		btnAdd.removeEventListener("click", addTaskOnList);
+		btnAdd.addEventListener("click", addTaskOnList);
+	}
+}
+
+function addEventsOnTag() {
+	const allTagsForfilter = document.querySelectorAll(".tm-tag-filter");
+	for (let i = 0; i < allTagsForfilter.length; i++) {
+		const tagFilter = allTagsForfilter[i];
+		tagFilter.removeEventListener("click", filterTagClicked);
+		tagFilter.addEventListener("click", filterTagClicked);
 	}
 }
 
@@ -481,6 +513,33 @@ function onDrop(e) {
 
 //#endregion
 
+//#region Filtering Tags
+
+/**
+ * Gets the title of the tag clicked
+ * Filter by it
+ * @param {EventObject} e
+ */
+function filterTagClicked(e) {
+	const { titleTag } = e.currentTarget.dataset;
+	filterByTag(titleTag);
+}
+
+/**
+ * Adds or remove tag for filtering
+ * @param {string} titleTag
+ * @returns {void}
+ */
+function filterByTag(titleTag) {
+	if (!titleTag) return;
+	const containsTagFiltered = tagsFiltered.find((t) => t.title === titleTag);
+	if (containsTagFiltered) tagsFiltered = tagsFiltered.filter((t) => t.title !== titleTag);
+	else tagsFiltered.push(tags.find((t) => t.title === titleTag));
+	update();
+}
+
+//#endregion
+
 /**
  * Save everything inside localStorage
  * Displays the lists, tasks and tags
@@ -490,6 +549,7 @@ function update() {
 	saveTaskManager();
 	displayTaskManager();
 	displayListTags();
+	displayTagsFiltering();
 	addEventsOnPage();
 }
 
@@ -497,9 +557,7 @@ update();
 
 /**
  * TODO:
- *  filtering on multiple tags
- *  displaying filtered tags
- *  add statuses for tasks
+ *  add statuses for tasks (ONGOING)
  *  change display view by switching to grid
  *  potentially, adding an id to tag
  *  changing arrays inside lists by adding idsTaks instead of tasks, idList inside Task, idsTags inside Task
