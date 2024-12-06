@@ -92,7 +92,7 @@ export default class Task {
 	 */
 	getTemplate(idList) {
 		return `
-            <div class="flex tm-task">
+            <div id="${this.#id}" class="flex tm-task" draggable="true">
                 <div class="flex column">
                     <div class="flex tm-task-header">
                         <h3 class="subtitle">${this.#title}</h3>

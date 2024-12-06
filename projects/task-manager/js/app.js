@@ -88,7 +88,6 @@ function displayTaskManager() {
 	taskManagerContainer.innerHTML = lists
 		.filter((l) => l.containTaskWithTags(tagsFiltered))
 		.reduce((acc, l) => acc + l.getTemplate(), "");
-	addEventsOnTaskManagerContainer();
 }
 
 /**
@@ -110,17 +109,34 @@ function displayListTags() {
  */
 function addEventsOnPage() {
 	// List
+	btnAddList.removeEventListener("click", openModalList);
 	btnAddList.addEventListener("click", openModalList);
+	btnCancelList.removeEventListener("click", closeModalList);
 	btnCancelList.addEventListener("click", closeModalList);
+	btnSaveList.removeEventListener("click", saveList);
 	btnSaveList.addEventListener("click", saveList);
 	// Task
+	btnAddTask.removeEventListener("click", openWindowTask);
 	btnAddTask.addEventListener("click", openWindowTask);
+	btnCancelTask.removeEventListener("click", closeModalTask);
 	btnCancelTask.addEventListener("click", closeModalTask);
+	btnSaveTask.removeEventListener("click", saveTask);
 	btnSaveTask.addEventListener("click", saveTask);
 	// Tag
+	btnAddTag.removeEventListener("click", openWindowAddTag);
 	btnAddTag.addEventListener("click", openWindowAddTag);
+	btnCancelTag.removeEventListener("click", closeModalAddTag);
 	btnCancelTag.addEventListener("click", closeModalAddTag);
+	btnSaveTag.removeEventListener("click", saveTag);
 	btnSaveTag.addEventListener("click", saveTag);
+	const allBtnsAdd = document.querySelectorAll(`.${List.CLASS_BTN_ADD_TASK}`);
+	for (let i = 0; i < allBtnsAdd.length; i++) {
+		const btnAdd = allBtnsAdd[i];
+		btnAdd.removeEventListener("click", addTaskOnList);
+		btnAdd.addEventListener("click", addTaskOnList);
+	}
+	// Other events like editing, deleting or dragging and dropping
+	addEventsOnTaskManagerContainer();
 }
 
 /**
@@ -129,6 +145,7 @@ function addEventsOnPage() {
 function addEventsOnTaskManagerContainer() {
 	addEventsOnTasks();
 	addEventsOnLists();
+	addEventsDragAndDrop();
 }
 
 /**
@@ -171,6 +188,26 @@ function addEventsOnLists() {
 	}
 }
 
+/**
+ * Adds events for dropping tasks inside lists
+ */
+function addEventsDragAndDrop() {
+	const allTasks = document.querySelectorAll(`.tm-task`);
+	for (let i = 0; i < allTasks.length; i++) {
+		const task = allTasks[i];
+		task.removeEventListener("dragstart", onDragTask);
+		task.addEventListener("dragstart", onDragTask);
+	}
+	const allListsContainer = document.querySelectorAll(`.tm-list-content-container`);
+	for (let i = 0; i < allListsContainer.length; i++) {
+		const listContainer = allListsContainer[i];
+		listContainer.removeEventListener("drop", onDrop);
+		listContainer.removeEventListener("dragover", onDragOver);
+		listContainer.addEventListener("drop", onDrop);
+		listContainer.addEventListener("dragover", onDragOver);
+	}
+}
+
 //#endregion
 
 //#region Modal List
@@ -198,14 +235,15 @@ function closeModalList() {
  * Adds a list, closes the modal add list, update everything
  */
 function saveList() {
-	const listExist = idListEdit ? lists.find(l => l.id === idListEdit) : false
+	const listExist = idListEdit ? lists.find((l) => l.id === idListEdit) : false;
 	if (!listExist) lists.push(new List({ title: titleList.value, color: colorList.value }));
-	else lists = lists.map(l => {
-		if (l.id !== idListEdit) return l;
-		l.title = titleList.value;
-		l.color = colorList.value;
-		return l;
-	});
+	else
+		lists = lists.map((l) => {
+			if (l.id !== idListEdit) return l;
+			l.title = titleList.value;
+			l.color = colorList.value;
+			return l;
+		});
 	closeModalList();
 	update();
 }
@@ -214,6 +252,26 @@ function saveList() {
 
 //#region Modal Task
 
+/**
+ * Gets the id of the list to add a task
+ * Opens the window with the list pre-selected
+ * @param {EventObject} e
+ */
+function addTaskOnList(e) {
+	const { idList } = e.currentTarget.dataset;
+	openWindowTask(idList);
+}
+
+/**
+ * Gets the task to edit if one
+ * Update the content of the window with the task to edit properties if it exists
+ * Adds the tags inside the select
+ * Pre-select tags if in edition of task
+ * Display lists in the list
+ * Pre-select list if one
+ * Opens the modal
+ * @param {string?} idList
+ */
 function openWindowTask(idList = null) {
 	const taskToEdit = idTaskEdit ? lists.find((l) => l.id === idList).tasks.find((t) => t.id === idTaskEdit) : null;
 	titleTask.value = taskToEdit?.title ?? "";
@@ -236,15 +294,27 @@ function openWindowTask(idList = null) {
 		(acc, l) => `${acc}<option value="${l.id}">${l.title}</option>`,
 		`<option value=""></option>`,
 	);
-	if (taskToEdit && idList) selectLists.value = idList;
+	if (idList) selectLists.value = idList;
 	windowAddTask.showModal();
 }
 
+/**
+ * Closes the modal
+ * Empty values for task creation/edition
+ */
 function closeModalTask() {
 	windowAddTask.close();
 	idTaskEdit = null;
 }
 
+/**
+ * Gets the id of list to add the task
+ * Gets the selected tags of the task
+ * Edit the lists property by changing/adding the task created/edited
+ * Closes the modal
+ * Update the display
+ * @returns {void}
+ */
 function saveTask() {
 	const idList = selectLists.value;
 	if (!idList) return;
@@ -360,6 +430,57 @@ function editListFromDom(e) {
 
 //#endregion
 
+//#region Drag and drop
+
+/**
+ * Stores the id of the task in the data transfer object
+ * @param {DragEvent} e
+ */
+function onDragTask(e) {
+	e.dataTransfer.setData("text/plain", e.target.id);
+}
+
+/**
+ * Prevents touch and pointer events
+ */
+function onDragOver(e) {
+	e.preventDefault();
+}
+
+/**
+ * Prevents touch and pointer events
+ * Gets the id, append the content inside the target in DOM
+ * Removes the task from the list having it
+ * Adds the task inside the target list
+ * @param {DropEvent} e
+ */
+function onDrop(e) {
+	e.preventDefault();
+	// Gets the idTask from dataTrasnfer
+	const idTask = e.dataTransfer.getData("text/plain");
+	const { idList } = e.target.dataset;
+	// Appends in the dom the content of the actual task
+	e.target.prepend(document.getElementById(idTask));
+	// Finds the task to move
+	const taskToMove = lists.flatMap((l) => l.tasks).find((t) => t.id === idTask);
+	// Update lists by deleting task from actual list, and adding it to new list
+	lists = lists.map((list) => {
+		const containsTaskDropped = list.tasks.find((t) => t.id === idTask);
+		const isTargetList = list.id === idList;
+		if (!containsTaskDropped && !isTargetList) return list;
+		// Deletes the task from the list having it
+		if (containsTaskDropped) list.tasks = list.tasks.filter((t) => t.id !== idTask);
+		// Adds the task inside the new list
+		else list.tasks.push(taskToMove);
+		// Returns the edited list
+		return list;
+	});
+	// Saves the modifications
+	saveTaskManager();
+}
+
+//#endregion
+
 /**
  * Save everything inside localStorage
  * Displays the lists, tasks and tags
@@ -369,9 +490,9 @@ function update() {
 	saveTaskManager();
 	displayTaskManager();
 	displayListTags();
+	addEventsOnPage();
 }
 
-addEventsOnPage();
 update();
 
 /**
@@ -379,8 +500,9 @@ update();
  *  filtering on multiple tags
  *  displaying filtered tags
  *  add statuses for tasks
- *  add rounded button for adding a task inside a specific list
  *  change display view by switching to grid
  *  potentially, adding an id to tag
  *  changing arrays inside lists by adding idsTaks instead of tasks, idList inside Task, idsTags inside Task
+ *  double click for edition task + list
+ *  delete button inside edition task + list
  */

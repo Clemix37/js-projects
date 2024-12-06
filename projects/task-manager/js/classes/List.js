@@ -7,6 +7,7 @@ export default class List {
 	static ID_STORE = "tm-lists";
 	static CLASS_BTN_DELETE_LIST = "btn-delete-list";
 	static CLASS_BTN_EDIT_LIST = "btn-edit-list";
+	static CLASS_BTN_ADD_TASK = "btn-add-task-list";
 
 	/**
 	 * @type {string}
@@ -120,8 +121,13 @@ export default class List {
                     </div>
                 </div>
                 <div class="flex">
-                    <div class="flex column tm-list-content-container">
+                    <div data-id-list="${this.#id}" class="flex column tm-list-content-container">
                         ${this.#tasks.reduce((acc, t) => acc + t.getTemplate(this.#id), "")}
+                        <div class="flex" style="justify-content: center;">
+                            <button class="button is-rounded ${List.CLASS_BTN_ADD_TASK}" data-id-list="${this.#id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
