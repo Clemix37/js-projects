@@ -96,6 +96,15 @@ export default class List {
 	}
 
 	/**
+	 * Check if actual instane of list contains tasks with the id os the status filtering
+	 * @param {string?} idStatusFiltered
+	 */
+	containTasksWithStatuses(idStatusFiltered = []) {
+		if (!idStatusFiltered) return true;
+		return this.#tasks.some((task) => task.idStatus === idStatusFiltered);
+	}
+
+	/**
 	 * Gets the template of the list
 	 * @param {Tag[]} listTags
 	 * @returns {string}

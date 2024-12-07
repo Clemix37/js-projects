@@ -112,10 +112,6 @@ export default class Task {
                     </div>
                     <hr />
                     <div class="flex">
-                        <p>${this.#description}</p>
-                    </div>
-                    <hr />
-                    <div class="flex">
                         ${listTags
 							.filter((tag) => this.#idsTags.includes(tag.id))
 							.reduce((acc, t) => acc + t.getTemplate(), "")}

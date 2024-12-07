@@ -32,6 +32,14 @@
 
     </div>
 
+    <div id="statuses-container" class="flex" style="width: 100%; overflow-x: auto;">
+
+    </div>
+
+    <div id="statuses-filtered-container" class="flex" style="width: 100%; overflow-x: auto;">
+
+    </div>
+
     <div class="ligne">
         <button id="btn-add-list" class="button is-rounded">
             <i class="fas fa-plus" style="margin-right: 8px;"></i>
@@ -45,6 +53,10 @@
             <i class="fas fa-plus" style="margin-right: 8px;"></i>
             Add tag
         </button>
+        <button id="btn-add-status" class="button is-rounded">
+            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+            Add Status
+        </button>
     </div>
 
     <div id="task-manage-container" class="flex">
@@ -52,13 +64,17 @@
     </div>
 
     <dialog id="window-add-list">
-        <div class="flex">
-            <label for="title-list">Title:</label>
-            <input type="text" id="title-list" autocomplete="off" />
+        <div class="field">
+            <label for="title-list" class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" id="title-list" placeholder="Title..." autocomplete="off" />
+            </div>
         </div>
-        <div class="flex">
-            <label for="color-list">Color:</label>
-            <input type="color" id="color-list" />
+        <div class="field">
+            <label for="color-list" class="label">Color</label>
+            <div class="control">
+                <input class="input" type="color" id="color-list" />
+            </div>
         </div>
         <div class="flex" style="justify-content: flex-end;">
             <button id="btn-save-list" class="button is-rounded is-primary">
@@ -73,20 +89,28 @@
     </dialog>
 
     <dialog id="window-add-task">
-        <div class="flex">
-            <label for="lists">List:</label>
-            <select id="lists"></select>
+        <div class="field">
+            <label class="label" for="lists">List</label>
+            <div class="control">
+                <div class="select" style="width: 100%;">
+                    <select id="lists"></select>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label for="title-task" class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" id="title-task" placeholder="Title..." autocomplete="off" />
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" id="description-task" placeholder="Description..."></textarea>
+            </div>
         </div>
         <div class="flex">
-            <label for="title-task">Title:</label>
-            <input type="text" id="title-task" autocomplete="off" />
-        </div>
-        <div class="flex">
-            <label for="description-task">Description:</label>
-            <textarea id="description-task"></textarea>
-        </div>
-        <div class="flex">
-            <label for="tags-task">Tags :</label>
+            <label for="tags-task">Tags</label>
             <select id="tags-task" multiple></select>
         </div>
         <div class="flex" style="justify-content: flex-end;">
@@ -102,13 +126,17 @@
     </dialog>
 
     <dialog id="window-add-tag">
-        <div class="flex">
-            <label for="title-tag">Title:</label>
-            <input type="text" id="title-tag" autocomplete="off" />
+        <div class="field">
+            <label for="title-tag" class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" id="title-tag" placeholder="Title..." autocomplete="off" />
+            </div>
         </div>
-        <div class="flex">
-            <label for="color-tag">Color:</label>
-            <input type="color" id="color-tag" />
+        <div class="field">
+            <label for="color-tag" class="label">Color</label>
+            <div class="control">
+                <input class="input" type="color" id="color-tag" />
+            </div>
         </div>
         <div class="flex" style="justify-content: flex-end;">
             <button id="btn-save-tag" class="button is-rounded is-primary">
@@ -116,6 +144,31 @@
                 Save
             </button>
             <button id="btn-cancel-tag" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="window-add-status">
+        <div class="field">
+            <label for="name-status" class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" id="name-status" placeholder="Name..." autocomplete="off" />
+            </div>
+        </div>
+        <div class="field">
+            <label for="color-status" class="label">Color</label>
+            <div class="control">
+                <input class="input" type="color" id="color-status" />
+            </div>
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+            <button id="btn-save-status" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-status" class="button is-rounded">
                 <i class="fas fa-times" style="margin-right: 8px;"></i>
                 Cancel
             </button>

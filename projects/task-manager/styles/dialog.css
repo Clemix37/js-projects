@@ -13,10 +13,6 @@ dialog select {
     border-radius: 8px;
 }
 
-dialog textarea {
-    width: 100%;
-}
-
 dialog input {
     padding: 5px;
     border-radius: 8px;

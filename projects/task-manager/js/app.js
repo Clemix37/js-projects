@@ -9,6 +9,8 @@ import Status from "./classes/Status.js";
 const taskManagerContainer = document.getElementById("task-manage-container");
 const tagsContainer = document.getElementById("tags-container");
 const tagsFilteredContainer = document.getElementById("tags-filtered-container");
+const statusesContainer = document.getElementById("statuses-container");
+const statusesFilteredContainer = document.getElementById("statuses-filtered-container");
 // Buttons
 const btnAddList = document.getElementById("btn-add-list");
 const btnSaveList = document.getElementById("btn-save-list");
@@ -19,10 +21,14 @@ const btnCancelTask = document.getElementById("btn-cancel-task");
 const btnAddTag = document.getElementById("btn-add-tag");
 const btnSaveTag = document.getElementById("btn-save-tag");
 const btnCancelTag = document.getElementById("btn-cancel-tag");
+const btnAddStatus = document.getElementById("btn-add-status");
+const btnSaveStatus = document.getElementById("btn-save-status");
+const btnCancelStatus = document.getElementById("btn-cancel-status");
 // Windows
 const windowAddList = document.getElementById("window-add-list");
 const windowAddTask = document.getElementById("window-add-task");
 const windowAddTag = document.getElementById("window-add-tag");
+const windowAddStatus = document.getElementById("window-add-status");
 // Inputs
 const titleList = document.getElementById("title-list");
 const colorList = document.getElementById("color-list");
@@ -32,6 +38,8 @@ const selectLists = document.getElementById("lists");
 const selectTagsTask = document.getElementById("tags-task");
 const titleTag = document.getElementById("title-tag");
 const colorTag = document.getElementById("color-tag");
+const nameStatus = document.getElementById("name-status");
+const colorStatus = document.getElementById("color-status");
 const selectTags = document.getElementById("select-tags");
 /**
  * @type {Tag[]}
@@ -63,6 +71,10 @@ let idListEdit = null;
  * @type {Tag[]}
  */
 let tagsFiltered = [];
+/**
+ * @type {string?}
+ */
+let idStatusFiltering = null;
 
 /**
  * Saves lists, tags and statuses inside the localStorage
@@ -91,16 +103,17 @@ function saveTaskManager() {
 function displayTaskManager() {
 	taskManagerContainer.innerHTML = lists
 		.filter((l) => l.containTasksWithTags(tagsFiltered))
+		.filter((l) => l.containTasksWithStatuses(idStatusFiltering))
 		.reduce((acc, l) => acc + l.getTemplate(tags), "");
 }
 
 /**
  * Displays every tags in the list
  */
-function displayListTags() {
-	const idsFiltering = tagsFiltered.map((t) => t.title);
+function displayTags() {
+	const idsFiltering = tagsFiltered.map((t) => t.id);
 	tagsContainer.innerHTML = tags
-		.filter((t) => !idsFiltering.includes(t.title))
+		.filter((t) => !idsFiltering.includes(t.id))
 		.reduce(
 			(acc, t) => acc + t.getTemplate(true),
 			tags.length > 0 ? `<p style="margin-right: 10px;">Filter tags:</p>` : "",
@@ -117,6 +130,22 @@ function displayTagsFiltering() {
 	);
 }
 
+/**
+ * Display every status not filtering
+ */
+function displayStatuses() {
+	statusesContainer.innerHTML = idStatusFiltering ? "" : statuses.reduce((acc, s) => acc + s.getTemplate(true), "");
+}
+
+/**
+ * Display every status filtering the display
+ */
+function displayStatusFiltering() {
+	statusesContainer.innerHTML = idStatusFiltering
+		? statuses.find((s) => s.id === idStatusFiltering).map((s) => s.getTemplate(true, true))
+		: "";
+}
+
 //#endregion
 
 //#region Events
@@ -126,30 +155,39 @@ function displayTagsFiltering() {
  */
 function addEventsOnPage() {
 	// List
-	btnAddList.removeEventListener("click", openModalList);
-	btnAddList.addEventListener("click", openModalList);
-	btnCancelList.removeEventListener("click", closeModalList);
-	btnCancelList.addEventListener("click", closeModalList);
+	btnAddList.removeEventListener("click", openWindowList);
+	btnAddList.addEventListener("click", openWindowList);
+	btnCancelList.removeEventListener("click", closeWindowList);
+	btnCancelList.addEventListener("click", closeWindowList);
 	btnSaveList.removeEventListener("click", saveList);
 	btnSaveList.addEventListener("click", saveList);
 	// Task
 	btnAddTask.removeEventListener("click", openWindowTask);
 	btnAddTask.addEventListener("click", openWindowTask);
-	btnCancelTask.removeEventListener("click", closeModalTask);
-	btnCancelTask.addEventListener("click", closeModalTask);
+	btnCancelTask.removeEventListener("click", closeWindowTask);
+	btnCancelTask.addEventListener("click", closeWindowTask);
 	btnSaveTask.removeEventListener("click", saveTask);
 	btnSaveTask.addEventListener("click", saveTask);
 	// Tag
-	btnAddTag.removeEventListener("click", openWindowAddTag);
-	btnAddTag.addEventListener("click", openWindowAddTag);
-	btnCancelTag.removeEventListener("click", closeModalAddTag);
-	btnCancelTag.addEventListener("click", closeModalAddTag);
+	btnAddTag.removeEventListener("click", openWindowTag);
+	btnAddTag.addEventListener("click", openWindowTag);
+	btnCancelTag.removeEventListener("click", closeWindowTag);
+	btnCancelTag.addEventListener("click", closeWindowTag);
 	btnSaveTag.removeEventListener("click", saveTag);
 	btnSaveTag.addEventListener("click", saveTag);
+	// Status
+	btnAddStatus.removeEventListener("click", openWindowStatus);
+	btnAddStatus.addEventListener("click", openWindowStatus);
+	btnSaveStatus.removeEventListener("click", saveStatus);
+	btnSaveStatus.addEventListener("click", saveStatus);
+	btnCancelStatus.removeEventListener("click", closeWindowStatus);
+	btnCancelStatus.addEventListener("click", closeWindowStatus);
 	// Other events like editing, deleting or dragging and dropping
 	addEventsOnTaskManagerContainer();
 	// Add links for filtering tags
 	addEventsOnTagFilter();
+	// Add links for filtering statuses
+	addEventsOnStatusFilter();
 }
 
 /**
@@ -246,6 +284,18 @@ function addEventsOnTagFilter() {
 	}
 }
 
+/**
+ * Adds events for filtering by status
+ */
+function addEventsOnStatusFilter() {
+	const allStatusForFilter = document.querySelectorAll(".tm-status-filter");
+	for (let i = 0; i < allStatusForFilter.length; i++) {
+		const statusFilter = allStatusForFilter[i];
+		statusFilter.removeEventListener("click", filterStatusClicked);
+		statusFilter.addEventListener("click", filterStatusClicked);
+	}
+}
+
 //#endregion
 
 //#region Modal List
@@ -254,7 +304,7 @@ function addEventsOnTagFilter() {
  * Empty the fields of the modal add list
  * Opens the modal
  */
-function openModalList() {
+function openWindowList() {
 	const listToEdit = idListEdit ? lists.find((l) => l.id === idListEdit) : null;
 	titleList.value = listToEdit?.title ?? "";
 	colorList.value = listToEdit?.color ?? "";
@@ -264,7 +314,7 @@ function openModalList() {
 /**
  * Close the modal add list
  */
-function closeModalList() {
+function closeWindowList() {
 	windowAddList.close();
 	idListEdit = null;
 }
@@ -282,7 +332,7 @@ function saveList() {
 			l.color = colorList.value;
 			return l;
 		});
-	closeModalList();
+	closeWindowList();
 	update();
 }
 
@@ -339,7 +389,7 @@ function openWindowTask(idList = null) {
  * Closes the modal
  * Empty values for task creation/edition
  */
-function closeModalTask() {
+function closeWindowTask() {
 	windowAddTask.close();
 	idTaskEdit = null;
 }
@@ -370,7 +420,7 @@ function saveTask() {
 			});
 		return l;
 	});
-	closeModalTask();
+	closeWindowTask();
 	update();
 }
 
@@ -382,7 +432,7 @@ function saveTask() {
  * Empty the different fields of the modal add tag
  * Opens the modal
  */
-function openWindowAddTag() {
+function openWindowTag() {
 	titleTag.value = "";
 	colorTag.value = "";
 	windowAddTag.showModal();
@@ -391,7 +441,7 @@ function openWindowAddTag() {
 /**
  * Close the modal of the add tag
  */
-function closeModalAddTag() {
+function closeWindowTag() {
 	windowAddTag.close();
 }
 
@@ -400,7 +450,39 @@ function closeModalAddTag() {
  */
 function saveTag() {
 	tags.push(new Tag({ title: titleTag.value, color: colorTag.value }));
-	closeModalAddTag();
+	closeWindowTag();
+	update();
+}
+
+//#endregion
+
+//#region Modal Status
+
+/**
+ * Clears the field and opens the window
+ */
+function openWindowStatus() {
+	nameStatus.value = "";
+	colorStatus.value = "";
+	windowAddStatus.showModal();
+}
+
+/**
+ * Close the window
+ */
+function closeWindowStatus() {
+	windowAddStatus.close();
+}
+
+/**
+ * Saves the status
+ */
+function saveStatus() {
+	const color = colorStatus.value;
+	const name = nameStatus.value;
+	if (!name || !color) return;
+	statuses.push(new Status({ name, color }));
+	closeWindowStatus();
 	update();
 }
 
@@ -460,7 +542,7 @@ function editTaskFromDom(e) {
 function editListFromDom(e) {
 	const { id } = e.currentTarget.dataset;
 	idListEdit = id;
-	openModalList();
+	openWindowList();
 }
 
 //#endregion
@@ -519,25 +601,49 @@ function onDrop(e) {
 //#region Filtering Tags
 
 /**
- * Gets the title of the tag clicked
+ * Gets the id of the tag clicked
  * Filter by it
  * @param {EventObject} e
  */
 function filterTagClicked(e) {
-	const { titleTag } = e.currentTarget.dataset;
-	filterByTag(titleTag);
+	const { idTag } = e.currentTarget.dataset;
+	filterByTag(idTag);
 }
 
 /**
  * Adds or remove tag for filtering
- * @param {string} titleTag
+ * @param {string} idTag
  * @returns {void}
  */
-function filterByTag(titleTag) {
-	if (!titleTag) return;
-	const containsTagFiltered = tagsFiltered.find((t) => t.title === titleTag);
-	if (containsTagFiltered) tagsFiltered = tagsFiltered.filter((t) => t.title !== titleTag);
-	else tagsFiltered.push(tags.find((t) => t.title === titleTag));
+function filterByTag(idTag) {
+	if (!idTag) return;
+	const containsTagFiltered = tagsFiltered.find((t) => t.id === idTag);
+	if (containsTagFiltered) tagsFiltered = tagsFiltered.filter((t) => t.id !== idTag);
+	else tagsFiltered.push(tags.find((t) => t.id === idTag));
+	update();
+}
+
+//#endregion
+
+//#region Filtering Statuses
+
+/**
+ * Gets the id of the status clicked
+ * Filter by it
+ * @param {EventObject} e
+ */
+function filterStatusClicked(e) {
+	const { idStatus } = e.currentTarget.dataset;
+	filterByStatus(idStatus);
+}
+
+/**
+ * Adds or remove status for filtering
+ * @param {string} idStatus
+ */
+function filterByStatus(idStatus) {
+	if (idStatusFiltering === idStatus) idStatusFiltering = null;
+	else idStatusFiltering = idStatus;
 	update();
 }
 
@@ -551,8 +657,10 @@ function filterByTag(titleTag) {
 function update() {
 	saveTaskManager();
 	displayTaskManager();
-	displayListTags();
+	displayTags();
 	displayTagsFiltering();
+	displayStatuses();
+	displayStatusFiltering();
 	addEventsOnPage();
 }
 
