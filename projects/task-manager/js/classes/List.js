@@ -6,7 +6,6 @@ export default class List {
 
 	static ID_STORE = "tm-lists";
 	static CLASS_BTN_DELETE_LIST = "btn-delete-list";
-	static CLASS_BTN_EDIT_LIST = "btn-edit-list";
 	static CLASS_BTN_ADD_TASK = "btn-add-task-list";
 
 	/**
@@ -96,10 +95,15 @@ export default class List {
 		return this.#tasks.some((task) => task.tags.some((tag) => titleTags.includes(tag.title)));
 	}
 
-	getTemplate() {
+	/**
+	 * Gets the template of the list
+	 * @param {Tag[]} listTags
+	 * @returns {string}
+	 */
+	getTemplate(listTags) {
 		return `
             <div class="flex column tm-list-container">
-                <div class="flex tm-list-header" style="background-color: ${this.#color}">
+                <div class="flex tm-list-header" data-id="${this.#id}" style="background-color: ${this.#color}">
                     <div class="flex column">
                         <div class="flex">
                             <h1 class="title">${this.#title}</h1>
@@ -107,13 +111,9 @@ export default class List {
                     </div>
                     <div class="flex column" style="justify-content: center;">
                         <div class="flex" style="justify-content: flex-end;">
-                            <button class="button is-rounded is-info ${List.CLASS_BTN_EDIT_LIST}" 
-                                data-id="${this.#id}"
-                                >
-                                <i class="fas fa-edit"></i>
-                            </button>
                             <button class="button is-rounded is-danger ${List.CLASS_BTN_DELETE_LIST}" 
                                 data-id="${this.#id}"
+                                title="Delete"
                                 >
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -122,9 +122,13 @@ export default class List {
                 </div>
                 <div class="flex">
                     <div data-id-list="${this.#id}" class="flex column tm-list-content-container">
-                        ${this.#tasks.reduce((acc, t) => acc + t.getTemplate(this.#id), "")}
+                        ${this.#tasks.reduce((acc, t) => acc + t.getTemplate(this.#id, listTags), "")}
                         <div class="flex" style="justify-content: center;">
-                            <button class="button is-rounded ${List.CLASS_BTN_ADD_TASK}" data-id-list="${this.#id}">
+                            <button 
+                                class="button is-rounded ${List.CLASS_BTN_ADD_TASK}" 
+                                data-id-list="${this.#id}" 
+                                title="Add task on this list"
+                                >
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>

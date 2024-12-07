@@ -43,13 +43,7 @@ let lists = store.get(List.ID_STORE, []).map(
 	(l) =>
 		new List({
 			...l,
-			tasks: l.tasks.map(
-				(t) =>
-					new Task({
-						...t,
-						tags: tags.filter((tag) => t.tags.map((tagOfTask) => tagOfTask.title).includes(tag.title)),
-					}),
-			),
+			tasks: l.tasks.map((t) => new Task(t)),
 		}),
 );
 /**
@@ -88,7 +82,7 @@ function saveTaskManager() {
 function displayTaskManager() {
 	taskManagerContainer.innerHTML = lists
 		.filter((l) => l.containTaskWithTags(tagsFiltered))
-		.reduce((acc, l) => acc + l.getTemplate(), "");
+		.reduce((acc, l) => acc + l.getTemplate(tags), "");
 }
 
 /**
@@ -146,7 +140,7 @@ function addEventsOnPage() {
 	// Other events like editing, deleting or dragging and dropping
 	addEventsOnTaskManagerContainer();
 	// Add links for filtering tags
-	addEventsOnTag();
+	addEventsOnTagFilter();
 }
 
 /**
@@ -171,11 +165,11 @@ function addEventsOnTasks() {
 		btnDelete.addEventListener("click", deleteTaskFromDom);
 	}
 	// Edit Task
-	const allBtnsEditTasks = document.querySelectorAll(`.${Task.CLASS_TASK_EDIT}`);
-	for (let i = 0; i < allBtnsEditTasks.length; i++) {
-		const btnEditTask = allBtnsEditTasks[i];
-		btnEditTask.removeEventListener("click", editTaskFromDom);
-		btnEditTask.addEventListener("click", editTaskFromDom);
+	const everyTaskFromDom = document.querySelectorAll(`.tm-task`);
+	for (let i = 0; i < everyTaskFromDom.length; i++) {
+		const btnEditTask = everyTaskFromDom[i];
+		btnEditTask.removeEventListener("dblclick", editTaskFromDom);
+		btnEditTask.addEventListener("dblclick", editTaskFromDom);
 	}
 }
 
@@ -191,11 +185,11 @@ function addEventsOnLists() {
 		btnDelete.addEventListener("click", deleteListFromDom);
 	}
 	// Edit List
-	const allBtnsEditLists = document.querySelectorAll(`.${List.CLASS_BTN_EDIT_LIST}`);
-	for (let i = 0; i < allBtnsEditLists.length; i++) {
-		const btnEditList = allBtnsEditLists[i];
-		btnEditList.removeEventListener("click", editListFromDom);
-		btnEditList.addEventListener("click", editListFromDom);
+	const everyListsHeader = document.querySelectorAll(`.tm-list-header`);
+	for (let i = 0; i < everyListsHeader.length; i++) {
+		const btnEditList = everyListsHeader[i];
+		btnEditList.removeEventListener("dblclick", editListFromDom);
+		btnEditList.addEventListener("dblclick", editListFromDom);
 	}
 }
 
@@ -231,7 +225,10 @@ function addEventsBtnAddOnEachList() {
 	}
 }
 
-function addEventsOnTag() {
+/**
+ * Adds events for filtering by tag
+ */
+function addEventsOnTagFilter() {
 	const allTagsForfilter = document.querySelectorAll(".tm-tag-filter");
 	for (let i = 0; i < allTagsForfilter.length; i++) {
 		const tagFilter = allTagsForfilter[i];
@@ -310,14 +307,13 @@ function openWindowTask(idList = null) {
 	descTask.value = taskToEdit?.description ?? "";
 	selectTagsTask.value = "";
 	selectTagsTask.innerHTML = tags.reduce(
-		(acc, tag) => `${acc}<option value="${tag.title}">${tag.title}</option>`,
+		(acc, tag) => `${acc}<option value="${tag.id}">${tag.title}</option>`,
 		`<option value=""></option>`,
 	);
 	if (taskToEdit) {
-		const titleTags = taskToEdit.tags.map((t) => t.title);
 		for (let i = 0; i < selectTagsTask.options.length; i++) {
 			const option = selectTagsTask.options[i];
-			if (!titleTags.includes(option.value)) continue;
+			if (!taskToEdit.idsTags.includes(option.value)) continue;
 			option.selected = true;
 		}
 	}
@@ -350,19 +346,17 @@ function closeModalTask() {
 function saveTask() {
 	const idList = selectLists.value;
 	if (!idList) return;
-	const tagsOfTask = [...selectTagsTask.selectedOptions].map((option) =>
-		tags.find((tag) => tag.title === option.value),
-	);
+	const idsTagsOfTask = [...selectTagsTask.selectedOptions].map((option) => option.value);
 	lists = lists.map((l) => {
 		if (l.id !== idList) return l;
 		if (!idTaskEdit)
-			l.tasks.push(new Task({ title: titleTask.value, description: descTask.value, tags: tagsOfTask }));
+			l.tasks.push(new Task({ title: titleTask.value, description: descTask.value, idsTags: idsTagsOfTask }));
 		else
 			l.tasks = l.tasks.map((t) => {
 				if (t.id !== idTaskEdit) return t;
 				t.title = titleTask.value;
 				t.description = descTask.value;
-				t.tags = tagsOfTask;
+				t.idsTags = idsTagsOfTask;
 				return t;
 			});
 		return l;
@@ -559,7 +553,6 @@ update();
  * TODO:
  *  add statuses for tasks (ONGOING)
  *  change display view by switching to grid
- *  potentially, adding an id to tag
  *  changing arrays inside lists by adding idsTaks instead of tasks, idList inside Task, idsTags inside Task
  *  double click for edition task + list
  *  delete button inside edition task + list

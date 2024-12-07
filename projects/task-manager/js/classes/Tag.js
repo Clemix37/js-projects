@@ -7,6 +7,10 @@ export default class Tag {
 	/**
 	 * @type {string}
 	 */
+	#id;
+	/**
+	 * @type {string}
+	 */
 	#title;
 
 	/**
@@ -21,9 +25,10 @@ export default class Tag {
 	/**
 	 * Create the instance of the Tag
 	 * @constructor
-	 * @param {{ title: string, color: string, }}
+	 * @param {{ id: string?, title: string, color: string, }}
 	 */
-	constructor({ title, color = "#000000" }) {
+	constructor({ id = null, title, color = "#000000" }) {
+		this.#id = id ?? Utils.genUniqueId();
 		this.#title = title;
 		this.#color = color;
 	}
@@ -32,6 +37,9 @@ export default class Tag {
 
 	//#region Accessors
 
+	get id() {
+		return this.#id;
+	}
 	get title() {
 		return this.#title;
 	}
@@ -54,7 +62,10 @@ export default class Tag {
 	getTemplate(forFilter = false, isFiltering = false) {
 		const rgbColor = Utils.hexToRgb(this.#color.split("#").join(""));
 		return `
-            <div data-title-tag="${this.#title}" class="flex tm-tag ${forFilter ? "tm-tag-filter" : ""}" 
+            <div 
+                data-id-tag="${this.#id}" 
+                data-title-tag="${this.#title}" 
+                class="flex tm-tag ${forFilter ? "tm-tag-filter" : ""}" 
                 style="align-items: center; background-color: rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.1); 
                     border: 1px solid ${this.#color};"
                 >
@@ -66,6 +77,7 @@ export default class Tag {
 
 	toJSON() {
 		return {
+			id: this.#id,
 			title: this.#title,
 			color: this.#color,
 		};

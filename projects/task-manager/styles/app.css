@@ -25,6 +25,7 @@
     margin: 0 5px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    cursor: pointer;
 }
 
 .tm-list-content-container {

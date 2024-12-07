@@ -24,9 +24,9 @@ export default class Task {
 	 */
 	#done;
 	/**
-	 * @type {Tag[]}
+	 * @type {string[]}
 	 */
-	#tags;
+	#idsTags;
 
 	//#endregion
 
@@ -39,14 +39,14 @@ export default class Task {
 	 * @param {string} obj.title
 	 * @param {string} obj.description
 	 * @param {boolean} obj.done
-	 * @param {Tag[]} obj.tags
+	 * @param {string[]} obj.idsTags
 	 */
-	constructor({ id = null, title = "", description = "", done = false, tags = [] }) {
+	constructor({ id = null, title = "", description = "", done = false, idsTags = [] }) {
 		this.#id = id ?? Utils.genUniqueId();
 		this.#title = title;
 		this.#description = description;
 		this.#done = done;
-		this.#tags = tags;
+		this.#idsTags = idsTags;
 	}
 
 	//#endregion
@@ -65,8 +65,8 @@ export default class Task {
 	get done() {
 		return this.#done;
 	}
-	get tags() {
-		return this.#tags;
+	get idsTags() {
+		return this.#idsTags;
 	}
 	set title(value) {
 		this.#title = value;
@@ -77,8 +77,8 @@ export default class Task {
 	set done(value) {
 		this.#done = value;
 	}
-	set tags(value) {
-		this.#tags = value;
+	set idsTags(value) {
+		this.#idsTags = value;
 	}
 
 	//#endregion
@@ -88,11 +88,12 @@ export default class Task {
 	/**
 	 * Gets the template of the task with the idList
 	 * @param {string} idList
+	 * @param {Tag[]} listTags
 	 * @returns {string}
 	 */
-	getTemplate(idList) {
+	getTemplate(idList, listTags) {
 		return `
-            <div id="${this.#id}" class="flex tm-task" draggable="true">
+            <div id="${this.#id}" data-id="${this.#id}" data-id-list="${idList}" class="flex tm-task" draggable="true">
                 <div class="flex column">
                     <div class="flex tm-task-header">
                         <h3 class="subtitle">${this.#title}</h3>
@@ -103,23 +104,18 @@ export default class Task {
                     </div>
                     <hr />
                     <div class="flex">
-                        ${this.#tags.reduce((acc, t) => acc + t.getTemplate(), "")}
+                        ${listTags
+							.filter((tag) => this.#idsTags.includes(tag.id))
+							.reduce((acc, t) => acc + t.getTemplate(), "")}
                     </div>
                     <hr />
                     <div class="flex" style="justify-content: center;">
                         <button class="button is-rounded is-danger ${Task.CLASS_TASK_DELETE}" 
                             data-id="${this.#id}" 
                             data-id-list="${idList}"
+                            title="Delete"
                             >
-                            <i class="fas fa-trash" style="margin-right: 8px;"></i>
-                            Delete
-                        </button>
-                        <button class="button is-rounded is-info ${Task.CLASS_TASK_EDIT}" 
-                            data-id="${this.#id}" 
-                            data-id-list="${idList}"
-                            >
-                            <i class="fas fa-edit" style="margin-right: 8px;"></i>
-                            Edit
+                            <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>
@@ -129,7 +125,7 @@ export default class Task {
 
 	/**
 	 * Returns the instance as object for JSON
-	 * @returns {{ id: string, title: string, description: string, done: boolean, tags: { title: string, color: string, }[] }}
+	 * @returns {{ id: string, title: string, description: string, done: boolean, idsTags: string[] }}
 	 */
 	toJSON() {
 		return {
@@ -137,7 +133,7 @@ export default class Task {
 			title: this.#title,
 			description: this.#description,
 			done: this.#done,
-			tags: this.#tags.map((t) => t.toJSON()),
+			idsTags: this.#idsTags,
 		};
 	}
 
