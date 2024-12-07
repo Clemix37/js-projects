@@ -27,6 +27,10 @@ export default class Task {
 	 * @type {string[]}
 	 */
 	#idsTags;
+	/**
+	 * @type {string?}
+	 */
+	#idStatus;
 
 	//#endregion
 
@@ -40,13 +44,15 @@ export default class Task {
 	 * @param {string} obj.description
 	 * @param {boolean} obj.done
 	 * @param {string[]} obj.idsTags
+	 * @param {string} obj.idStatus
 	 */
-	constructor({ id = null, title = "", description = "", done = false, idsTags = [] }) {
+	constructor({ id = null, title = "", description = "", done = false, idsTags = [], idStatus = null }) {
 		this.#id = id ?? Utils.genUniqueId();
 		this.#title = title;
 		this.#description = description;
 		this.#done = done;
 		this.#idsTags = idsTags;
+		this.#idStatus = idStatus;
 	}
 
 	//#endregion
@@ -68,6 +74,9 @@ export default class Task {
 	get idsTags() {
 		return this.#idsTags;
 	}
+	get idStatus() {
+		return this.#idStatus;
+	}
 	set title(value) {
 		this.#title = value;
 	}
@@ -79,6 +88,9 @@ export default class Task {
 	}
 	set idsTags(value) {
 		this.#idsTags = value;
+	}
+	set idStatus(value) {
+		this.#idStatus = value;
 	}
 
 	//#endregion
@@ -134,6 +146,7 @@ export default class Task {
 			description: this.#description,
 			done: this.#done,
 			idsTags: this.#idsTags,
+			idStatus: this.#idStatus,
 		};
 	}
 

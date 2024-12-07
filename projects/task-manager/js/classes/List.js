@@ -89,10 +89,10 @@ export default class List {
 	 * Check if actual instane of list contains tasks with tags filtered in arguments
 	 * @param {Tag[]} tagsFiltered
 	 */
-	containTaskWithTags(tagsFiltered = []) {
+	containTasksWithTags(tagsFiltered = []) {
 		if (tagsFiltered.length === 0) return true;
-		const titleTags = tagsFiltered.map((tag) => tag.title);
-		return this.#tasks.some((task) => task.tags.some((tag) => titleTags.includes(tag.title)));
+		const idsTagsFiltered = tagsFiltered.map((tag) => tag.id);
+		return this.#tasks.some((task) => task.idsTags.some((idTag) => idsTagsFiltered.includes(idTag)));
 	}
 
 	/**

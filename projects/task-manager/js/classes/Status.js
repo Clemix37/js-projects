@@ -3,6 +3,8 @@ import Utils from "../../../../js/Utils.js";
 export default class Status {
 	//#region Properties
 
+	static ID_STORE = "tm-statuses";
+
 	/**
 	 * @type {string}
 	 */
@@ -41,6 +43,17 @@ export default class Status {
 	//#region Methods
 
 	//#region Public Methods
+
+	/**
+	 * Returns an object to store in localStorage
+	 * @returns {{ id: string, name: string }}
+	 */
+	toJSON() {
+		return {
+			id: this.#id,
+			name: this.#name,
+		};
+	}
 
 	//#endregion
 

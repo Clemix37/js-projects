@@ -3,6 +3,7 @@ import { askConfirmation } from "./confirmation.js";
 import List from "./classes/List.js";
 import Tag from "./classes/Tag.js";
 import Task from "./classes/Task.js";
+import Status from "./classes/Status.js";
 
 // Divs
 const taskManagerContainer = document.getElementById("task-manage-container");
@@ -47,6 +48,10 @@ let lists = store.get(List.ID_STORE, []).map(
 		}),
 );
 /**
+ * @type {Status[]}
+ */
+const statuses = store.get(Status.ID_STORE, []).map((s) => new Status(s));
+/**
  * @type {string}
  */
 let idTaskEdit = null;
@@ -60,7 +65,7 @@ let idListEdit = null;
 let tagsFiltered = [];
 
 /**
- * Saves lists and tags inside the localStorage
+ * Saves lists, tags and statuses inside the localStorage
  */
 function saveTaskManager() {
 	store.set(
@@ -70,6 +75,10 @@ function saveTaskManager() {
 	store.set(
 		Tag.ID_STORE,
 		tags.map((t) => t.toJSON()),
+	);
+	store.set(
+		Status.ID_STORE,
+		statuses.map((s) => s.toJSON()),
 	);
 }
 
@@ -81,7 +90,7 @@ function saveTaskManager() {
  */
 function displayTaskManager() {
 	taskManagerContainer.innerHTML = lists
-		.filter((l) => l.containTaskWithTags(tagsFiltered))
+		.filter((l) => l.containTasksWithTags(tagsFiltered))
 		.reduce((acc, l) => acc + l.getTemplate(tags), "");
 }
 
@@ -554,6 +563,5 @@ update();
  *  add statuses for tasks (ONGOING)
  *  change display view by switching to grid
  *  changing arrays inside lists by adding idsTaks instead of tasks, idList inside Task, idsTags inside Task
- *  double click for edition task + list
  *  delete button inside edition task + list
  */
