@@ -24,9 +24,9 @@ export default class List {
 	#color;
 
 	/**
-	 * @type {Task[]}
+	 * @type {string[]}
 	 */
-	#tasks;
+	#idsTasks;
 
 	//#endregion
 
@@ -35,13 +35,13 @@ export default class List {
 	/**
 	 * Create the instance of the List
 	 * @constructor
-	 * @param {{ id: string?, title: string, color: string, tasks: Task[], }}
+	 * @param {{ id: string?, title: string, color: string, idsTasks: string[], }}
 	 */
-	constructor({ id = null, title, color, tasks = [] }) {
+	constructor({ id = null, title, color, idsTasks = [] }) {
 		this.#id = id ?? Utils.genUniqueId();
 		this.#title = title;
 		this.#color = color;
-		this.#tasks = tasks;
+		this.#idsTasks = idsTasks;
 	}
 
 	//#endregion
@@ -57,8 +57,8 @@ export default class List {
 	get color() {
 		return this.#color;
 	}
-	get tasks() {
-		return this.#tasks;
+	get idsTasks() {
+		return this.#idsTasks;
 	}
 	set title(value) {
 		this.#title = value;
@@ -66,8 +66,8 @@ export default class List {
 	set color(value) {
 		this.#color = value;
 	}
-	set tasks(value) {
-		this.#tasks = value;
+	set idsTasks(value) {
+		this.#idsTasks = value;
 	}
 
 	//#endregion
@@ -81,35 +81,40 @@ export default class List {
 	 * @param {string} idTask
 	 */
 	deleteTask(idTask) {
-		this.#tasks = this.#tasks.filter((t) => t.id !== idTask);
+		this.#idsTasks = this.#idsTasks.filter((id) => id !== idTask);
 		return this;
 	}
 
 	/**
 	 * Check if actual instane of list contains tasks with tags filtered in arguments
+	 * @param {Task[]} tasks
 	 * @param {Tag[]} tagsFiltered
 	 */
-	containTasksWithTags(tagsFiltered = []) {
+	containTasksWithTags(tasks, tagsFiltered = []) {
 		if (tagsFiltered.length === 0) return true;
 		const idsTagsFiltered = tagsFiltered.map((tag) => tag.id);
-		return this.#tasks.some((task) => task.idsTags.some((idTag) => idsTagsFiltered.includes(idTag)));
+		return tasks
+			.filter((t) => this.#idsTasks.includes(t.id))
+			.some((task) => task.idsTags.some((idTag) => idsTagsFiltered.includes(idTag)));
 	}
 
 	/**
 	 * Check if actual instane of list contains tasks with the id os the status filtering
+	 * @param {Task[]} tasks
 	 * @param {string?} idStatusFiltered
 	 */
-	containTasksWithStatuses(idStatusFiltered = []) {
+	containTasksWithStatuses(tasks, idStatusFiltered = []) {
 		if (!idStatusFiltered) return true;
-		return this.#tasks.some((task) => task.idStatus === idStatusFiltered);
+		return tasks.filter((t) => this.#idsTasks.includes(t.id)).some((task) => task.idStatus === idStatusFiltered);
 	}
 
 	/**
 	 * Gets the template of the list
+	 * @param {Task[]} listTasks
 	 * @param {Tag[]} listTags
 	 * @returns {string}
 	 */
-	getTemplate(listTags) {
+	getTemplate(listTasks, listTags) {
 		return `
             <div class="flex column tm-list-container">
                 <div class="flex tm-list-header" data-id="${this.#id}" style="background-color: ${this.#color}">
@@ -131,7 +136,9 @@ export default class List {
                 </div>
                 <div class="flex">
                     <div data-id-list="${this.#id}" class="flex column tm-list-content-container">
-                        ${this.#tasks.reduce((acc, t) => acc + t.getTemplate(this.#id, listTags), "")}
+                        ${listTasks
+							.filter((t) => this.#idsTasks.includes(t.id))
+							.reduce((acc, t) => acc + t.getTemplate(this.#id, listTags), "")}
                         <div class="flex" style="justify-content: center;">
                             <button 
                                 class="button is-rounded ${List.CLASS_BTN_ADD_TASK}" 
@@ -152,7 +159,7 @@ export default class List {
 			id: this.#id,
 			title: this.#title,
 			color: this.#color,
-			tasks: this.#tasks.map((t) => t.toJSON()),
+			idsTasks: this.#idsTasks,
 		};
 	}
 

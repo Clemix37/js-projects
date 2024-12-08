@@ -4,6 +4,9 @@ import List from "./classes/List.js";
 import Tag from "./classes/Tag.js";
 import Task from "./classes/Task.js";
 import Status from "./classes/Status.js";
+import Display from "./classes/Display.js";
+
+//#region Properties
 
 // Divs
 const taskManagerContainer = document.getElementById("task-manage-container");
@@ -40,7 +43,6 @@ const titleTag = document.getElementById("title-tag");
 const colorTag = document.getElementById("color-tag");
 const nameStatus = document.getElementById("name-status");
 const colorStatus = document.getElementById("color-status");
-const selectTags = document.getElementById("select-tags");
 /**
  * @type {Tag[]}
  */
@@ -48,17 +50,19 @@ const tags = store.get(Tag.ID_STORE, []).map((t) => new Tag(t));
 /**
  * @type {List[]}
  */
-let lists = store.get(List.ID_STORE, []).map(
-	(l) =>
-		new List({
-			...l,
-			tasks: l.tasks.map((t) => new Task(t)),
-		}),
-);
+let lists = store.get(List.ID_STORE, []).map((l) => new List(l));
+/**
+ * @type {Task[]}
+ */
+let tasks = store.get(Task.ID_STORE, []).map((t) => new Task(t));
 /**
  * @type {Status[]}
  */
 const statuses = store.get(Status.ID_STORE, []).map((s) => new Status(s));
+/**
+ * @type {Display}
+ */
+const display = new Display(store.get(Display.ID_STORE, {}));
 /**
  * @type {string}
  */
@@ -76,8 +80,10 @@ let tagsFiltered = [];
  */
 let idStatusFiltering = null;
 
+//#endregion
+
 /**
- * Saves lists, tags and statuses inside the localStorage
+ * Saves lists, tasks, tags, statuses inside the localStorage
  */
 function saveTaskManager() {
 	store.set(
@@ -92,6 +98,12 @@ function saveTaskManager() {
 		Status.ID_STORE,
 		statuses.map((s) => s.toJSON()),
 	);
+	const idsTasksUsed = lists.flatMap((l) => l.idsTasks);
+	store.set(
+		Task.ID_STORE,
+		tasks.filter((task) => idsTasksUsed.includes(task.id)).map((t) => t.toJSON()),
+	);
+	store.set(Display.ID_STORE, display.toJSON());
 }
 
 //#region Display
@@ -102,9 +114,9 @@ function saveTaskManager() {
  */
 function displayTaskManager() {
 	taskManagerContainer.innerHTML = lists
-		.filter((l) => l.containTasksWithTags(tagsFiltered))
-		.filter((l) => l.containTasksWithStatuses(idStatusFiltering))
-		.reduce((acc, l) => acc + l.getTemplate(tags), "");
+		.filter((l) => l.containTasksWithTags(tasks, tagsFiltered))
+		.filter((l) => l.containTasksWithStatuses(tasks, idStatusFiltering))
+		.reduce((acc, l) => acc + l.getTemplate(tasks, tags), "");
 }
 
 /**
@@ -116,7 +128,9 @@ function displayTags() {
 		.filter((t) => !idsFiltering.includes(t.id))
 		.reduce(
 			(acc, t) => acc + t.getTemplate(true),
-			tags.length > 0 ? `<p style="margin-right: 10px;">Filter tags:</p>` : "",
+			tags.length > 0 && tags.length !== tagsFiltered.length
+				? `<p style="margin-right: 10px;">Filter tags:</p>`
+				: "",
 		);
 }
 
@@ -134,15 +148,20 @@ function displayTagsFiltering() {
  * Display every status not filtering
  */
 function displayStatuses() {
-	statusesContainer.innerHTML = idStatusFiltering ? "" : statuses.reduce((acc, s) => acc + s.getTemplate(true), "");
+	statusesContainer.innerHTML = idStatusFiltering
+		? ""
+		: statuses.reduce((acc, s) => acc + s.getTemplate(true), `<p style="margin-right: 10px;">Filter Statuses:</p>`);
 }
 
 /**
  * Display every status filtering the display
  */
 function displayStatusFiltering() {
-	statusesContainer.innerHTML = idStatusFiltering
-		? statuses.find((s) => s.id === idStatusFiltering).map((s) => s.getTemplate(true, true))
+	statusesFilteredContainer.innerHTML = idStatusFiltering
+		? `
+            <p style="margin-right: 10px;">Filter Status:</p> 
+            ${statuses.find((s) => s.id === idStatusFiltering)?.getTemplate(true, true) ?? ""}
+        `
 		: "";
 }
 
@@ -361,7 +380,7 @@ function addTaskOnList(e) {
  * @param {string?} idList
  */
 function openWindowTask(idList = null) {
-	const taskToEdit = idTaskEdit ? lists.find((l) => l.id === idList).tasks.find((t) => t.id === idTaskEdit) : null;
+	const taskToEdit = idTaskEdit ? tasks.find((t) => t.id === idTaskEdit) : null;
 	titleTask.value = taskToEdit?.title ?? "";
 	descTask.value = taskToEdit?.description ?? "";
 	selectTagsTask.value = "";
@@ -406,18 +425,25 @@ function saveTask() {
 	const idList = selectLists.value;
 	if (!idList) return;
 	const idsTagsOfTask = [...selectTagsTask.selectedOptions].map((option) => option.value);
+	const taskToEdit = idTaskEdit ? tasks.find((t) => t.id === idTaskEdit) : null;
+	const newTask = idTaskEdit
+		? null
+		: new Task({ title: titleTask.value, description: descTask.value, idsTags: idsTagsOfTask });
+	// Saves the task
+	if (!idTaskEdit) tasks.push(newTask);
+	else
+		tasks = tasks.map((t) => {
+			if (t.id !== idTaskEdit) return t;
+			t.idsTags = idsTagsOfTask;
+			t.title = titleTask.value;
+			t.description = descTask.value;
+			return t;
+		});
+	// Link the task with the list
 	lists = lists.map((l) => {
-		if (l.id !== idList) return l;
-		if (!idTaskEdit)
-			l.tasks.push(new Task({ title: titleTask.value, description: descTask.value, idsTags: idsTagsOfTask }));
-		else
-			l.tasks = l.tasks.map((t) => {
-				if (t.id !== idTaskEdit) return t;
-				t.title = titleTask.value;
-				t.description = descTask.value;
-				t.idsTags = idsTagsOfTask;
-				return t;
-			});
+		const containsTask = l.idsTasks.includes(idTaskEdit ?? newTask.id);
+		if (l.id === idList && !containsTask) l.idsTasks.push(idTaskEdit ?? newTask.id);
+		else l.idsTasks = l.idsTasks.filter((t) => t.id !== idTaskEdit);
 		return l;
 	});
 	closeWindowTask();
@@ -500,6 +526,7 @@ function deleteTaskFromDom(e) {
 	askConfirmation("Are you sure you want to delete the task ?", () => {
 		lists = lists.map((l) => {
 			if (l.id !== idList) return l;
+			tasks = tasks.filter((t) => t.id !== id);
 			return l.deleteTask(id);
 		});
 		update();
@@ -514,6 +541,8 @@ function deleteTaskFromDom(e) {
 function deleteListFromDom(e) {
 	const { id } = e.currentTarget.dataset;
 	askConfirmation("Are you sure you want to delete the list and its tasks ?", () => {
+		const idsTasksOfList = lists.find((l) => l.id === id)?.idsTasks ?? [];
+		tasks = tasks.filter((t) => idsTasksOfList.includes(t.id));
 		lists = lists.filter((l) => l.id !== id);
 		update();
 	});
@@ -578,17 +607,15 @@ function onDrop(e) {
 	const { idList } = e.target.dataset;
 	// Appends in the dom the content of the actual task
 	e.target.prepend(document.getElementById(idTask));
-	// Finds the task to move
-	const taskToMove = lists.flatMap((l) => l.tasks).find((t) => t.id === idTask);
 	// Update lists by deleting task from actual list, and adding it to new list
 	lists = lists.map((list) => {
-		const containsTaskDropped = list.tasks.find((t) => t.id === idTask);
+		const containsTaskDropped = list.idsTasks.find((id) => id === idTask);
 		const isTargetList = list.id === idList;
 		if (!containsTaskDropped && !isTargetList) return list;
 		// Deletes the task from the list having it
-		if (containsTaskDropped) list.tasks = list.tasks.filter((t) => t.id !== idTask);
+		if (containsTaskDropped) list.idsTasks = list.idsTasks.filter((id) => id !== idTask);
 		// Adds the task inside the new list
-		else list.tasks.push(taskToMove);
+		else list.idsTasks.push(idTask);
 		// Returns the edited list
 		return list;
 	});
@@ -668,8 +695,8 @@ update();
 
 /**
  * TODO:
- *  add statuses for tasks (ONGOING)
+ *  delete tags
+ *  delete statuses
  *  change display view by switching to grid
- *  changing arrays inside lists by adding idsTaks instead of tasks, idList inside Task, idsTags inside Task
  *  delete button inside edition task + list
  */

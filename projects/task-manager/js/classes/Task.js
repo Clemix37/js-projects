@@ -4,6 +4,7 @@ import Tag from "./Tag.js";
 export default class Task {
 	//#region Properties
 
+	static ID_STORE = "tm-tasks";
 	static CLASS_TASK_EDIT = "btn-edit-tm-task";
 	static CLASS_TASK_DELETE = "btn-delete-tm-task";
 
