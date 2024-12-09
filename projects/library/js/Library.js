@@ -1,90 +1,90 @@
-import store from "../../../js/SessionStore.js";
+import store from "../../../js/classes/SessionStore.js";
 import Book from "./Book.js";
 
 export default class Library {
+	//#region Properties
 
-    //#region Properties
+	#books;
+	static booksSessionKey = "library-books";
 
-    #books;
-    static booksSessionKey = "library-books";
+	//#endregion
 
-    //#endregion
+	//#region Constructor
 
-    //#region Constructor
+	constructor() {
+		this.#books = store.get(Library.booksSessionKey, []).map((b) => new Book(b));
+	}
 
-    constructor(){
-        this.#books = store.get(Library.booksSessionKey, []).map(b => new Book(b));
-    }
+	//#endregion
 
-    //#endregion
+	//#endregion
 
-    //#endregion
+	//#region Accessors
 
-    //#region Accessors
+	get books() {
+		return this.#books;
+	}
 
-    get books() { return this.#books; }
+	//#endregion
 
-    //#endregion
+	//#region Public methods
 
-    //#region Public methods
+	/**
+	 * Add the book inside the private property
+	 * @param {Book} book
+	 */
+	addBook(book) {
+		if (!book instanceof Book) throw new TypeError("Parameter is not type of Book");
+		this.#books.push(book);
+		this.#saveBooks();
+	}
 
-    /**
-     * Add the book inside the private property
-     * @param {Book} book 
-     */
-    addBook(book){
-        if(!book instanceof Book) throw new TypeError("Parameter is not type of Book");
-        this.#books.push(book);
-        this.#saveBooks();
-    }
-    
-    /**
-     * Delete the book with this id from the books property
-     * @param {number} bookId 
-     */
-    removeBook(bookId){
-        this.#books = this.#books.filter(book => book.id !== bookId);
-        this.#saveBooks();
-    }
-    /**
-     * Find the book with the same id and returns it
-     * @param {number} bookId 
-     * @returns {Book|null}
-     */
-    getBookFromId(bookId){
-        return this.#books.find(b => b.id === bookId);
-    }
+	/**
+	 * Delete the book with this id from the books property
+	 * @param {number} bookId
+	 */
+	removeBook(bookId) {
+		this.#books = this.#books.filter((book) => book.id !== bookId);
+		this.#saveBooks();
+	}
+	/**
+	 * Find the book with the same id and returns it
+	 * @param {number} bookId
+	 * @returns {Book|null}
+	 */
+	getBookFromId(bookId) {
+		return this.#books.find((b) => b.id === bookId);
+	}
 
-    /**
-     * Edit the content of the book with the id given as parameter
-     * @param {number} bookId 
-     * @param {object} obj
-     * @param {string} obj.name
-     * @param {string} obj.year
-     * @param {string} obj.author
-     */
-    editBookFromId(bookId, { name, year, author }){
-        this.#books = this.#books.map(b => {
-            if(b.id !== bookId) return b;
-            b.name = name;
-            b.year = year;
-            b.author = author;
-            return b;
-        });
-        this.#saveBooks();
-    }
+	/**
+	 * Edit the content of the book with the id given as parameter
+	 * @param {number} bookId
+	 * @param {object} obj
+	 * @param {string} obj.name
+	 * @param {string} obj.year
+	 * @param {string} obj.author
+	 */
+	editBookFromId(bookId, { name, year, author }) {
+		this.#books = this.#books.map((b) => {
+			if (b.id !== bookId) return b;
+			b.name = name;
+			b.year = year;
+			b.author = author;
+			return b;
+		});
+		this.#saveBooks();
+	}
 
-    //#endregion
+	//#endregion
 
-    //#region Private methods
+	//#region Private methods
 
-    /**
-     * Save local books to localStorage
-     */
-    #saveBooks(){
-        store.set(Library.booksSessionKey, this.#books);
-    }
+	/**
+	 * Save local books to localStorage
+	 */
+	#saveBooks() {
+		store.set(Library.booksSessionKey, this.#books);
+	}
 
-    //#endregion
-
+	//#endregion
 }

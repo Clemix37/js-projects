@@ -83,6 +83,10 @@
 		{
 			"name": "Task Manager 🚩",
 			"link": "task-manager"
+		},
+		{
+			"name": "poll",
+			"link": "poll"
 		}
 	]
 }

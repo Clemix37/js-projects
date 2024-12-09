@@ -1,4 +1,4 @@
-import Utils from "../../../../js/Utils.js";
+import Utils from "../../../../js/classes/Utils.js";
 
 export default class Tag {
 	//#region Properties

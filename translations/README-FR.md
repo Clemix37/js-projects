@@ -26,6 +26,7 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [x] [Liste à faire](https://clemix37.github.io/js-projects/projects/todo-list/)
 -   [x] [Jeu du tri d'eau](https://clemix37.github.io/js-projects/projects/water-sort/)
 -   [x] [Jeu mémory](https://clemix37.github.io/js-projects/projects/memory-game/)
+-   [x] [Gestionnaire de tâches](https://clemix37.github.io/js-projects/projects/task-manager/)
 -   [ ] App météo
 -   [ ] Lanceur de Musique
 -   [ ] App quiz
@@ -34,7 +35,6 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [ ] Jeu d'évitement de voiture
 -   [ ] Jeu tombé
 -   [ ] Jeu de tir
--   [ ] Gestionnaire de tâches
 -   [ ] Sauvegarde de contacts
 -   [ ] Reservation de vols
 -   [ ] Reservation d'hôtel
@@ -90,3 +90,8 @@ Vous pouvez lister 250 Pokémon, voir chacun de leur détail quand vous cliquez 
 ### Memory Game
 
 Le jeu joue une série d'instructions dont l'ordre doit être respectée par l'utilisateur pour ne pas perdre.
+
+### Gestionnaire de Tâches
+
+Vous pouvez ajouter des listes avec des couleurs, tâches avec status, tags, etc.  
+Glisser-déposer les tâches dans les listes, changer la vue d'affichage.

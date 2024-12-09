@@ -9,20 +9,10 @@
     <link rel="stylesheet" href="../../styles/includes.css">
     <link rel="stylesheet" href="./styles/dialog.css">
     <link rel="stylesheet" href="./styles/app.css">
+    <script src="../../js/projectsDisplay.js"></script>
 </head>
 
 <body>
-    <header class="ligne">
-        <div class="colonne">
-            <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
-        </div>
-        <div class="colonne">
-            <div class="ligne">
-                <h1 class="title has-text-centered">Task Manager</h1>
-            </div>
-        </div>
-        <div class="colonne"></div>
-    </header>
 
     <div id="tags-container" class="flex" style="width: 100%; overflow-x: auto;">
 
@@ -169,22 +159,6 @@
                 Save
             </button>
             <button id="btn-cancel-status" class="button is-rounded">
-                <i class="fas fa-times" style="margin-right: 8px;"></i>
-                Cancel
-            </button>
-        </div>
-    </dialog>
-
-    <dialog id="window-confirm">
-        <div class="flex">
-            <h3 class="subtitle" id="lbl-confirmation"></h3>
-        </div>
-        <div class="flex" style="justify-content: flex-end;">
-            <button id="btn-confirm" class="button is-rounded is-primary">
-                <i class="fas fa-check" style="margin-right: 8px;"></i>
-                Confirm
-            </button>
-            <button id="btn-cancel-confirmation" class="button is-rounded">
                 <i class="fas fa-times" style="margin-right: 8px;"></i>
                 Cancel
             </button>

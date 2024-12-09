@@ -1,4 +1,4 @@
-import Utils from "../../../../js/Utils.js";
+import Utils from "../../../../js/classes/Utils.js";
 import Tag from "./Tag.js";
 
 export default class Task {

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery list</title>
     <link rel="stylesheet" href="../../styles/includes.css">
+    <script src="../../js/projectsDisplay.js"></script>
 </head>
 
 <body>
@@ -31,33 +32,18 @@
             cursor: pointer;
         }
     </style>
-    <!-- NAVRBAR -->
-    <nav class="ligne">
-        <div class="colonne">
-            <a class="nav-button button is-rounded" href="../../"><i class="fas fa-home"></i></a>
-        </div>
-        <div class="colonne">
-            <div class="ligne">
-                <h1 class="title has-text-centered">Grocery list</h1>
-            </div>
-        </div>
-        <div class="colonne"></div>
-    </nav>
-    <div class="colonne">
-        <div class="ligne">
-            <div class="colonne">
-                <div class="ligne">
-                    <h1 class="title has-text-centered">Grocery list</h1>
-                </div>
-                <div class="ligne">
+    <div class="flex column">
+        <div class="flex">
+            <div class="flex column">
+                <div class="flex">
                     <input type="text" class="input is-rounded is-large" id="item" placeholder="Item" autofocus>
                     <button class="button is-rounded is-info is-large" id="btnAddItem"><i class="fas fa-plus"
                             style="margin-right:8px;"></i>Add</button>
                 </div>
             </div>
         </div>
-        <div class="ligne">
-            <div class="colonne" id="items">
+        <div class="flex">
+            <div class="flex column" id="items">
 
             </div>
         </div>

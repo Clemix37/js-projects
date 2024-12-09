@@ -1,5 +1,5 @@
-import Project from "./Project.js";
-import projectsData from "./projects.json" with { type: "json" };
+import Project from "./classes/Project.js";
+import projectsData from "./data/projects.json" with { type: "json" };
 
 // We get every project from the json file
 /**

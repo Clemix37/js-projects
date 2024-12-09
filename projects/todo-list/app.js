@@ -1,4 +1,4 @@
-import store from "../../js/SessionStore.js";
+import store from "../../js/classes/SessionStore.js";
 import Task from "./Task.js";
 import TodoApp from "./TodoApp.js";
 

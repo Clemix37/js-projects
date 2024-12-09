@@ -1,4 +1,4 @@
-import Utils from "../../../js/Utils.js";
+import Utils from "../../../js/classes/Utils.js";
 
 const countdown = document.getElementById("countdown");
 const btnLaunch = document.getElementById("btnLaunch");

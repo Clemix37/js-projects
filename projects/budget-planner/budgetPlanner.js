@@ -1,4 +1,4 @@
-import Utils from "../../js/Utils.js";
+import Utils from "../../js/classes/Utils.js";
 import BudgetCalendar from "./classes/BudgetCalendar.js";
 import Operation from "./classes/Operation.js";
 

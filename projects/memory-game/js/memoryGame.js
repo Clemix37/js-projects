@@ -1,4 +1,4 @@
-import Utils from "../../../js/Utils.js";
+import Utils from "../../../js/classes/Utils.js";
 
 const IDS_BTNS = {
 	PLAY: "btn-play-memory-game",

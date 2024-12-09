@@ -1,4 +1,4 @@
-import Utils from "../../js/Utils.js";
+import Utils from "../../js/classes/Utils.js";
 
 export default class Task {
 	//#region Properties
@@ -95,7 +95,9 @@ export default class Task {
                     <label for="coche-${this.id}" class="card-header-title">${this.#title}</label>
                     <!-- DONE -->
 					<label class="checkbox" style="display: flex; align-items: center; margin: 5px;">
-						<input id="coche-${this.id}" data-id="${this.id}" class="${Task.CLASS_CHANGE_STATUS_TASK}" type="checkbox" ${this.#done ? "checked" : ""}>
+						<input id="coche-${this.id}" data-id="${this.id}" class="${Task.CLASS_CHANGE_STATUS_TASK}" type="checkbox" ${
+			this.#done ? "checked" : ""
+		}>
 					</label>
                     <!-- EDIT -->
                     <button data-id="${this.#id}" class="button is-rounded is-info ${Task.CLASS_EDIT_TASK}">

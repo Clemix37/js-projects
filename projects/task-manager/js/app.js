@@ -1,10 +1,10 @@
-import store from "../../../js/SessionStore.js";
-import { askConfirmation } from "./confirmation.js";
+import store from "../../../js/classes/SessionStore.js";
 import List from "./classes/List.js";
 import Tag from "./classes/Tag.js";
 import Task from "./classes/Task.js";
 import Status from "./classes/Status.js";
 import Display from "./classes/Display.js";
+import { askConfirmation } from "../../../js/confirmation.js";
 
 //#region Properties
 

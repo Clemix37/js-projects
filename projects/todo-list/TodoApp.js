@@ -1,5 +1,5 @@
-import store from "../../js/SessionStore.js";
-import Utils from "../../js/Utils.js";
+import store from "../../js/classes/SessionStore.js";
+import Utils from "../../js/classes/Utils.js";
 import Task from "./Task.js";
 
 export default class TodoApp {
