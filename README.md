@@ -26,6 +26,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [To do list](https://clemix37.github.io/js-projects/projects/todo-list/)
 -   [x] [Water Sort Game](https://clemix37.github.io/js-projects/projects/water-sort/)
 -   [x] [Memory game](https://clemix37.github.io/js-projects/projects/memory-game/)
+-   [X] [Task Manager](https://clemix37.github.io/js-projects/projects/task-manager/)
 -   [ ] Calendar
 -   [ ] Weather App
 -   [ ] Music Player
@@ -35,7 +36,6 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [ ] Car avoidance game
 -   [ ] Fall game
 -   [ ] Shooting Game
--   [ ] Task Manager
 -   [ ] Contact saver
 -   [ ] Airline Reservation
 -   [ ] Hotel reservation
@@ -91,3 +91,8 @@ You get to see 250 pokemon listed, you can also see every detail of the pokemon 
 ### Memory Game
 
 The game plays a set of instructions and you have to repeat it in the same order.
+
+### Task Manager
+
+You can add lists with colors, tasks with statuses, tags etc.  
+Drag and drop tasks inside lists, change display view.
