@@ -27,6 +27,7 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [x] [Jeu du tri d'eau](https://clemix37.github.io/js-projects/projects/water-sort/)
 -   [x] [Jeu mémory](https://clemix37.github.io/js-projects/projects/memory-game/)
 -   [x] [Gestionnaire de tâches](https://clemix37.github.io/js-projects/projects/task-manager/)
+-   [x] [App de vote](https://clemix37.github.io/js-projects/projects/poll/)
 -   [ ] App météo
 -   [ ] Lanceur de Musique
 -   [ ] App quiz
@@ -41,7 +42,6 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [ ] Calculette
 -   [ ] Magasin de Livre
 -   [ ] App de recettes
--   [ ] App de vote
 
 ### Compteur
 
@@ -95,3 +95,8 @@ Le jeu joue une série d'instructions dont l'ordre doit être respectée par l'u
 
 Vous pouvez ajouter des listes avec des couleurs, tâches avec status, tags, etc.  
 Glisser-déposer les tâches dans les listes, changer la vue d'affichage.
+
+### App de vote
+
+Vous ajouter un scrutin, vous ajoutez les choix, votez ou retirez vos votes.  
+Vous obtiendrez des résultats lorsque vous cloturerez le scrutin.
