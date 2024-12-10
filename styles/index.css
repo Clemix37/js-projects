@@ -1,3 +1,19 @@
-#grille { flex-wrap: wrap; display: flex; align-items: center; }
-#grille .project-item { display: flex; width: 300px; margin: 10px; }
-#grille .project-item .card { width: 300px; }
+#grille {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+}
+
+#grille .project-item {
+    display: flex;
+    width: 300px;
+    margin: 10px;
+}
+
+#grille .project-item .card {
+    width: 300px;
+}
+
+#grille .project-item .card-content i {
+    margin-left: 8px;
+}

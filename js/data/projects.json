@@ -1,91 +1,91 @@
 {
 	"projects": [
 		{
-			"name": "Counter 🔢",
+			"name": "Counter <i class='fas fa-sort-numeric-up-alt'></i>",
 			"link": "counter"
 		},
 		{
-			"name": "Drum kit 🎺",
+			"name": "Drum kit <i class='fas fa-drum'></i>",
 			"link": "drum-kit"
 		},
 		{
-			"name": "Random Color",
+			"name": "Random Color <i class='fas fa-palette'></i>",
 			"link": "random-color"
 		},
 		{
-			"name": "Number guesser 📛",
+			"name": "Number guesser <i class='fas fa-list-ol'></i>",
 			"link": "number-guesser"
 		},
 		{
-			"name": "BMI Calculator ➕",
+			"name": "BMI Calculator <i class='fas fa-calculator'></i>",
 			"link": "bmi-calculator"
 		},
 		{
-			"name": "Password generator *️⃣",
+			"name": "Password generator <i class='fas fa-key'></i>",
 			"link": "password-generator"
 		},
 		{
-			"name": "Grocery list 💰",
+			"name": "Grocery list <i class='fas fa-shopping-basket'></i>",
 			"link": "grocery-list"
 		},
 		{
-			"name": "Dice Game 🎲",
+			"name": "Dice Game <i class='fas fa-dice'></i>",
 			"link": "dice-game"
 		},
 		{
-			"name": "Chore door game 🚪",
+			"name": "Chore door game <i class='fas fa-door-open'></i>",
 			"link": "chore-door-game"
 		},
 		{
-			"name": "Countdown timer 🕰️",
+			"name": "Countdown timer <i class='fas fa-stopwatch-20'></i>",
 			"link": "countdown-timer"
 		},
 		{
-			"name": "Library 📚",
+			"name": "Library <i class='fas fa-book'></i>",
 			"link": "library"
 		},
 		{
-			"name": "Tic tac toe 🕹️",
+			"name": "Tic tac toe <i class='fas fa-gamepad'></i>",
 			"link": "tic-tac-toe"
 		},
 		{
-			"name": "Key Codes #️⃣",
+			"name": "Key Codes <i class='fas fa-keyboard'></i>",
 			"link": "key-codes"
 		},
 		{
-			"name": "Workout Tracker 💪",
+			"name": "Workout Tracker <i class='fas fa-dumbbell'></i>",
 			"link": "workout-tracker"
 		},
 		{
-			"name": "Random User (API) 🥷",
+			"name": "Random User (API) <i class='fas fa-user'></i>",
 			"link": "random-user"
 		},
 		{
-			"name": "Budget Planner 🤑",
+			"name": "Budget Planner <i class='fas fa-money-bill'></i>",
 			"link": "budget-planner"
 		},
 		{
-			"name": "Pokemons (API) 🪷",
+			"name": "Pokemons (API) <i class='fas fa-bug'></i>",
 			"link": "poke-api"
 		},
 		{
-			"name": "Todo list 📓",
+			"name": "Todo list <i class='fas fa-list'></i>",
 			"link": "todo-list"
 		},
 		{
-			"name": "Water sort 🧪",
+			"name": "Water sort <i class='fas fa-vial'></i>",
 			"link": "water-sort"
 		},
 		{
-			"name": "Memory Game 🧠",
+			"name": "Memory Game <i class='fas fa-brain'></i>",
 			"link": "memory-game"
 		},
 		{
-			"name": "Task Manager 🚩",
+			"name": "Task Manager <i class='fas fa-tasks-alt'></i>",
 			"link": "task-manager"
 		},
 		{
-			"name": "poll",
+			"name": "poll <i class='fas fa-poll'></i>",
 			"link": "poll"
 		}
 	]
