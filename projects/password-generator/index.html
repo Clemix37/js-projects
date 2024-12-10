@@ -21,44 +21,42 @@
             margin-bottom: 0;
         }
     </style>
-    <main>
-        <div class="container"></div>
-        <div class="container">
-            <div class="ligne">
-                <input type="text" class="input is-rounded is-large" id="results">
-                <button class="button is-rounded is-dark is-large" id="copyBtn" title="Copy to clipboard">Copy</button>
+    <div class="container"></div>
+    <div class="container">
+        <div class="ligne">
+            <input type="text" class="input is-rounded is-large" id="results">
+            <button class="button is-rounded is-dark is-large" id="copyBtn" title="Copy to clipboard">Copy</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="ligne">
+            <label class="label">Length</label>
+            <input type="number" class="input is-rounded is-large" min="10" value="10" max="100" id="lengthPass">
+        </div>
+        <div class="ligne">
+            <div class="colonne">
+                <div class="ligne">
+                    <label class="label" for="uppercase">Uppercase</label>
+                    <input type="checkbox" id="uppercase">
+                </div>
+            </div>
+            <div class="colonne">
+                <div class="ligne">
+                    <label class="label" for="symbols">Symbols</label>
+                    <input type="checkbox" id="symbols">
+                </div>
+            </div>
+            <div class="colonne">
+                <div class="ligne">
+                    <label class="label" for="numbers">Digits</label>
+                    <input type="checkbox" id="numbers">
+                </div>
             </div>
         </div>
-        <div class="container">
-            <div class="ligne">
-                <label class="label">Length</label>
-                <input type="number" class="input is-rounded is-large" min="10" value="10" max="100" id="lengthPass">
-            </div>
-            <div class="ligne">
-                <div class="colonne">
-                    <div class="ligne">
-                        <label class="label" for="uppercase">Uppercase</label>
-                        <input type="checkbox" id="uppercase">
-                    </div>
-                </div>
-                <div class="colonne">
-                    <div class="ligne">
-                        <label class="label" for="symbols">Symbols</label>
-                        <input type="checkbox" id="symbols">
-                    </div>
-                </div>
-                <div class="colonne">
-                    <div class="ligne">
-                        <label class="label" for="numbers">Digits</label>
-                        <input type="checkbox" id="numbers">
-                    </div>
-                </div>
-            </div>
-            <div class="ligne">
-                <button class="button is-rounded is-info is-large" id="btnGenerate">Generate</button>
-            </div>
+        <div class="ligne">
+            <button class="button is-rounded is-info is-large" id="btnGenerate">Generate</button>
         </div>
-    </main>
+    </div>
     <script src="./app.js"></script>
 </body>
 

@@ -5,15 +5,14 @@
 @import './windows.css';
 @import './navbar.css';
 
-*, body { margin: 0; padding: 0; box-sizing: border-box; }
-
-main {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+*,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container { min-width: 80%; text-align: center; }
+.container {
+    min-width: 80%;
+    text-align: center;
+}
