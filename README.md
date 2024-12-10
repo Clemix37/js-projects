@@ -28,6 +28,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [Memory game](https://clemix37.github.io/js-projects/projects/memory-game/)
 -   [x] [Task Manager](https://clemix37.github.io/js-projects/projects/task-manager/)
 -   [x] [Poll app](https://clemix37.github.io/js-projects/projects/poll/)
+-   [x] [Calculator](https://clemix37.github.io/js-projects/projects/calculator/)
 -   [ ] Calendar
 -   [ ] Weather App
 -   [ ] Music Player
@@ -40,7 +41,6 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [ ] Contact saver
 -   [ ] Airline Reservation
 -   [ ] Hotel reservation
--   [ ] Calculator
 -   [ ] Book store
 -   [ ] Recipes app
 
@@ -101,3 +101,7 @@ Drag and drop tasks inside lists, change display view.
 
 You create a poll, add choices and upvote/downvote them.  
 You get results when ending the poll !
+
+### Calculette
+
+Une simple calculatrice !

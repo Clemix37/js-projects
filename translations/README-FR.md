@@ -28,6 +28,7 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [x] [Jeu mémory](https://clemix37.github.io/js-projects/projects/memory-game/)
 -   [x] [Gestionnaire de tâches](https://clemix37.github.io/js-projects/projects/task-manager/)
 -   [x] [App de vote](https://clemix37.github.io/js-projects/projects/poll/)
+-   [x] [Calculette](https://clemix37.github.io/js-projects/projects/calculator/)
 -   [ ] App météo
 -   [ ] Lanceur de Musique
 -   [ ] App quiz
@@ -39,7 +40,6 @@ Allez le voir [ici](https://clemix37.github.io/js-projects/).
 -   [ ] Sauvegarde de contacts
 -   [ ] Reservation de vols
 -   [ ] Reservation d'hôtel
--   [ ] Calculette
 -   [ ] Magasin de Livre
 -   [ ] App de recettes
 
@@ -100,3 +100,7 @@ Glisser-déposer les tâches dans les listes, changer la vue d'affichage.
 
 Vous ajouter un scrutin, vous ajoutez les choix, votez ou retirez vos votes.  
 Vous obtiendrez des résultats lorsque vous cloturerez le scrutin.
+
+### Calculette
+
+Une simple calculatrice !

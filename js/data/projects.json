@@ -87,6 +87,10 @@
 		{
 			"name": "Poll App <i class='fas fa-poll'></i>",
 			"link": "poll"
+		},
+		{
+			"name": "Calculator <i class='fas fa-calculator'></i>",
+			"link": "calculator"
 		}
 	]
 }
