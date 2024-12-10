@@ -85,7 +85,7 @@
 			"link": "task-manager"
 		},
 		{
-			"name": "poll <i class='fas fa-poll'></i>",
+			"name": "Poll App <i class='fas fa-poll'></i>",
 			"link": "poll"
 		}
 	]
