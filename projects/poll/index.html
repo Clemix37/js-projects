@@ -11,7 +11,56 @@
 </head>
 
 <body>
+    <div class="flex" style="justify-content: center;">
+        <button id="btn-add-poll" class="button is-rounded">
+            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+            Add Poll
+        </button>
+    </div>
 
+    <div id="poll-container" class="flex">
+
+    </div>
+
+    <dialog id="window-poll">
+        <div class="field">
+            <label for="label-poll" class="label">Label</label>
+            <div class="control">
+                <input class="input" type="text" id="label-poll" autocomplete="off" />
+            </div>
+        </div>
+        <div class="flex justify-content-flexend">
+            <button id="btn-save-poll" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-poll" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="window-choice">
+        <div class="field">
+            <label for="label-choice" class="label">Label</label>
+            <div class="control">
+                <input class="input" type="text" id="label-choice" autocomplete="off" />
+            </div>
+        </div>
+        <div class="flex justify-content-flexend">
+            <button id="btn-save-choice" class="button is-rounded is-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-cancel-choice" class="button is-rounded">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Cancel
+            </button>
+        </div>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
 </body>
 
 </html>

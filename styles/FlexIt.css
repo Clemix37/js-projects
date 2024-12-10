@@ -79,16 +79,23 @@ html {
     align-items: flex-end;
 }
 
-.is-flex-start {
+.is-flex-start,
+.justify-content-flexstart {
     justify-content: flex-start;
 }
 
-.is-flex-end {
+.is-flex-end,
+.justify-content-flexend {
     justify-content: flex-end;
 }
 
-.is-flex-center {
-    justify-content: flex-center;
+.is-flex-center,
+.justify-content-center {
+    justify-content: center;
+}
+
+.width-100 {
+    width: 100%;
 }
 
 .width-80 {

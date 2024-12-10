@@ -26,7 +26,8 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [To do list](https://clemix37.github.io/js-projects/projects/todo-list/)
 -   [x] [Water Sort Game](https://clemix37.github.io/js-projects/projects/water-sort/)
 -   [x] [Memory game](https://clemix37.github.io/js-projects/projects/memory-game/)
--   [X] [Task Manager](https://clemix37.github.io/js-projects/projects/task-manager/)
+-   [x] [Task Manager](https://clemix37.github.io/js-projects/projects/task-manager/)
+-   [x] [Poll app](https://clemix37.github.io/js-projects/projects/poll/)
 -   [ ] Calendar
 -   [ ] Weather App
 -   [ ] Music Player
@@ -42,7 +43,6 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [ ] Calculator
 -   [ ] Book store
 -   [ ] Recipes app
--   [ ] Poll app
 
 ### Counter
 
@@ -96,3 +96,8 @@ The game plays a set of instructions and you have to repeat it in the same order
 
 You can add lists with colors, tasks with statuses, tags etc.  
 Drag and drop tasks inside lists, change display view.
+
+### Poll App
+
+You create a poll, add choices and upvote/downvote them.  
+You get results when ending the poll !
