@@ -16,33 +16,37 @@ const btnGameOptions = document.getElementById("btn-display-options");
  */
 let waterSort = null;
 
-function toggleGameOptions(){
-    gameOptions.style.display = gameOptions.style.display === "none" ? "flex" : "none";
-    waterSort?.displayRestartButton();
+function toggleGameOptions() {
+	gameOptions.style.display = gameOptions.style.display === "none" ? "flex" : "none";
+	waterSort?.displayRestartButton();
 }
 
 // EVENTS
 btnGameOptions.addEventListener("click", () => {
-    toggleGameOptions();
+	toggleGameOptions();
 });
 btnRestart.addEventListener("click", restart);
 
-function restart(){
-    toggleGameOptions();
-    waterSort = new WaterSort();
-    const heigthTubeDisplayed = +txtHeightTube.value;
-    const heightOfTube = heigthTubeDisplayed < WaterSort.MinHeightTube ? WaterSort.MinHeightTube : heigthTubeDisplayed;
-    const finalColors = [...colors, ...additionalColors.filter((newColor, i) => (i + WaterSort.MinHeightTube) < heightOfTube)];
-    console.log(heightOfTube, finalColors);
-    waterSort.generate({ 
-        heightOfTube, 
-        nbOfTubes: heightOfTube, 
-        div: game, 
-        labelElement: label,
-        restartBtn: btnRestart, 
-        resetGameBtn: btnReset,
-        colors: finalColors, 
-    });
+function restart() {
+	toggleGameOptions();
+	waterSort = new WaterSort();
+	const heigthTubeDisplayed = +txtHeightTube.value;
+	const heightOfTube =
+		heigthTubeDisplayed < WaterSort.MIN_HEIGHT_TUBE ? WaterSort.MIN_HEIGHT_TUBE : heigthTubeDisplayed;
+	const finalColors = [
+		...colors,
+		...additionalColors.filter((newColor, i) => i + WaterSort.MIN_HEIGHT_TUBE < heightOfTube),
+	];
+	console.log(heightOfTube, finalColors);
+	waterSort.generate({
+		heightOfTube,
+		nbOfTubes: heightOfTube,
+		div: game,
+		labelElement: label,
+		restartBtn: btnRestart,
+		resetGameBtn: btnReset,
+		colors: finalColors,
+	});
 }
 
 restart();

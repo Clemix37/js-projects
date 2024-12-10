@@ -5,6 +5,10 @@ export default class WaterSort {
 	//#region Properties
 
 	/**
+	 * @type {number}
+	 */
+	static MIN_HEIGHT_TUBE = 4;
+	/**
 	 * @type {boolean}
 	 */
 	#configSaved;
@@ -45,17 +49,13 @@ export default class WaterSort {
 	 */
 	#originalGeneration;
 	/**
-	 * @type{Array[]}
+	 * @type {Array[]}
 	 */
 	#generation = [];
 	/**
 	 * @type {string}
 	 */
 	#idTubeSelected = null;
-	/**
-	 * @type {number}
-	 */
-	static MinHeightTube = 4;
 
 	//#endregion
 
