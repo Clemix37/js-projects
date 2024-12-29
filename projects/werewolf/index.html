@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wereworlf Helper</title>
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <script src="../../js/projectsDisplay.js"></script>
+</head>
+
+<body>
+
+    <style>
+        label {
+            margin-left: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+
+    <div id="game-options" class="flex">
+        <div class="flex column">
+            <div class="flex">
+                <div class="flex column">
+                    <div class="flex align-items-center">
+                        <label for="nb-werewolves">Werewolves: </label>
+                        <input id="nb-werewolves" class="input is-normal" type="number" value="2">
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="hunter">
+                        <label for="hunter">Hunter</label>
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="cupid">
+                        <label for="cupid">Cupid</label>
+                    </div>
+                </div>
+                <div class="flex column">
+                    <div class="flex align-items-center">
+                        <label for="nb-villagers">Villagers: </label>
+                        <input id="nb-villagers" class="input is-normal" type="number" value="4">
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="angel">
+                        <label for="angel">Angel</label>
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="witch">
+                        <label for="witch">Witch</label>
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="seer">
+                        <label for="seer">Seer</label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-content-center">
+                <button id="btn-play" class="button is-rounded">Play</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game" class="flex" style="display: none;">
+        <div class="flex column">
+            <div class="flex justify-content-center">
+                <button class="button is-rounded" id="btn-reload">Reload</button>
+            </div>
+            <div class="flex">
+                <div id="game-order" class="flex column"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+
+</body>
+
+</html>

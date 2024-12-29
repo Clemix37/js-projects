@@ -91,6 +91,10 @@
 		{
 			"name": "Calculator <i class='fas fa-calculator'></i>",
 			"link": "calculator"
+		},
+		{
+			"name": "Werewolf Helper <i class='fab fa-wolf-pack-battalion'></i>",
+			"link": "werewolf"
 		}
 	]
 }

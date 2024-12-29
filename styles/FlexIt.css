@@ -67,6 +67,10 @@ html {
     align-items: center;
 }
 
+.align-items-center {
+    align-items: center;
+}
+
 .is-self-start {
     align-self: flex-start;
 }
