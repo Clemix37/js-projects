@@ -37,6 +37,7 @@ const titleList = document.getElementById("title-list");
 const colorList = document.getElementById("color-list");
 const titleTask = document.getElementById("title-task");
 const descTask = document.getElementById("description-task");
+const linkTask = document.getElementById("link-task");
 const selectLists = document.getElementById("lists");
 const selectTagsTask = document.getElementById("tags-task");
 const titleTag = document.getElementById("title-tag");
@@ -383,6 +384,7 @@ function openWindowTask(idList = null) {
 	const taskToEdit = idTaskEdit ? tasks.find((t) => t.id === idTaskEdit) : null;
 	titleTask.value = taskToEdit?.title ?? "";
 	descTask.value = taskToEdit?.description ?? "";
+	linkTask.value = taskToEdit?.link ?? "";
 	selectTagsTask.value = "";
 	selectTagsTask.innerHTML = tags.reduce(
 		(acc, tag) => `${acc}<option value="${tag.id}">${tag.title}</option>`,
@@ -425,10 +427,14 @@ function saveTask() {
 	const idList = selectLists.value;
 	if (!idList) return;
 	const idsTagsOfTask = [...selectTagsTask.selectedOptions].map((option) => option.value);
-	const taskToEdit = idTaskEdit ? tasks.find((t) => t.id === idTaskEdit) : null;
 	const newTask = idTaskEdit
 		? null
-		: new Task({ title: titleTask.value, description: descTask.value, idsTags: idsTagsOfTask });
+		: new Task({
+				title: titleTask.value,
+				description: descTask.value,
+				link: linkTask.value,
+				idsTags: idsTagsOfTask,
+		  });
 	// Saves the task
 	if (!idTaskEdit) tasks.push(newTask);
 	else
@@ -437,6 +443,7 @@ function saveTask() {
 			t.idsTags = idsTagsOfTask;
 			t.title = titleTask.value;
 			t.description = descTask.value;
+			t.link = linkTask.value;
 			return t;
 		});
 	// Link the task with the list
