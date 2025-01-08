@@ -542,7 +542,7 @@ function deleteListFromDom(e) {
 	const { id } = e.currentTarget.dataset;
 	askConfirmation("Are you sure you want to delete the list and its tasks ?", () => {
 		const idsTasksOfList = lists.find((l) => l.id === id)?.idsTasks ?? [];
-		tasks = tasks.filter((t) => idsTasksOfList.includes(t.id));
+		tasks = tasks.filter((t) => !idsTasksOfList.includes(t.id));
 		lists = lists.filter((l) => l.id !== id);
 		update();
 	});
