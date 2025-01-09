@@ -117,15 +117,19 @@ export default class Task {
 	 * @returns {string}
 	 */
 	getTemplate(idList, listTags) {
+		const displayOfLink = this.#link 
+			? `
+	  			<div class="flex tm-task-link">
+					<a href="${this.#link}" target="_blank" title="${this.#link}">Link</a>
+				</div>` 
+			: "";
 		return `
             <div id="${this.#id}" data-id="${this.#id}" data-id-list="${idList}" class="flex tm-task" draggable="true">
                 <div class="flex column">
                     <div class="flex tm-task-header">
                         <h3 class="subtitle">${this.#title}</h3>
                     </div>
-                    <div class="flex tm-task-link">
-                        <a href="${this.#link}" target="_blank" title="${this.#link}">Link</a>
-                    </div>
+                    ${displayOfLink}
                     <hr />
                     <div class="flex">
                         ${listTags
