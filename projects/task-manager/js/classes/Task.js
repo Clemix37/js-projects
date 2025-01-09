@@ -25,6 +25,10 @@ export default class Task {
 	 */
 	#done;
 	/**
+	 * @type {string}
+	 */
+	#link;
+	/**
 	 * @type {string[]}
 	 */
 	#idsTags;
@@ -44,14 +48,16 @@ export default class Task {
 	 * @param {string} obj.title
 	 * @param {string} obj.description
 	 * @param {boolean} obj.done
+	 * @param {string} obj.link
 	 * @param {string[]} obj.idsTags
 	 * @param {string} obj.idStatus
 	 */
-	constructor({ id = null, title = "", description = "", done = false, idsTags = [], idStatus = null }) {
+	constructor({ id = null, title = "", description = "", done = false, link = "", idsTags = [], idStatus = null }) {
 		this.#id = id ?? Utils.genUniqueId();
 		this.#title = title;
 		this.#description = description;
 		this.#done = done;
+		this.#link = link;
 		this.#idsTags = idsTags;
 		this.#idStatus = idStatus;
 	}
@@ -72,6 +78,9 @@ export default class Task {
 	get done() {
 		return this.#done;
 	}
+	get link() {
+		return this.#link;
+	}
 	get idsTags() {
 		return this.#idsTags;
 	}
@@ -86,6 +95,9 @@ export default class Task {
 	}
 	set done(value) {
 		this.#done = value;
+	}
+	set link(value) {
+		this.#link = value;
 	}
 	set idsTags(value) {
 		this.#idsTags = value;
@@ -110,6 +122,9 @@ export default class Task {
                 <div class="flex column">
                     <div class="flex tm-task-header">
                         <h3 class="subtitle">${this.#title}</h3>
+                    </div>
+                    <div class="flex tm-task-link">
+                        <a href="${this.#link}" target="_blank" title="${this.#link}">Link</a>
                     </div>
                     <hr />
                     <div class="flex">
@@ -142,6 +157,7 @@ export default class Task {
 			title: this.#title,
 			description: this.#description,
 			done: this.#done,
+			link: this.#link,
 			idsTags: this.#idsTags,
 			idStatus: this.#idStatus,
 		};

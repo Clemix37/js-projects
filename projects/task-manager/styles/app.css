@@ -10,7 +10,8 @@
     cursor: grab;
 }
 
-.tm-task-header {
+.tm-task-header,
+.tm-task-link {
     justify-content: center;
 }
 
