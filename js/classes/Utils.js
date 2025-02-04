@@ -75,6 +75,20 @@ export default class Utils {
 	}
 
 	/**
+	 * Return a generated random color
+	 * @returns {string}
+	 */
+	static genRandomColor() {
+		const COLORS_CHARS = "0123456789abcdef";
+		let color = `#`;
+		for (let i = 0; i < 6; i++) {
+			const randomIndex = Math.floor(Math.random() * COLORS_CHARS.length);
+			color += COLORS_CHARS[randomIndex];
+		}
+		return color;
+	}
+
+	/**
 	 * Given a date as string, returns it as Date if the format is correct
 	 * If not, returns itself
 	 * @param {string} dateString

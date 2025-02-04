@@ -29,6 +29,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [Task Manager](https://clemix37.github.io/js-projects/projects/task-manager/)
 -   [x] [Poll app](https://clemix37.github.io/js-projects/projects/poll/)
 -   [x] [Calculator](https://clemix37.github.io/js-projects/projects/calculator/)
+-   [x] [Star Battle](https://clemix37.github.io/js-projects/projects/star-battle/)
 -   [ ] Calendar
 -   [ ] Weather App
 -   [ ] Music Player
@@ -102,6 +103,10 @@ Drag and drop tasks inside lists, change display view.
 You create a poll, add choices and upvote/downvote them.  
 You get results when ending the poll !
 
-### Calculette
+### Calculator
 
-Une simple calculatrice !
+A simple calculator !
+
+### Star Battle
+
+Generating a grid with crowns that you must find using rules of this mythical game !

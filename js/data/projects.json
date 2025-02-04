@@ -95,6 +95,10 @@
 		{
 			"name": "Werewolf Helper <i class='fab fa-wolf-pack-battalion'></i>",
 			"link": "werewolf"
+		},
+		{
+			"name": "Star battle <i class='fas fa-crown'></i>",
+			"link": "star-battle"
 		}
 	]
 }

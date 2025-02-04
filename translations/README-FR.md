@@ -104,3 +104,7 @@ Vous obtiendrez des résultats lorsque vous cloturerez le scrutin.
 ### Calculette
 
 Une simple calculatrice !
+
+### Bataille des étoiles
+
+Génération d'une grille permettant de trouver des étoiles / couronnes selon les règles de ce jeu mythique.
