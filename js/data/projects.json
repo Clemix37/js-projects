@@ -99,6 +99,10 @@
 		{
 			"name": "Star battle <i class='fas fa-crown'></i>",
 			"link": "star-battle"
+		},
+		{
+			"name": "Ew circles",
+			"link": "circles-game"
 		}
 	]
 }

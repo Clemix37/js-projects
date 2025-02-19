@@ -5,7 +5,7 @@ import projectsData from "./data/projects.json" with { type: "json" };
 /**
  * @type {Project[]}
  */
-const projects = projectsData.projects.map(proj => new Project(proj));
+const projects = projectsData.projects.reverse().map(proj => new Project(proj));
 
 /**
  * Display every project by its template
