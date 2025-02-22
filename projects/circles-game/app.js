@@ -1,16 +1,14 @@
-/**
- * @type {HTMLCanvasElement}
- */
-const canvas = document.getElementById("canvas");
-/**
- * @type {CanvasRenderingContext2D}
- */
-const ctx = canvas.getContext("2d", { alpha: false });
-const heart = new Image();
-const circleImage = new Image();
-const requiredElapsed = 1000;
-const MAX_BOUNCES = 3;
-let animation = null;
+import Circle from "./classes/Circle.js";
+import { MAX_BOUNCES, requiredElapsed } from "./constants.js";
+import Cursor from "./classes/Cursor.js";
+import { createCanvasAndContext, ctx, canvas, getNextIdCircles, randomNumber } from "./utils.js";
+import Vector2D from "./classes/Vector2D.js";
+
+//#region Properties
+
+const heart = new Image(100, 100);
+const circleImage = new Image(16, 16);
+circleImage.src = `./circle.png`;
 let mousePos = {
 	x: 0,
 	y: 0,
@@ -20,161 +18,103 @@ let lastTime = null;
  * @type {Circle[]}
  */
 let circles = [];
+/**
+ * @type {number}
+ */
 let nbLives = 3;
 /**
  * @type {Cursor}
  */
 let userCursor = null;
-canvas.width = innerWidth;
-canvas.height = innerHeight;
 
-/**
- * Returns a random number between min and max
- * @param {number} min
- * @param {number} max
- * @returns {number}
- */
-function randomNumber(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+//#endregion
 
-function updateImageCursor() {
-	console.log(nbLives);
-	heart.src = `./heart v2 - ${nbLives}.png`;
-}
+//#region Events
 
-class Vector2D {
-	constructor(x, y) {
-		this.x = x;
-		this.y = y;
-	}
-}
-
-class Circle {
-	/**
-	 * @type {Vector2D}
-	 */
-	position;
-	/**
-	 * @type {Vector2D}
-	 */
-	velocity;
-	rad;
-	_id;
-	_nbBounces;
-
-	constructor(position, velocity) {
-		this._id = circles.length > 0 ? Math.max(...circles.map((c) => c._id)) + 1 : 0;
-		this.position = position;
-		this.velocity = velocity;
-		this.rad = circleImage.width / 2;
-		this._nbBounces = 0;
-	}
-
-	draw() {
-		ctx.drawImage(
-			circleImage,
-			this.position.x - circleImage.width / 2,
-			this.position.y - circleImage.height / 2,
-			50,
-			50,
-		);
-	}
-
-	update() {
-		if (this.position.x + this.rad > innerWidth || this.position.x - this.rad < 0) {
-			this._nbBounces++;
-			if (this._nbBounces <= MAX_BOUNCES) this.velocity.x = -this.velocity.x;
-		}
-
-		if (this.position.y + this.rad > innerHeight || this.position.y - this.rad < 0) {
-			this._nbBounces++;
-			if (this._nbBounces <= MAX_BOUNCES) this.velocity.y = -this.velocity.y;
-		}
-
-		this.position.x += this.velocity.x;
-		this.position.y += this.velocity.y;
-
-		if (this._nbBounces > MAX_BOUNCES) {
-			setTimeout(() => {
-				circles = circles.filter((c) => c._id !== this._id);
-			}, 1000);
-		}
-	}
-}
-
-class Cursor {
-	constructor(x, y) {
-		console.log(heart.width);
-		this.updatePos(x, y);
-	}
-
-	updatePos(x, y) {
-		this.x = x;
-		this.y = y;
-	}
-
-	update() {
-		// Draw image based on user cursor
-		ctx.drawImage(heart, this.x - heart.width / 2, this.y - heart.height / 2, 100, 100);
-	}
-}
-
+// When mouse is moving, store its position
 window.addEventListener("mousemove", (e) => {
 	mousePos.x = e.offsetX;
 	mousePos.y = e.offsetY;
-	userCursor?.updatePos(mousePos.x, mousePos.y);
+	userCursor?.updatePos(mousePos.x, mousePos.y); // Update cursor position
 });
 
+//#endregion
+
+function updateImageCursor() {
+	nbLives = nbLives <= 0 ? 0 : nbLives;
+	heart.src = `./heart v2 - ${nbLives}.png`;
+}
+
 function init() {
-	ctx.imageSmoothingEnabled = false;
+	createCanvasAndContext(); // will create canvas et ctx
 	circleImage.src = `./circle.png`;
 	updateImageCursor();
-	animation = window.requestAnimationFrame(update);
+	window.requestAnimationFrame(update);
 }
 
 function displayCircles() {
-	for (let i = 0; i < circles.length; i++) {
-		const c = circles[i];
-		c.draw();
-		c.update();
-	}
+	circles.forEach((c) => {
+		c.draw(); // Draw the image
+		c.update(); // Update its velocity, its position, bounces etc
+	});
+	// Will clear circles that reached max bounces
+	const idsCirclesWithMaxBounces = circles.filter((c) => c._nbBounces > MAX_BOUNCES).map((c) => c._id);
+	if (!idsCirclesWithMaxBounces.length) return;
+	setTimeout(() => {
+		circles = circles.filter((c) => !idsCirclesWithMaxBounces.includes(c._id));
+	}, 500);
 }
 
-function update(now) {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	lastTime ??= now;
-	const elapsed = now - lastTime;
-	if (elapsed > requiredElapsed) {
-		lastTime = now;
-		circles.push(new Circle(new Vector2D(randomNumber(25, 800), randomNumber(25, 800)), new Vector2D(3, 3)));
-	}
-	displayCircles();
-	userCursor ??= new Cursor(mousePos.x ?? 0, mousePos.y ?? 0);
-	userCursor.update();
+/**
+ * Gets the circles that collided
+ * Destroy them from canvas,
+ * @returns {void}
+ */
+function checkForCollisions() {
 	const circlesCollided = circles.filter((c) => {
 		return !(
 			(
-				c.position.x - c.rad > userCursor.x + heart.width || // Xc > Xwh
+				c.position.x - c.rad > userCursor.x + userCursor._img.width || // Xc > Xwh
 				c.position.x + c.rad < userCursor.x || // Xwc < Xh
-				c.position.y - c.rad > userCursor.y + heart.height || // Yc > Yhh
+				c.position.y - c.rad > userCursor.y + userCursor._img.height || // Yc > Yhh
 				c.position.y + c.rad < userCursor.y
 			) // Yhc < Yh
 		);
 	});
-	if (circlesCollided.length) {
-		const idsCirclesToDelete = circlesCollided.map((c) => c._id);
-		circles = circles.filter((c) => !idsCirclesToDelete.includes(c._id));
-		nbLives--;
-		updateImageCursor();
-		if (!nbLives) {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			cancelAnimationFrame(animation);
-		}
-		userCursor.update();
-	}
+	// If no circles collided, do nothing
+	if (!circlesCollided.length) return;
+	const idsCirclesToDelete = circlesCollided.map((c) => c._id);
+	circles = circles.filter((c) => !idsCirclesToDelete.includes(c._id));
+	nbLives -= idsCirclesToDelete.length; // If 2 collided, minus 2 lives
+	updateImageCursor(); // Change the cursor image with current life
+	userCursor.update(); // Update cursor
+}
 
-	animation = window.requestAnimationFrame(update);
+function update(now) {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	// After each required elapsed, spawn a circle
+	lastTime ??= now;
+	const elapsed = now - lastTime;
+	if (elapsed > requiredElapsed && nbLives > 0) {
+		lastTime = now;
+		circles.push(
+			new Circle(
+				getNextIdCircles(circles),
+				circleImage,
+				new Vector2D(randomNumber(25, 800), randomNumber(25, 800)),
+				new Vector2D(3, 3),
+				25,
+			),
+		);
+	}
+	displayCircles(); // will draw and update every circle
+	// Update cursor of player
+	userCursor ??= new Cursor(heart, mousePos.x ?? 0, mousePos.y ?? 0);
+	userCursor.update();
+	// Will check for circles that collided with user cursor
+	checkForCollisions();
+
+	window.requestAnimationFrame(update);
 }
 
 init();
