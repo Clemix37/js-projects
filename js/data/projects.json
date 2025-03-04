@@ -103,6 +103,10 @@
 		{
 			"name": "Ew circles",
 			"link": "circles-game"
+		},
+		{
+			"name": "Isometric Canvas",
+			"link": "isometric-canvas"
 		}
 	]
 }
