@@ -32,7 +32,8 @@ class IsoCube {
 		const rightFaceX = cosAngle + this.faceLeftX;
 		this.#renderSquareFace("right", "rgba(0, 0, 0, 0.1)", [rightFaceX, this.faceLeftY], this.width, this.height);
 		const topFaceX = cosAngle / 2 + this.faceLeftX;
-		this.#renderSquareFace("top", "#6abe30", [topFaceX, this.width / 3], this.width, cosAngle);
+		const topFaceY = this.faceLeftY - cosAngle + this.width / 4;
+		this.#renderSquareFace("top", "#6abe30", [topFaceX, topFaceY], this.width, cosAngle);
 	}
 	#renderSquareFace(type, color, position, w, h) {
 		ctx.save();
@@ -61,15 +62,22 @@ class IsoCube {
 
 function animate() {
 	ctx.clearRect(0, 0, width, height); // Clear the canvas
-	let currentX = 100;
-	let currentY = 100;
 	const w = 100;
 	const h = 100;
-	const nbCubes = 10;
+	const nbCubes = 5;
+	let currentX = 100;
+	let currentY = 100;
 	for (let i = 0; i < nbCubes; i++) {
 		new IsoCube(w, h, currentX, currentY).render();
 		currentX += 100 * 2 * Math.cos(angle * (Math.PI / 180));
 	}
+	currentX = 100 - Math.cos(angle * (Math.PI / 180)) * 100;
+	currentY = 100 + (Math.cos(angle * (Math.PI / 180)) * 100) / 2;
+	for (let i = 0; i < nbCubes; i++) {
+		new IsoCube(w, h, currentX, currentY).render();
+		currentX += 100 * 2 * Math.cos(angle * (Math.PI / 180));
+	}
+	console.log(currentX);
 	window.requestAnimationFrame(animate);
 }
 
