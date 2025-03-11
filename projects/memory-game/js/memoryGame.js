@@ -113,7 +113,10 @@ function checkUserCorrect() {
 	const isCorrect = idsBtnsBot.every((idBot, i) => (idsBtnUser[i] && idBot === idsBtnUser[i]) || !idsBtnUser[i]);
 	// If the user is correct, we wait a demi-second to play the bot turn
 	if (isCorrect && idsBtnsBot.length === idsBtnUser.length) return setTimeout(playBotTurn, 500);
-	else if (!isCorrect) alert("Incorrect from the user");
+	else if (!isCorrect) {
+		alert("Incorrect from the user");
+		restart();
+	}
 }
 
 /**

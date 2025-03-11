@@ -37,7 +37,6 @@ function restart() {
 		...colors,
 		...additionalColors.filter((newColor, i) => i + WaterSort.MIN_HEIGHT_TUBE < heightOfTube),
 	];
-	console.log(heightOfTube, finalColors);
 	waterSort.generate({
 		heightOfTube,
 		nbOfTubes: heightOfTube,

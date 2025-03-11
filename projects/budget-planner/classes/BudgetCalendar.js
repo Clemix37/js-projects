@@ -77,7 +77,6 @@ export default class BudgetCalendar extends Calendar {
 		if (!operationToEdit instanceof Operation) throw new Error("operation to edit is not instance of Operation");
 		this.#operations = this.#operations.map((op) => {
 			if (operationToEdit.id !== op.id) return op;
-			console.log(operationToEdit);
 			op.amount = operationToEdit.amount;
 			op.date = operationToEdit.date;
 			op.name = operationToEdit.name;
@@ -152,7 +151,6 @@ export default class BudgetCalendar extends Calendar {
 		const operationsToTake = this.#operations.filter((op) => op.date <= currentDate);
 		for (let i = 0; i < operationsToTake.length; i++) {
 			const op = operationsToTake[i];
-			console.log(op.amount);
 			count += op.amount;
 		}
 		this.#balance = count;
@@ -161,7 +159,6 @@ export default class BudgetCalendar extends Calendar {
 
 	#displayBalance() {
 		const isPositive = this.#balance > 0;
-		console.log(this.#balance);
 		this.#balanceContainer.innerText = `${isPositive ? "+" : ""} ${this.#balance}€`;
 	}
 

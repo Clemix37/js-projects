@@ -61,7 +61,6 @@ function saveOperation() {
 	const name = inputOperationName.value;
 	const date = Utils.stringAsDate(inputOperationDate.value, Utils.dateFormats.DayMonthYearSlash);
 	const amount = +inputOperationAmount.value;
-	console.log(name, date, amount);
 	if (isEdition) {
 		operationInEdition.name = name;
 		operationInEdition.date = date;

@@ -77,7 +77,6 @@ function animate() {
 		new IsoCube(w, h, currentX, currentY).render();
 		currentX += 100 * 2 * Math.cos(angle * (Math.PI / 180));
 	}
-	console.log(currentX);
 	window.requestAnimationFrame(animate);
 }
 
