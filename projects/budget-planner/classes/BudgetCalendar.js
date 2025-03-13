@@ -1,4 +1,4 @@
-import Calendar from "../../../js/Calendar.js";
+import Calendar from "../../../js/classes/Calendar.js";
 import store from "../../../js/classes/SessionStore.js";
 import Utils from "../../../js/classes/Utils.js";
 import { addOperation } from "../budgetPlanner.js";
