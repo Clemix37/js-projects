@@ -30,7 +30,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [Poll app](https://clemix37.github.io/js-projects/projects/poll/)
 -   [x] [Calculator](https://clemix37.github.io/js-projects/projects/calculator/)
 -   [x] [Star Battle](https://clemix37.github.io/js-projects/projects/star-battle/)
--   [ ] Calendar
+-   [x] [Calendar](https://clemix37.github.io/js-projects/projects/calendar/)
 -   [ ] Weather App
 -   [ ] Music Player
 -   [ ] Quiz App

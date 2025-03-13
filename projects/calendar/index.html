@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <script src="../../js/projectsDisplay.js"></script>
+    <title>Calendar</title>
+</head>
+
+<body>
+    <div class="colonne">
+        <!-- Displays the month of the calendar displayed -->
+        <div class="ligne">
+            <h3 id="month-calendar" class="subtitle"></h3>
+        </div>
+        <!-- Navigating between months in the calendar -->
+        <div class="ligne">
+            <div class="colonne" style="align-items: center;">
+                <button id="btn-previous-month" class="button is-rounded is-dark"><i class="fas fa-arrow-left"
+                        style="margin-right: 8px;"></i>Previous Month</button>
+            </div>
+            <div class="colonne" style="align-items: center;">
+                <button id="btn-next-month" class="button is-rounded is-dark">Next month<i class="fas fa-arrow-right"
+                        style="margin-left: 8px;"></i></button>
+            </div>
+        </div>
+        <!-- Displays the calendar and its days -->
+        <div id="calendar" class="ligne">
+
+        </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
