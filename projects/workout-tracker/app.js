@@ -1,4 +1,3 @@
-import Calendar from "../../js/Calendar.js";
 import Workout from "./classes/Workout.js";
 import WorkoutCalendar from "./classes/WorkoutCalendar.js";
 import WorkoutGoal from "./classes/WorkoutGoal.js";
