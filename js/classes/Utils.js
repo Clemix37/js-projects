@@ -193,6 +193,28 @@ export default class Utils {
 		return { r, g, b };
 	}
 
+	//#region Windows
+
+	/**
+	 * Opens the modal by id or the modal directly
+	 * @param {string | HTMLDialogElement} modal
+	 */
+	static openWindow(modal) {
+		modal = typeof modal === "string" ? document.getElementById(modal) : modal;
+		modal.showModal();
+	}
+
+	/**
+	 * Closes the modal by id or the modal directly
+	 * @param {string | HTMLDialogElement} modal
+	 */
+	static closeWindow(modal) {
+		modal = typeof modal === "string" ? document.getElementById(modal) : modal;
+		modal.close();
+	}
+
+	//#endregion
+
 	//#endregion
 
 	//#region Private methods

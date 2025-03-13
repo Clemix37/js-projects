@@ -111,6 +111,10 @@
 		{
 			"name": "Calendar",
 			"link": "calendar"
+		},
+		{
+			"name": "Contact save",
+			"link": "contact-saver"
 		}
 	]
 }

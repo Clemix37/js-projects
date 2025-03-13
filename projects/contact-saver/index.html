@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <script src="../../js/projectsDisplay.js"></script>
+    <title>Contact saver</title>
+</head>
+
+<body>
+
+    <div class="colonne">
+        <div class="ligne">
+            <button id="btn-add-contact" class="button is-rounded is-medium">
+                <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                Add contact
+            </button>
+        </div>
+        <div class="ligne">
+            <div id="list-contacts" class="colonne">
+
+            </div>
+        </div>
+    </div>
+
+    <dialog id="window-add-contact">
+        <div class="ligne" style="padding: 5px;">
+            <input id="contact-name" type="text" class="input is-info is-rounded is-medium" placeholder="Name" autofocus
+                autocomplete="off">
+        </div>
+        <div class="ligne" style="padding: 5px;">
+            <input id="contact-number" type="tel" class="input is-info is-rounded is-medium" placeholder="Phone number"
+                autocomplete="off">
+        </div>
+        <div class="ligne">
+            <button id="btn-save-contact-window" class="button is-dark is-rounded is-medium">
+                <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                Save
+            </button>
+            <button id="btn-close-contact-window" class="button is-danger is-rounded is-medium" title="Close window">
+                <i class="fas fa-times" style="margin-right: 8px;"></i>
+                Close
+            </button>
+        </div>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

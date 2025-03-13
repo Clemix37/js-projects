@@ -31,6 +31,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [Calculator](https://clemix37.github.io/js-projects/projects/calculator/)
 -   [x] [Star Battle](https://clemix37.github.io/js-projects/projects/star-battle/)
 -   [x] [Calendar](https://clemix37.github.io/js-projects/projects/calendar/)
+-   [x] [Contact saver](https://clemix37.github.io/js-projects/projects/contac-saver/)
 -   [ ] Weather App
 -   [ ] Music Player
 -   [ ] Quiz App
@@ -39,7 +40,6 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [ ] Car avoidance game
 -   [ ] Fall game
 -   [ ] Shooting Game
--   [ ] Contact saver
 -   [ ] Airline Reservation
 -   [ ] Hotel reservation
 -   [ ] Book store
