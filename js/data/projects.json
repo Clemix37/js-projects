@@ -101,19 +101,19 @@
 			"link": "star-battle"
 		},
 		{
-			"name": "Ew circles",
+			"name": "Ew circles <i class='fas fa-circle-notch'></i>",
 			"link": "circles-game"
 		},
 		{
-			"name": "Isometric Canvas",
+			"name": "Isometric Canvas <i class='fas fa-draw-polygon'></i>",
 			"link": "isometric-canvas"
 		},
 		{
-			"name": "Calendar",
+			"name": "Calendar <i class='fas fa-calendar'></i>",
 			"link": "calendar"
 		},
 		{
-			"name": "Contact save",
+			"name": "Contact saver <i class='fas fa-user'></i>",
 			"link": "contact-saver"
 		}
 	]
