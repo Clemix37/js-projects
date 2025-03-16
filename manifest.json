@@ -9,8 +9,8 @@
 	"display": "standalone",
 	"icons": [
 		{
-			"src": "/js-projects/favicon.ico",
-			"type": "image/x-icon",
+			"src": "/favicon.ico",
+			"type": "image/ico",
 			"sizes": "256x256"
 		}
 	]
