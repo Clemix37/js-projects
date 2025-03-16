@@ -115,6 +115,10 @@
 		{
 			"name": "Contact saver <i class='fas fa-user'></i>",
 			"link": "contact-saver"
+		},
+		{
+			"name": "Meme Soundboard <i class='fas fa-user'></i>",
+			"link": "meme-soundboard"
 		}
 	]
 }

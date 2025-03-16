@@ -4,23 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isometric Canvas</title>
+    <title>Meme Soundboard</title>
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
-    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="../../styles/includes.css">
     <script src="../../js/projectsDisplay.js"></script>
+    <link rel="stylesheet" href="./app.css">
 </head>
 
 <body>
-    <style>
-        #canvas {
-            border: 1px solid red;
-            border-radius: 8px;
-            image-rendering: pixelated;
-        }
-    </style>
-    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <div class="colonne">
+        <div class="ligne" id="list-memes" style="flex-wrap: wrap;">
 
+        </div>
+    </div>
+
+    <audio src="" id="audio-file"></audio>
     <script type="module" src="./app.js"></script>
 </body>
 

@@ -32,6 +32,7 @@ Visit it [here](https://clemix37.github.io/js-projects/)
 -   [x] [Star Battle](https://clemix37.github.io/js-projects/projects/star-battle/)
 -   [x] [Calendar](https://clemix37.github.io/js-projects/projects/calendar/)
 -   [x] [Contact saver](https://clemix37.github.io/js-projects/projects/contac-saver/)
+-   [x] [Meme soundboard](https://clemix37.github.io/js-projects/projects/meme-soundboard/)
 -   [ ] Weather App
 -   [ ] Music Player
 -   [ ] Quiz App
