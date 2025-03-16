@@ -1,0 +1,17 @@
+{
+	"name": "JS Projects",
+	"short_name": "CWDJS",
+	"description": "CyberWebDev JS projects",
+	"scope": "/js-projects",
+	"start_url": "/js-projects",
+	"background_color": "#14161a",
+	"theme_color": "#7585ff",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/js-projects/favicon.ico",
+			"type": "image/x-icon",
+			"sizes": "256x256"
+		}
+	]
+}
