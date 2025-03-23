@@ -119,6 +119,10 @@
 		{
 			"name": "Meme Soundboard <i class='fas fa-user'></i>",
 			"link": "meme-soundboard"
+		},
+		{
+			"name": "Mini RPG",
+			"link": "rpg-line"
 		}
 	]
 }

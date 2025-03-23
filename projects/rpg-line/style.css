@@ -1,0 +1,53 @@
+.btn-action {
+    width: -webkit-fill-available;
+    margin: 5%;
+}
+
+#animations-change {
+    height: 0;
+}
+
+.gain {
+    position: relative;
+    color: rgb(51, 199, 51);
+    z-index: 10;
+    animation-name: change-number;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+.loss {
+    position: relative;
+    color: rgb(205, 38, 38);
+    z-index: 10;
+    animation-name: change-number;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes change-number {
+    0% {
+        opacity: 1;
+        top: 0px;
+    }
+
+    25% {
+        opacity: 1;
+        top: 100px;
+    }
+
+    50% {
+        opacity: 1;
+        top: 200px;
+    }
+
+    75% {
+        opacity: 0.5;
+        top: 300px;
+    }
+
+    100% {
+        opacity: 0;
+        top: 400px;
+    }
+}

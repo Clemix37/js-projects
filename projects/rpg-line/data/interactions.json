@@ -1,0 +1,19 @@
+{
+	"interactions": [
+		{
+			"msg": "'This is an arrest {{name}}'",
+			"idsNpcsAllowed": [1],
+			"idsUserActions": [1, 2, 3]
+		},
+		{
+			"msg": "'Welcome to my prison, {{name}}. Behave, or things will get worse for you.'",
+			"idsNpcsAllowed": [2],
+			"idsUserActions": [4, 5]
+		},
+		{
+			"msg": "'Psst... I know a way out. You in, {{name}}?'",
+			"idsNpcsAllowed": [3],
+			"idsUserActions": [6, 7]
+		}
+	]
+}

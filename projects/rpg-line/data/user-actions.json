@@ -1,0 +1,47 @@
+{
+	"actions": [
+		{
+			"id": 1,
+			"msg": "Pay the fine",
+			"description": "Player loses 10 money",
+			"code": "player.money -= 10; addAnimation('-10 $', ANIMATION_CLASSES.LOSS);"
+		},
+		{
+			"id": 2,
+			"msg": "Go to jail",
+			"description": "Player goes to jail",
+			"code": "player.level = 0; player.exp = 0; addAnimation('Level -> 0', ANIMATION_CLASSES.LOSS);"
+		},
+		{
+			"id": 3,
+			"msg": "Try to flee",
+			"description": "Player flees",
+			"code": "addXp(); addAnimation('+1 XP', ANIMATION_CLASSES.GAIN);"
+		},
+		{
+			"id": 4,
+			"msg": "Stay quiet",
+			"description": "You decide to follow the rules and wait.",
+			"code": "addAnimation('You wait...', ANIMATION_CLASSES.NEUTRAL);"
+		},
+		{
+			"id": 5,
+			"msg": "Bribe the warden",
+			"description": "You try to bribe the warden with 50 money.",
+			"code": "if(player.money >= 50) { player.money -= 50; addAnimation('-50 $', ANIMATION_CLASSES.LOSS); freePlayer(); } else { addAnimation('Not enough money', ANIMATION_CLASSES.FAIL); }"
+		},
+		{
+			"id": 6,
+			"msg": "Accept the escape plan",
+			"description": "You follow Old Joe's escape plan.",
+			"code": "if(Math.random() > 0.5) { freePlayer(); addAnimation('Escape successful!', ANIMATION_CLASSES.GAIN); } else { player.level = 0; player.exp = 0; addAnimation('Caught!', ANIMATION_CLASSES.LOSS); }"
+		},
+		{
+			"id": 7,
+			"msg": "Decline and stay",
+			"description": "You refuse to take the risk.",
+			"code": "addAnimation('You stay in prison.', ANIMATION_CLASSES.NEUTRAL);"
+		}
+	],
+	"idle": ["You are walking peacefully", "You are looking at flowers"]
+}

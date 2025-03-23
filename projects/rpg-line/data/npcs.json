@@ -1,0 +1,31 @@
+{
+	"npcs": [
+		{
+			"id": 1,
+			"name": "Jack",
+			"role": "Sheriff",
+			"beforeNpcs": [],
+			"afterNpcs": [],
+			"afterActions": [],
+			"minLevelNeeded": 0
+		},
+		{
+			"id": 2,
+			"name": "Warden Smith",
+			"role": "Prison Warden",
+			"beforeNpcs": [],
+			"afterNpcs": [3],
+			"afterActions": [2],
+			"minLevelNeeded": 0
+		},
+		{
+			"id": 3,
+			"name": "Old Joe",
+			"role": "Prisoner",
+			"beforeNpcs": [2],
+			"afterNpcs": [],
+			"afterActions": [2],
+			"minLevelNeeded": 0
+		}
+	]
+}
