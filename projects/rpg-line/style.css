@@ -25,6 +25,15 @@
     animation-timing-function: linear;
 }
 
+.neutral {
+    position: relative;
+    color: rgb(93, 89, 89);
+    z-index: 10;
+    animation-name: change-number;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
 @keyframes change-number {
     0% {
         opacity: 1;

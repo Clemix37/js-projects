@@ -26,6 +26,7 @@ export const IDS_DIVS = {
 export const ANIMATION_CLASSES = {
     GAIN: "gain",
     LOSS: "loss",
+    NEUTRAL: "neutral",
 };
 
 /**

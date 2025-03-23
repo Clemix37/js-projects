@@ -76,7 +76,7 @@ function addXp(nbToAdd = 1) {
  * @param {string} msg
  * @param {string} animationClass
  */
-function addAnimation(msg, animationClass = ANIMATION_CLASSES.GAIN) {
+function addAnimation(msg, animationClass = ANIMATION_CLASSES.NEUTRAL) {
 	const divAnimations = document.getElementById(IDS_DIVS.ANIMATION_CHANGE);
 	const span = document.createElement("span"); // Create the element
 	span.classList.add(animationClass); // Adds the animation class
