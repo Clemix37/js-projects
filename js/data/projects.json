@@ -123,6 +123,10 @@
 		{
 			"name": "Mini RPG",
 			"link": "rpg-line"
+		},
+		{
+			"name": "Notification system 🔔",
+			"link": "notif-system"
 		}
 	]
 }

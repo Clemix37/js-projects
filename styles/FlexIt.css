@@ -67,7 +67,8 @@ html {
     align-items: center;
 }
 
-.align-items-center {
+.align-items-center,
+.items-center {
     align-items: center;
 }
 
@@ -89,12 +90,14 @@ html {
 }
 
 .is-flex-end,
-.justify-content-flexend {
+.justify-content-flexend,
+.justify-end {
     justify-content: flex-end;
 }
 
 .is-flex-center,
-.justify-content-center {
+.justify-content-center,
+.justify-center {
     justify-content: center;
 }
 
