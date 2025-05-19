@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator</title>
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <script defer src="../../styles/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="../../styles/includes.css">
+    <script src="../../js/projectsDisplay.js"></script>
+</head>
+
+<body>
+    <style>
+        .floor {
+            min-height: 50px;
+        }
+    </style>
+    <div class="flex justify-center">
+        <div class="flex flex-col" style="width: 150px;">
+            <div class="flex floor">
+                FLOOR 5
+            </div>
+            <div class="flex floor">
+                FLOOR 4
+            </div>
+            <div class="flex floor">
+                FLOOR 3
+            </div>
+            <div class="flex floor">
+                FLOOR 2
+            </div>
+            <div class="flex floor">
+                FLOOR 1
+            </div>
+            <div class="flex floor">
+                GROUND FLOOR
+            </div>
+        </div>
+        <div class="flex flex-col" style="width: 150px;">
+            <div class="flex floor elevator-floor" data-floor="5"></div>
+            <div class="flex floor elevator-floor" data-floor="4"></div>
+            <div class="flex floor elevator-floor" data-floor="3"></div>
+            <div class="flex floor elevator-floor" data-floor="2"></div>
+            <div class="flex floor elevator-floor" data-floor="1"></div>
+            <div class="flex floor elevator-floor" data-floor="0"></div>
+        </div>
+        <div class="flex flex-col" style="width: 150px;">
+            <div class="flex floor">
+                FLOOR 5
+            </div>
+            <div class="flex floor">
+                FLOOR 4
+            </div>
+            <div class="flex floor">
+                FLOOR 3
+            </div>
+            <div class="flex floor">
+                FLOOR 2
+            </div>
+            <div class="flex floor">
+                FLOOR 1
+            </div>
+            <div class="flex floor">
+                GROUND FLOOR
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <button class="button is-rounded btn-go-floor" data-floor="5">5</button>
+        <button class="button is-rounded btn-go-floor" data-floor="4">4</button>
+        <button class="button is-rounded btn-go-floor" data-floor="3">3</button>
+        <button class="button is-rounded btn-go-floor" data-floor="2">2</button>
+        <button class="button is-rounded btn-go-floor" data-floor="1">1</button>
+        <button class="button is-rounded btn-go-floor" data-floor="0">0</button>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

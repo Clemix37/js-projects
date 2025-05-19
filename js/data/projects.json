@@ -127,6 +127,10 @@
 		{
 			"name": "Notification system 🔔",
 			"link": "notif-system"
+		},
+		{
+			"name": "Elevator 🏢",
+			"link": "elevator"
 		}
 	]
 }

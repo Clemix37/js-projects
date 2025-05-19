@@ -13,6 +13,10 @@ html {
     flex-direction: row;
 }
 
+.flex.flex-col {
+    flex-direction: column;
+}
+
 .flex.column {
     flex-direction: column;
     padding: 0;

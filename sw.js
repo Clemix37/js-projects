@@ -224,6 +224,18 @@ const URLS = [
 	`${GH_PATH}/meme-soundboard/sounds/sncf.mp3`,
 	`${GH_PATH}/meme-soundboard/sounds/vine-boom.mp3`,
 	// TODO: add memes link sounds
+
+	// NOTIF SYSTEM
+	`${GH_PATH}/notif-system/index.html`,
+	`${GH_PATH}/notif-system/css/toasts.css`,
+	`${GH_PATH}/notif-system/js/app.js`,
+	`${GH_PATH}/notif-system/js/config.js`,
+	`${GH_PATH}/notif-system/js/Toast.js`,
+	`${GH_PATH}/notif-system/js/ToastFactory.js`,
+
+	// ELEVATOR PROJECT
+	`${GH_PATH}/elevator/index.html`,
+	`${GH_PATH}/elevator/app.js`,
 ];
 
 const CACHE_NAME = APP_PREFIX + VERSION;
